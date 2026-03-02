@@ -13,7 +13,7 @@ const ExamList = () => {
     useEffect(() => {
         const fetchExams = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/get-exams');
+                const res = await axios.get('https://kltin-hoc-system.onrender.com/api/get-exams');
                 setExams(res.data);
             } catch (err) {
                 console.error("Lỗi fetch danh sách:", err);
@@ -27,7 +27,7 @@ const ExamList = () => {
     // 2. Hàm xử lý Xuất file Word
     const handleDownload = async (exam) => {
     try {
-        const res = await axios.get(`http://localhost:5000/api/get-full-exam-detail/${exam.MaDeThi}`);
+        const res = await axios.get(`https://kltin-hoc-system.onrender.com/api/get-full-exam-detail/${exam.MaDeThi}`);
         
         const questionsData = res.data.questionsData || []; 
         const header = res.data.header || {};
@@ -64,7 +64,7 @@ const ExamList = () => {
     // 3. Hàm xử lý Chỉnh sửa (Truyền dữ liệu sang ExamDesign)
     /*const handleEdit = async (exam) => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/get-full-exam-detail/${exam.MaDeThi}`);
+            const res = await axios.get(`https://kltin-hoc-system.onrender.com/api/get-full-exam-detail/${exam.MaDeThi}`);
             
             // Điều hướng và đính kèm dữ liệu vào state của router
             navigate('/matrankiemtrafull', { 
@@ -82,7 +82,7 @@ const ExamList = () => {
         setLoading(true); // Nếu bạn có state loading trong ExamList
         try {
             // 1. Gọi API lấy chi tiết đề thi (bao gồm cả trường hợp chỉ có khung)
-            const res = await axios.get(`http://localhost:5000/api/get-full-exam-detail/${exam.MaDeThi}`);
+            const res = await axios.get(`https://kltin-hoc-system.onrender.com/api/get-full-exam-detail/${exam.MaDeThi}`);
             
             // 2. Kiểm tra dữ liệu trả về
             if (res.data) {
@@ -116,7 +116,7 @@ const ExamList = () => {
     );
     const handleDownloadAnswer = async (exam) => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/get-full-exam-detail/${exam.MaDeThi}`);
+            const res = await axios.get(`https://kltin-hoc-system.onrender.com/api/get-full-exam-detail/${exam.MaDeThi}`);
             
             const questionsData = res.data.questionsData || [];
             const header = res.data.header || {};
@@ -154,7 +154,7 @@ const ExamList = () => {
     const handleSaveToDrive = async (exam) => {
         try {
             // 1. Lấy dữ liệu từ API
-            const res = await axios.get(`http://localhost:5000/api/get-full-exam-detail/${exam.MaDeThi}`);
+            const res = await axios.get(`https://kltin-hoc-system.onrender.com/api/get-full-exam-detail/${exam.MaDeThi}`);
             const { questionsData, header } = res.data;
 
             if (!questionsData || questionsData.length === 0) return alert("Không có dữ liệu!");
@@ -178,7 +178,7 @@ const ExamList = () => {
 
             // 4. Gửi lên Backend (Gửi mảng hoặc 2 request riêng)
             // Ở đây tôi gửi 1 request chứa cả 2 file để tối ưu
-            const uploadRes = await axios.post('http://localhost:5000/api/upload-multiple-to-drive', {
+            const uploadRes = await axios.post('https://kltin-hoc-system.onrender.com/api/upload-multiple-to-drive', {
                 maDeThi: exam.MaDeThi,
                 files: [
                     { 

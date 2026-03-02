@@ -15,7 +15,7 @@ export default function SoHoaKHBD() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const res = await axios.post("http://localhost:5000/api/khbd/upload", formData, {
+      const res = await axios.post("https://kltin-hoc-system.onrender.com/api/khbd/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

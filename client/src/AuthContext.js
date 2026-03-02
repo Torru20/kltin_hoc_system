@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
                     const idToken = await firebaseUser.getIdToken();
 
                     // 3. Gửi Token sang Backend Node.js để kiểm tra/lưu vào MySQL
-                    const response = await fetch('http://localhost:5000/api/users/login', {
+                    const response = await fetch('https://kltin-hoc-system.onrender.com/api/users/login', {
                         method: 'POST',
                         headers: {
                             'Authorization': `Bearer ${idToken}`,

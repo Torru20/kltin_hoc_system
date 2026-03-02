@@ -48,7 +48,7 @@ const LessonPlanEditor = () => {
 
     const fetchMuctieuSGK = async (maPhanPhoi) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/muctieusgk?maPhanPhoi=${maPhanPhoi}`);
+            const response = await fetch(`https://kltin-hoc-system.onrender.com/api/muctieusgk?maPhanPhoi=${maPhanPhoi}`);
             const data = await response.json();
             // data lúc này sẽ có dạng: [{ id: 1, noiDung: '...' }, ...]
             setListMTTP(data);
@@ -112,7 +112,7 @@ const LessonPlanEditor = () => {
       const fetchCapHoc = async () => {
           try {
               // Thay đổi URL nếu server của bạn chạy ở port khác (ví dụ: 5000)
-              const response = await fetch('http://localhost:5000/api/caphoc');
+              const response = await fetch('https://kltin-hoc-system.onrender.com/api/caphoc');
               const data = await response.json();
               
               // Cập nhật dữ liệu vào State
@@ -136,7 +136,7 @@ const LessonPlanEditor = () => {
 
         try {
             // SỬ DỤNG DẤU HUYỀN (Backtick) ở đây
-            const response = await fetch(`http://localhost:5000/api/lops?maCap=${basicInfo.maCap}`);
+            const response = await fetch(`https://kltin-hoc-system.onrender.com/api/lops?maCap=${basicInfo.maCap}`);
             const data = await response.json();
             setLops(data);
         } catch (error) {
@@ -152,7 +152,7 @@ const LessonPlanEditor = () => {
     const fetchChuDe = async () => {
         if (basicInfo.maCap) {
             try {
-                const response = await fetch(`http://localhost:5000/api/chudes?maCap=${basicInfo.maCap}`);
+                const response = await fetch(`https://kltin-hoc-system.onrender.com/api/chudes?maCap=${basicInfo.maCap}`);
                 const data = await response.json();
                 setChuDes(data);
             } catch (error) {
@@ -169,7 +169,7 @@ const LessonPlanEditor = () => {
   const [dinhHuongs, setDinhHuongs] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/dinhhuong')
+    fetch('https://kltin-hoc-system.onrender.com/api/dinhhuong')
       .then(res => res.json())
       .then(data => setDinhHuongs(data))
       .catch(err => console.error("Lỗi:", err));
@@ -184,7 +184,7 @@ const LessonPlanEditor = () => {
         if (basicInfo.maLop && basicInfo.maChuDe && basicInfo.maDinhHuong) {
             try {
                 // Sửa URL: thay maCap thành maLop và đảm bảo đúng tên tham số maDH
-                const url = `http://localhost:5000/api/noidungcoban?maLop=${basicInfo.maLop}&maChuDe=${basicInfo.maChuDe}&maDH=${basicInfo.maDinhHuong}`;
+                const url = `https://kltin-hoc-system.onrender.com/api/noidungcoban?maLop=${basicInfo.maLop}&maChuDe=${basicInfo.maChuDe}&maDH=${basicInfo.maDinhHuong}`;
                 
                 const response = await fetch(url);
                 const data = await response.json();
@@ -209,7 +209,7 @@ const LessonPlanEditor = () => {
   useEffect(() => {
       const fetchSGK = async () => {
           try {
-              const response = await fetch('http://localhost:5000/api/bosgk');
+              const response = await fetch('https://kltin-hoc-system.onrender.com/api/bosgk');
               if (!response.ok) throw new Error("Không thể kết nối API bộ sách");
               
               const data = await response.json();
@@ -229,7 +229,7 @@ const LessonPlanEditor = () => {
           // Chỉ gọi khi đã chọn đủ Bộ sách và Nội dung cơ bản
           if (basicInfo.maSGK && basicInfo.maNDCB) {
               try {
-                  const url = `http://localhost:5000/api/tenbaihoc?maSGK=${basicInfo.maSGK}&maNDCB=${basicInfo.maNDCB}&maCap=${basicInfo.maCap}&maLop=${basicInfo.maLop}`;
+                  const url = `https://kltin-hoc-system.onrender.com/api/tenbaihoc?maSGK=${basicInfo.maSGK}&maNDCB=${basicInfo.maNDCB}&maCap=${basicInfo.maCap}&maLop=${basicInfo.maLop}`;
                   const response = await fetch(url);
                   const data = await response.json();
                   setListBaiHoc(Array.isArray(data) ? data : []);
@@ -250,7 +250,7 @@ const LessonPlanEditor = () => {
           if (basicInfo.maNDCB && basicInfo.maCap) {
               try {
                   // Sửa URL cho đúng với Route Backend bạn đã viết
-                  const response = await fetch(`http://localhost:5000/api/yccd-by-noidung?maNDCB=${basicInfo.maNDCB}&maCap=${basicInfo.maCap}`);
+                  const response = await fetch(`https://kltin-hoc-system.onrender.com/api/yccd-by-noidung?maNDCB=${basicInfo.maNDCB}&maCap=${basicInfo.maCap}`);
                   const data = await response.json();
                   
                   // Map lại dữ liệu để khớp với thuộc tính 'id' và 'noiDung' dùng trong component
@@ -290,7 +290,7 @@ const LessonPlanEditor = () => {
           // basicInfo.maTenBai chính là MaPhanPhoi từ ô số 7
           if (basicInfo.maTenBai) { 
               try {
-                  const response = await fetch(`http://localhost:5000/api/muctieusgk?maPhanPhoi=${basicInfo.maTenBai}`);
+                  const response = await fetch(`https://kltin-hoc-system.onrender.com/api/muctieusgk?maPhanPhoi=${basicInfo.maTenBai}`);
                   const data = await response.json();
                   setListMTTP(Array.isArray(data) ? data : []);
                   setSelectedMTTP([]); // Reset tích chọn khi đổi bài học
@@ -366,7 +366,7 @@ const LessonPlanEditor = () => {
       console.log("DANH SÁCH GỬI ĐI:\n", fullObjectivesPrompt);
 
       // --- 4. GỌI API BACKEND ---
-      const response = await fetch('http://localhost:5000/api/generate-lesson-plan', {
+      const response = await fetch('https://kltin-hoc-system.onrender.com/api/generate-lesson-plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -565,7 +565,7 @@ const LessonPlanEditor = () => {
 
       console.log(">>> DỮ LIỆU GỬI LÊN HỆ THỐNG:", payload);
 
-      const response = await fetch('http://localhost:5000/api/save-khbd', {
+      const response = await fetch('https://kltin-hoc-system.onrender.com/api/save-khbd', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

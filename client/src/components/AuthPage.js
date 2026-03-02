@@ -31,7 +31,7 @@ const AuthPage = () => {
 
 const sendTokenToBackend = async (idToken) => {
   try {
-    const response = await fetch('http://localhost:5000/api/auth/login', {
+    const response = await fetch('https://kltin-hoc-system.onrender.com/api/auth/login', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${idToken}`,
@@ -80,7 +80,7 @@ const sendTokenToBackend = async (idToken) => {
   if (isLogin) {
     // --- LUỒNG ĐĂNG NHẬP THỦ CÔNG ---
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login-manual', {
+      const response = await fetch('https://kltin-hoc-system.onrender.com/api/auth/login-manual', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -111,7 +111,7 @@ const sendTokenToBackend = async (idToken) => {
   } else {
     // --- LUỒNG ĐĂNG KÝ ---
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch('https://kltin-hoc-system.onrender.com/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ hoten, email, password }),

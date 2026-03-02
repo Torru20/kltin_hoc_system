@@ -216,8 +216,8 @@ const FullMatrixSpec = () => {
     const fetchInitialData = async () => {
       try {
         const [capRes, sgkRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/caphoc'),
-          axios.get('http://localhost:5000/api/bosgk')
+          axios.get('https://kltin-hoc-system.onrender.com/api/caphoc'),
+          axios.get('https://kltin-hoc-system.onrender.com/api/bosgk')
         ]);
         setCapHocs(capRes.data);
         setBoSGKs(sgkRes.data);
@@ -230,7 +230,7 @@ const FullMatrixSpec = () => {
     const fetchLop = async () => {
       if (!generalInfo.maCap) { setLops([]); return; }
       try {
-        const res = await axios.get('http://localhost:5000/api/lops', { params: { maCap: generalInfo.maCap } });
+        const res = await axios.get('https://kltin-hoc-system.onrender.com/api/lops', { params: { maCap: generalInfo.maCap } });
         setLops(res.data);
       } catch (err) { console.error("Lỗi tải danh sách lớp:", err); }
     };
@@ -240,7 +240,7 @@ const FullMatrixSpec = () => {
   useEffect(() => {
     const fetchDinhHuong = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/dinhhuong');
+        const res = await axios.get('https://kltin-hoc-system.onrender.com/api/dinhhuong');
         setDinhHuongs(res.data);
       } catch (err) { console.error("Lỗi tải định hướng:", err); }
     };
@@ -250,7 +250,7 @@ const FullMatrixSpec = () => {
   useEffect(() => {
     const fetchNangLuc = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/nanglucdacthu');
+        const res = await axios.get('https://kltin-hoc-system.onrender.com/api/nanglucdacthu');
         setListNangLuc(res.data);
       } catch (err) { console.error("Lỗi tải danh mục năng lực:", err); }
     };
@@ -304,7 +304,7 @@ const FullMatrixSpec = () => {
     const fetchChuDe = async () => {
       if (!generalInfo.maCap) { setListChuDeDich([]); return; }
       try {
-        const res = await axios.get('http://localhost:5000/api/chudes', { params: { maCap: generalInfo.maCap } });
+        const res = await axios.get('https://kltin-hoc-system.onrender.com/api/chudes', { params: { maCap: generalInfo.maCap } });
         setListChuDeDich(res.data);
       } catch (err) { console.error("Lỗi tải danh mục chủ đề:", err); }
     };
@@ -314,7 +314,7 @@ const FullMatrixSpec = () => {
   const fetchNoidung = async (maChuDe) => {
     if (!generalInfo.maLop || !maChuDe || !generalInfo.maDH) return [];
     try {
-      const res = await axios.get('http://localhost:5000/api/noidungcoban', {
+      const res = await axios.get('https://kltin-hoc-system.onrender.com/api/noidungcoban', {
         params: { maLop: generalInfo.maLop, maChuDe: maChuDe, maDH: generalInfo.maDH }
       });
       return res.data;
@@ -348,7 +348,7 @@ const FullMatrixSpec = () => {
 
   const handleNoiDungChange = async (chuDeId, rowId, selectedMaNDCB) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/yccd-by-noidung`, {
+      const response = await axios.get(`https://kltin-hoc-system.onrender.com/api/yccd-by-noidung`, {
         params: { maNDCB: selectedMaNDCB, maCap: generalInfo.maCap }
       });
       setData(prev => prev.map(cd => cd.id === chuDeId ? {
@@ -399,7 +399,7 @@ const FullMatrixSpec = () => {
 
   const [constraints, setConstraints] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:5000/api/tile-constraints')
+    axios.get('https://kltin-hoc-system.onrender.com/api/tile-constraints')
       .then(res => setConstraints(res.data))
       .catch(err => console.error("Lỗi lấy ràng buộc:", err));
   }, []);
@@ -534,7 +534,7 @@ const FullMatrixSpec = () => {
 
     try {
       // Gọi API riêng cho việc tái bản (Tôi sẽ viết BE ở dưới)
-      const res = await axios.post('http://localhost:5000/api/save-new-exam-version', payload);
+      const res = await axios.post('https://kltin-hoc-system.onrender.com/api/save-new-exam-version', payload);
       if (res.data.success) {
         alert("Đã lưu đề thi mới thành công dựa trên ma trận có sẵn!");
       }
@@ -635,7 +635,7 @@ const FullMatrixSpec = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/save-full-exam', payload);
+      const response = await axios.post('https://kltin-hoc-system.onrender.com/api/save-full-exam', payload);
       if (response.data.success) {
         alert("✅ Đã lưu thành công! Dữ liệu đã khớp với các Editor.");
       }

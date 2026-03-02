@@ -7,10 +7,10 @@ import verifyFirebaseToken from '../middleware/authMiddleware.js';
 import { protect } from '../middleware/auth.middleware.js';
 const router = express.Router();
 
-// Đăng ký (Manual) -> gọi đến http://localhost:5000/api/auth/register
+// Đăng ký (Manual) -> gọi đến https://kltin-hoc-system.onrender.com/api/auth/register
 router.post('/register', registerManual);
 
-// Đăng nhập (Manual) -> gọi đến http://localhost:5000/api/auth/login-manual
+// Đăng nhập (Manual) -> gọi đến https://kltin-hoc-system.onrender.com/api/auth/login-manual
 router.post('/login-manual', loginManual);
 
 // Đăng nhập (Google)

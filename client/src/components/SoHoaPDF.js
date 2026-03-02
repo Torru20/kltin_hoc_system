@@ -17,7 +17,7 @@ function SoHoaPDF() {
     formData.append("pdf", file);
 
     try {
-      const res = await fetch("http://localhost:5000/api/sohoa", {
+      const res = await fetch("https://kltin-hoc-system.onrender.com/api/sohoa", {
         method: "POST",
         body: formData,
       });
@@ -108,7 +108,7 @@ function SoHoaPDF() {
 
             {data.output && (
               <a
-                href={`http://localhost:5000/${data.output.replace(/\\/g, "/")}`}
+                href={`https://kltin-hoc-system.onrender.com/${data.output.replace(/\\/g, "/")}`}
                 download
                 className="btn btn-success mt-3"
               >

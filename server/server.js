@@ -31,7 +31,7 @@ const upload = multer({ dest: "server/uploads/" });
 const PORT = process.env.PORT || 5000;
 
 // --- ROUTES XÁC THỰC & NGƯỜI DÙNG ---
-// Khi React gọi http://localhost:5000/api/auth/login, nó sẽ vào đây
+// Khi React gọi https://kltin-hoc-system.onrender.com/api/auth/login, nó sẽ vào đây
 app.use('/api/auth', authRoutes);
 app.use('/change-password', changePassword);
 app.use('/update-password', updatePassword);

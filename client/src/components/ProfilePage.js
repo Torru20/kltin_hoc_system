@@ -124,7 +124,7 @@ const ProfilePage = () => {
         const token = localStorage.getItem('token');
         if (!userId || !token) { setError("Hết hạn phiên."); setLoading(false); return; }
         try {
-            const response = await fetch(`http://localhost:5000/api/auth/profile/${userId}`, {
+            const response = await fetch(`https://kltin-hoc-system.onrender.com/api/auth/profile/${userId}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const result = await response.json();
@@ -177,8 +177,8 @@ const ProfilePage = () => {
 
         // 4. Chọn đúng Route: Nếu chưa có pass (Google lần đầu) -> update, nếu có rồi -> change
         const apiEndpoint = hasPassword 
-            ? 'http://localhost:5000/api/auth/change-password'
-            : 'http://localhost:5000/api/auth/update-password';
+            ? 'https://kltin-hoc-system.onrender.com/api/auth/change-password'
+            : 'https://kltin-hoc-system.onrender.com/api/auth/update-password';
 
         try {
             const response = await fetch(apiEndpoint, {
@@ -243,7 +243,7 @@ const ProfilePage = () => {
             const userId = localStorage.getItem('userId');
 
             // 2. Gửi token lên server để thực hiện liên kết
-            const response = await fetch('http://localhost:5000/api/auth/link-google', {
+            const response = await fetch('https://kltin-hoc-system.onrender.com/api/auth/link-google', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -275,7 +275,7 @@ const ProfilePage = () => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch(`http://localhost:5000/api/export-matrix-word/${maMaTran}`, {
+            const response = await fetch(`https://kltin-hoc-system.onrender.com/api/export-matrix-word/${maMaTran}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const result = await response.json();
@@ -298,7 +298,7 @@ const ProfilePage = () => {
     };
     const handleDownloadKHBD = async (maKHBD) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/get-full-khbd/${maKHBD}`);
+            const response = await fetch(`https://kltin-hoc-system.onrender.com/api/get-full-khbd/${maKHBD}`);
             const result = await response.json();
 
             if (result.success) {
@@ -377,7 +377,7 @@ const ProfilePage = () => {
 
             // --- TRƯỜNG HỢP 1: KẾ HOẠCH BÀI DẠY (KHBD) ---
             if (item.MaKHBD) {
-                const response = await fetch(`http://localhost:5000/api/get-full-khbd/${item.MaKHBD}`);
+                const response = await fetch(`https://kltin-hoc-system.onrender.com/api/get-full-khbd/${item.MaKHBD}`);
                 const result = await response.json();
 
                 if (result.success) {
@@ -404,7 +404,7 @@ const ProfilePage = () => {
             } 
             // --- TRƯỜNG HỢP 2: BẢN ĐẶC TẢ ---
             else if (isDacTa) {
-                const response = await axios.get(`http://localhost:5000/api/dacta/export/${item.MaMaTran}`);
+                const response = await axios.get(`https://kltin-hoc-system.onrender.com/api/dacta/export/${item.MaMaTran}`);
                 const { header, dacTaRows, pointConfig } = response.data;
                 
                 // Truyền 4 tham số: header, rows, config, options
@@ -413,7 +413,7 @@ const ProfilePage = () => {
             } 
             // --- TRƯỜNG HỢP 3: MA TRẬN KIỂM TRA (MTKT) ---
             else {
-                const response = await fetch(`http://localhost:5000/api/export-matrix-word/${item.MaMaTran}`, {
+                const response = await fetch(`https://kltin-hoc-system.onrender.com/api/export-matrix-word/${item.MaMaTran}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const result = await response.json();

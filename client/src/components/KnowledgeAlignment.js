@@ -33,15 +33,15 @@ const KnowledgeAlignment = () => {
 
   // --- EFFECT: Khởi tạo dữ liệu ban đầu ---
   useEffect(() => {
-    fetch('http://localhost:5000/api/caphoc').then(res => res.json()).then(data => setCapHocs(data));
-    fetch('http://localhost:5000/api/dinhhuong').then(res => res.json()).then(data => setDinhHuongs(data));
+    fetch('https://kltin-hoc-system.onrender.com/api/caphoc').then(res => res.json()).then(data => setCapHocs(data));
+    fetch('https://kltin-hoc-system.onrender.com/api/dinhhuong').then(res => res.json()).then(data => setDinhHuongs(data));
   }, []);
 
   // --- EFFECT: Lấy Lớp và Chủ đề khi Cấp học thay đổi ---
   useEffect(() => {
     if (selectedCap) {
-      fetch(`http://localhost:5000/api/lops?maCap=${selectedCap}`).then(res => res.json()).then(data => setLops(data));
-      fetch(`http://localhost:5000/api/chudes?maCap=${selectedCap}`).then(res => res.json()).then(data => setChuDes(data));
+      fetch(`https://kltin-hoc-system.onrender.com/api/lops?maCap=${selectedCap}`).then(res => res.json()).then(data => setLops(data));
+      fetch(`https://kltin-hoc-system.onrender.com/api/chudes?maCap=${selectedCap}`).then(res => res.json()).then(data => setChuDes(data));
       setSelectedLop('');
       setSelectedChuDe('');
       setSelectedNDCB('');
@@ -52,7 +52,7 @@ const KnowledgeAlignment = () => {
   // --- EFFECT: Lấy Nội dung cơ bản theo bộ lọc ---
   useEffect(() => {
     if (selectedCap && selectedChuDe && selectedDH) {
-      fetch(`http://localhost:5000/api/noidungcoban?maLop=${selectedLop}&maChuDe=${selectedChuDe}&maDH=${selectedDH}`)
+      fetch(`https://kltin-hoc-system.onrender.com/api/noidungcoban?maLop=${selectedLop}&maChuDe=${selectedChuDe}&maDH=${selectedDH}`)
         .then(res => res.json())
         .then(data => {
             setNoiDungCBs(data);
@@ -66,7 +66,7 @@ const KnowledgeAlignment = () => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (searchTerm.trim().length > 2) {
-        fetch(`http://localhost:5000/api/noidungcoban/search?keyword=${encodeURIComponent(searchTerm)}`)
+        fetch(`https://kltin-hoc-system.onrender.com/api/noidungcoban/search?keyword=${encodeURIComponent(searchTerm)}`)
           .then(res => res.json())
           .then(data => setSearchResults(data));
       } else {
@@ -80,7 +80,7 @@ const KnowledgeAlignment = () => {
   useEffect(() => {
     if (selectedNDCB) {
       setLoading(true);
-      fetch(`http://localhost:5000/api/alignment-trace/${selectedNDCB}`)
+      fetch(`https://kltin-hoc-system.onrender.com/api/alignment-trace/${selectedNDCB}`)
         .then(res => res.json())
         .then(result => {
           if (result.success) {
