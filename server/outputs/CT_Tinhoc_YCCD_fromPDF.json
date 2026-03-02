@@ -1,0 +1,737 @@
+[
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": null,
+    "noiDung": "NLa và\nNLc\n\nmềm quản lí dự án.",
+    "yccd": "........................................................................................................................................................... 8\nV. NỘI DUNG GIÁO DỤC ....................................................................................................................................................... 14\nVI. PHƯƠNG PHÁP GIÁO DỤC ............................................................................................................................................. 63\nVII. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC .................................................................................................................................. 65\nVIII. GIẢI THÍCH VÀ HƯỚNG DẪN THỰC HIỆN CHƯƠNG TRÌNH............................................................................... 66\n2\nI. ĐẶC ĐIỂM MÔN HỌC\nGiáo dục tin học đóng vai trò chủ đạo trong việc chuẩn bị cho học sinh khả năng tìm kiếm, tiếp nhận, mở rộng tri thức\nvà sáng tạo trong thời đại cách mạng công nghiệp lần thứ tư và toàn cầu hoá. Tin học có ảnh hưởng lớn đến cách sống, cách\nsuy nghĩ và hành động của con người, là công cụ hiệu quả hỗ trợ biến việc học thành tự học suốt đời.\nMôn Tin học giúp học sinh thích ứng và hoà nhập được với xã hội hiện đại, hình thành và phát triển cho học sinh năng\nlực tin học để học tập, làm việc và nâng cao chất lượng cuộc sống, đóng góp vào sự nghiệp xây dựng và bảo vệ\nTổ quốc.\nNội dung môn Tin học phát triển ba mạch kiến thức hoà quyện: Học vấn số hoá phổ thông (DL), Công nghệ thông tin\nvà truyền thông (ICT), Khoa học máy tính (CS) và được phân chia theo hai giai đoạn:\nGiai đoạn giáo dục cơ bản:\nMôn Tin học giúp học sinh hình thành và phát triển khả năng sử dụng công cụ kĩ thuật số, làm quen và sử dụng\nInternet; bước đầu hình thành và phát triển tư duy giải quyết vấn đề với sự hỗ trợ của máy tính và hệ thống máy tính; hiểu và\ntuân theo các nguyên tắc cơ bản trong trao đổi và chia sẻ thông tin.\ntheo các nguyên tắc giữ gìn sức khoẻ,đồng thời bước đầu được hình thành tư duy giải quyết vấn đề có sự hỗ trợ của máy\ntính.\nhọc tập và đời sống; thực hành phát hiện và giải quyết vấn đề một cách sáng tạo với sự hỗ trợ của công cụ và các hệ thống tự\nđộng hoá của công nghệ kĩ thuật số; học cách tổ chức lưu trữ, quản lí, tra cứu và tìm kiếm dữ liệu số, đánh giá và lựa chọn\nthông tin.\nGiai đoạn giáo dục định hướng nghề nghiệp:\nMôn Tin học có sự phân hoá sâu. Tuỳ theo sở thích và dự định về nghề nghiệp trong tương lai, học sinh lựa chọn một\ntrong hai định hướng: Tin học ứng dụng và Khoa học máy tính.\n3\nHai định hướng có chung một số chủ đề con và mỗi định hướng này còn có những chủ đề con riêng.\nĐịnh hướng Tin học ứng dụng đáp ứng nhu cầu sử dụng máy tính như một công cụ của công nghệ kĩ thuật số trong\ncuộc sống, học tập và làm việc, đem lại sự thích ứng và khả năng phát triển dịch vụ trong xã hội số.\nĐịnh hướng Khoa học máy tính đáp ứng mục đích bước đầu tìm hiểu nguyên lí hoạt động của hệ thống máy tính,\nphát triển tư duy máy tính, khả năng tìm tòi, khám phá các hệ thống tin học, phát triển ứng dụng trên hệ thống máy tính.\nBên cạnh nội dung giáo dục cốt lõi, học sinh có thể chọn một số chuyên đề học tập tuỳ theo sở thích, nhu cầu và định\nhướng nghề nghiệp. Những chuyên đề thuộc định hướng Tin học ứng dụng nhằm tăng cường thực hành ứng dụng, giúp học\nsinh thành thạo hơn trong sử dụng các phần mềm thiết yếu, làm ra sản phẩm số thiết thực cho học tập và cuộc sống. Những\nchuyên đề thuộc định hướng Khoa học máy tính nhằm giới thiệu lập trình điều khiển robot giáo dục, kĩ thuật thiết kế thuật\ntoán, một số cấu trúc dữ liệu và một số nguyên tắc thiết kế mạng máy tính.\nII. QUAN ĐIỂM XÂY DỰNG CHƯƠNG TRÌNH\nChương trình môn Tin học cụ thể hoá các quan điểm của Chương trình tổng thể, chú trọng các yêu cầu sau đây:\n1. Tính kế thừa và phát triển\na) Kế thừa chương trình môn Tin học hiện hành\nChương trình môn Tin học kế thừa và phát triển những ưu điểm cơ bản của chương trình hiện hành là tính hệ thống và\ntính khoa học, đồng thời tránh thiên về lí thuyết trong một số nội dung và sự trùng lặp giữa các cấp học, gây quá tải.\nb) Khai thác chương trình môn Tin học phổ thông của các nước tiên tiến\nTrong bối cảnh nhiều nước coi trọng phát triển chương trình giáo dục tin học nhằm đào tạo nguồn nhân lực cho cuộc\ncách mạng công nghiệp lần thứ tư, Chương trình môn Tin học khai thác, chọn lọc vận dụng chương trình môn Tin học của\ncác nước tiên tiến nhằm hội nhập, hướng tới trình độ quốc tế.\n4\n2. Tính khoa học, hiện đại và sư phạm\nChương trình môn Tin học chọn lọc các nội dung cơ bản, phổ thông và hiện đại của ba mạch kiến thức DL, ICT,CS,\nđồng thời quan tâm đúng mức đến nội dung về đạo đức, pháp luật, văn hoá và ảnh hưởng của tin học đến xã hội, bảo đảm\nnguyên lí “vừa dạy chữ vừa dạy người” và coi trọng tính nhân văn trong thời đại có sự kết nối cao của thế giới thực và thế\ngiới số.\nChương trình được thiết kế với các nguyên tắc sư phạm: bảo đảm tính vừa sức, phát triển mạch kiến thức vừa theo\nđường thẳng vừa đồng tâm, xây dựng hệ thống khái niệm cốt lõi. Chương trình chọn lọc nội dung và yêu cầu phù hợp lứa tuổi,\nxen kẽ những nội dung lí thuyết với thực hành, trừu tượng với trực quan. Các chủ đề lớn xuyên suốt các cấp học với yêu cầu\ncấp học cao hơn.\n3. Tính thiết thực\na) Phục vụ định hướng nghề nghiệp\nTrong bối cảnh của cuộc cách mạng công nghiệp lần thứ tư có nhiều ngành nghề và việc làm mới xuất hiện đòi hỏi kiến\nthức, kĩ năng tin học chuyên sâu, Chương trình môn Tin học thể hiện khả năng kết nối và lan toả sâu rộng của tin học đến tất\ncả các lĩnh vực khác nhau của đời sống, xác lập cho các đối tượng học sinh khác nhau một phổ rộng các ngành nghề chuyên\nsâu và các ngành nghề ứng dụng tin học.\nb)Thực hiện giáo dục STEM\nĐịnh hướng giáo dục STEM đang được triển khai như một hướng đi quan trọng trong giáo dục và đào tạo tại nhiều\nnước trên thế giới. Với tư cách là công nghệ nền tảng, hội tụ đủ tất cả bốn yếu tố giáo dục STEM (Khoa học (S), Công nghệ\n(T), Kĩ thuật (E) và Toán học (M)), môn Tin học có vai trò trung tâm kết nối các môn học khác, đẩy mạnh giáo dục STEM,\nphát huy sáng tạo của học sinh nhằm tạo ra sản phẩm số có hàm lượng ICT cao. Chương trình môn Tin học khai thác ưu thế\nvề tích hợp liên môn bằng cách yêu cầu học sinh làm ra sản phẩm số của cá nhân và của nhóm học tập để thu hẹp khoảng cách\ngiữa giáo dục hàn lâm và thực tiễn.\n5\n4. Tính mở\na) Nội dung chương trình mở\nChương trình môn Tin học có các chủ đề bắt buộc, đồng thời có các chủ đề lựachọn. Các chủ đề nội dung không phụ\nthuộc vào thiết bị phần cứng và phần mềm cụ thể, không phân biệt phần mềm và học liệu mở hay đóng, tạo thuận lợi cho\nviệc vận dụng phù hợp với khả năng các địa phương và các đối tượng học sinh khác nhau. Do đặc thù riêng, Chương trình\nmôn Tin học cần được cập nhật và điều chỉnh theo định kì ngắn hạn theo hướng dẫn của Bộ Giáo dục và Đào tạo nhằm bảo\nđảm tính hiện đại và thời sự, đáp ứng sự phát triển rất nhanh của công nghệ kĩ thuật số, phù hợp với điều kiện kinh tế – xã\nhội của đất nước.\nb)Hình thức giáo dục đa dạng\nChương trình môn Tin học chọn lọc các chủ đề thiết thực và hấp dẫn, tạo điều kiện cho học sinh học tập và ứng dụng\ntin học không chỉ trong phạm vi môn Tin học mà cả trong các môn học khác, không chỉ trong khuôn viên nhà trường mà ở\ncả các môi trường ngoài khuôn viên trường học (ở nhà, qua mạng máy tính, trong câu lạc bộ và trong thực tế).\nIII. MỤC TIÊU CHƯƠNG TRÌNH\n1. Mục tiêu chung\nChương trình môn Tin học góp phần hình thành, phát triển những phẩm chất chủ yếu và năng lực chung đã được xác\nđịnh trong Chương trình tổng thể, đồng thời góp phần chủ yếu hình thành, phát triển năng lực tin học cho học sinh. Môn\nTin học trang bị cho học sinh hệ thống kiến thức tin học phổ thông gồm ba mạch kiến thức hoà quyện:\nHọc vấn số hoá phổ thông nhằm giúp học sinh hoà nhập với xã hội hiện đại, sử dụng được các thiết bị số và phần\nmềm cơ bản thông dụng một cách có đạo đức, văn hoá và tuân thủ pháp luật.\nCông nghệ thông tin và truyền thông nhằm giúp học sinh sử dụng và áp dụng hệ thống máy tính giải quyết vấn đề\nthực tế một cách hiệu quả và sáng tạo.\nKhoa học máy tính nhằm giúp học sinh hiểu biết các nguyên tắc cơ bản và thực tiễn của tư duy máy tính, tạo cơ sở\ncho việc thiết kế và phát triển các hệ thống máy tính.\n6\nBước đầu hình thành cho học sinh tư duy giải quyết vấn đề với sự trợ giúp của máy tính: Hình thành nhu cầu thu thập,\nsử dụng thông tin, ý tưởng điều khiển máy tính thông qua việc tạo chương trình đơn giản bằng ngôn ngữ lập trình trực quan.\nGiúp học sinh sử dụng phần mềm tạo ra được những sản phẩm số đơn giản như một văn bản ngắn, thiệp chúc mừng,\nđoạn hoạt hình vui,...\nGiúp học sinh bước đầu quen với công nghệ kĩ thuật số thông qua việc sử dụng máy tính để vui chơi, học tập, xem và\ntìm kiếm thông tin trên Internet; rèn luyện cho học sinh một số kĩ năng cơ bản trong sử dụng máy tính; biết bảo vệ sức khoẻ\nkhi sử dụng máy tính, bước đầu có ý thức phòng tránh những tác hại khi sử dụng Internet và ý thức tôn trọng bản quyền.\ntiểu học và hoàn thiện năng lực đó ở mức cơ bản, cụ thể là:\nGiúp học sinh phát triển tư duy và khả năng giải quyết vấn đề; biết chọn dữ liệu và thông tin phù hợp, hữu ích; biết\nchia một vấn đề lớn thành những nhiệm vụ nhỏ hơn; bước đầu có tư duy mô hình hoá một bài toán qua việc hiểu và sử dụng\nkhái niệm thuật toán và lập trình trực quan; biết sử dụng mẫu trong quá trình thiết kế và tạo ra các sản phẩm số; biết đánh\ngiá kết quả sản phẩm số cũng như biết điều chỉnh, sửa lỗi các sản phẩm đó.\nGiúp học sinh có khả năng sử dụng các phương tiện, thiết bị và phần mềm; biết tổ chức lưu trữ, khai thác nguồn tài\nnguyên đa phương tiện; tạo ra và chia sẻ sản phẩm số đơn giản phục vụ học tập, cuộc sống; có ý thức và khả năng ứng dụng\nICT phục vụ cá nhân và cộng đồng.\nGiúp học sinh quen thuộc với dịch vụ số và phần mềm thông dụng để phục vụ cuộc sống, học và tự học, giao tiếp và\nhợp tác trong cộng đồng; có hiểu biết cơ bản về pháp luật, đạo đức và văn hoá liên quan đến sử dụng tài nguyên thông tin và\ngiao tiếp trên mạng; bước đầu nhận biết được một số ngành nghề chính thuộc lĩnh vực tin học.\n7\nthành, phát triển ở giai đoạn giáo dục cơ bản, đồng thời cung cấp cho học sinh tri thức mang tính định hướng nghề nghiệp\nthuộc lĩnh vực tin học hoặc ứng dụng tin học, cụ thể là:\nGiúp học sinh có những hiểu biết cơ bản về hệ thống máy tính, một số kĩ thuật thiết kế thuật toán, tổ chức dữ liệu và\nlập trình; củng cố và phát triển hơn nữa cho học sinh tư duy giải quyết vấn đề, khả năng đưa ra ý tưởng và chuyển giao\nnhiệm vụ cho máy tính thực hiện.\nGiúp học sinh có khả năng ứng dụng tin học, tạo ra sản phẩm số phục vụ cộng đồng và nâng cao hiệu quả công việc;\ncó khả năng lựa chọn, sử dụng, kết nối các thiết bị số, dịch vụ mạng và truyền thông, phần mềm và các tài nguyên số khác.\nGiúp học sinh có khả năng hoà nhập và thích ứng được với sự phát triển của xã hội số, ứng dụng công nghệ thông tin\nvà truyền thông trong học và tự học; tìm kiếm và trao đổi thông tin theo cách phù hợp, tuân thủ pháp luật, có đạo đức, ứng\nxử văn hoá và có trách nhiệm; có hiểu biết thêm một số ngành nghề thuộc lĩnh vực tin học, chủ động và tự tin trong việc\nđịnh hướng nghề nghiệp tương lai của bản thân.\nIV. YÊU CẦU CẦN ĐẠT\n1.Yêu cầu cần đạt về phẩm chất chủ yếu và năng lực chung\nMôn Tin học góp phần thực hiện các yêu cầu cần đạt về phẩm chất chủ yếu và năng lực chung theo các mức độ phù hợp\nvới môn học, cấp học đã được quy định trong Chương trình tổng thể.\n2. Yêu cầu cần đạt về năng lực đặc thù\nHọc sinh hình thành, phát triển được năng lực tin học với năm thành phần năng lực sau đây:\nNLa: Sử dụng và quản lí các phương tiện công nghệ thông tin và truyền thông;\nNLb: Ứng xử phù hợp trong môi trường số;\n8\nNLc: Giải quyết vấn đề với sự hỗ trợ của công nghệ thông tin và truyền thông;\nNLd: Ứng dụng công nghệ thông tin và truyền thông trong học và tự học;\nNLe: Hợp tác trong môi trường số.\nCác bảng dưới đây quy định yêu cầu cần đạt đối với mỗi thành phần nêu trên của năng lực tin học ở mỗi cấp học.\nHọc sinh sử dụng được máy tính hỗ trợ vui chơi, giải trí và học tập, thông qua đó biết được một số lợi ích mà thiết bịkĩ\nthuật số có thể đem lại cho con người, trước hết cho cá nhân học sinh. Đồng thời học sinh có được những khả năng ban đầu\nvề tư duy và nền nếp thích ứng với việc sử dụng máy tính và thiết bị số thông minh, với yêu cầu cụ thể sau đây:\nThành phần\nBiểu hiện\nnăng lực\nNLa Nhận diện, phân biệt được hình dạng và chức năng của các thiết bị kĩ thuật số thông dụng; thực hiện\nđược một số thao tác cơ bản với phần mềm hỗ trợ học tập, vui chơi, giải trí trên một số thiết bị kĩ thuật\nsố quen thuộc.\nNLb Nêu được sơ lược lí do cần bảo vệ và biết bảo vệ thông tin số hoá của cá nhân, biết và thực hiện được\nquyền sở hữu trí tuệ ở mức đơn giản. Ví dụ: Biết sản phẩm số (bài làm, tranh vẽ, bài thơ, video, chương\ntrình máy tính,...) của mỗi người thuộc quyền sở hữu của người đó, không được sao chép khi không\nđược phép. Biết bảo vệ sức khoẻ khi sử dụng thiết bị kĩ thuật số (thao tác đúng cách, bố trí thời gian vận\nđộng và nghỉ xen kẽ,...).\nNLc Nhận biết và nêu được nhu cầu tìm kiếm thông tin từ nguồn dữ liệu số khi giải quyết công việc, tìm\nđược thông tin trong máy tính và trên Internet theo hướng dẫn; biết sử dụng tài nguyên thông tin và kĩ\nthuật của ICT để giải quyết một số vấn đề phù hợp với lứa tuổi. Ví dụ: tạo một album ảnh đẹp giới thiệu\nmột danh lam thắng cảnh, tìm nghĩa và tra cứu cách đọc một từ tiếng Anh,...; diễn đạt được các bước\n9\nThành phần\nBiểu hiện\nnăng lực\ngiải quyết vấn đề theo kiểu thuật toán (quy trình gồm các bước có thứ tự để giải quyết được vấn đề).\nNLd Sử dụng được một số phần mềm trò chơi hỗ trợ học tập, phần mềm học tập; tạo được các sản phẩm số\nđơn giản để phục vụ học tập và vui chơi. Ví dụ bài trình chiếu đơn giản, bưu thiệp, bức vẽ hay một\nchương trình trò chơi đơn giản,...\nNLe Sử dụng được các công cụ kĩ thuật số thông dụng theo hướng dẫn để chia sẻ, trao đổi thông tin với bạn\nbè và người thân.\nHọc sinh có được những kiến thức, kĩ năng cơ bản để hoà nhập, thích ứng với xã hội số; tạo được sản phẩm số phục vụ\ngóp phần chuẩn bị cho học sinh học tiếp giai đoạn giáo dục định hướng nghề nghiệp, học trường nghề hoặc tham gia lao\nđộng với yêu cầu cụ thể sau đây:\nThành phần\nBiểu hiện\nnăng lực\nNLa Sử dụng đúng cách các thiết bị, các phần mềm thông dụng và mạng máy tính phục vụ cuộc sống và học\ntập; có ý thức và biết cách khai thác môi trường số, biết tổ chức và lưu trữ dữ liệu; bước đầu tạo ra được\nsản phẩm số phục vụ cuộc sống nhờ khai thác phần mềm ứng dụng. Ví dụ bức ảnh đẹp, bản quảng cáo,\nbản thiết kế thời trang, đoạn video phục vụ một chủ đề nào đó,...\nNLb Biết và nêu được một số quy định cơ bản liên quan đến quyền sở hữu và sử dụng tài nguyên số, tôn\ntrọng bản quyền và quyền an toàn thông tin của người khác; hiểu và ứng xử có văn hoá trong thế giới\n10\nThành phần\nBiểu hiện\nnăng lực\nảo; sử dụng được cách thông dụng bảo vệ thông tin cá nhân và cộng đồng, tránh tác động tiêu cực tới\nbản thân và cộng đồng; có ý thức tự bảo vệ sức khoẻ trong khai thác và ứng dụng ICT.\nNLc Hiểu được tầm quan trọng của thông tin và xử lí thông tin trong xã hội hiện đại; tìm kiếm được thông tin\ntừ nhiều nguồn với các chức năng đơn giản của công cụ tìm kiếm, đánh giá được sự phù hợp của thông\ntin và dữ liệu đã tìm thấy với nhiệm vụ đặt ra; thao tác được với phần mềm và môi trường lập trình trực\nquan để bước đầu có tư duy thiết kế và điều khiển hệ thống.\nNLd Sử dụng được một số phần mềm học tập; sử dụng được môi trường mạng máy tính để tìm kiếm, thu\nthập, cập nhật và lưu trữ thông tin phù hợp với mục tiêu học tập, chủ động khai thác các tài nguyên hỗ\ntrợ tự học.\nNLe Biết lựa chọn và sử dụng được các công cụ, các dịch vụ ICT thông dụng để chia sẻ, trao đổi thông tin và\nhợp tác một cách an toàn; giao lưu được trong xã hội số một cách văn hoá; có khả năng làm việc nhóm,\nhợp tác được trong việc tạo ra, trình bày và giới thiệu được sản phẩm số; nhận biết được sơ lược một số\nngành nghề chính thuộc lĩnh vực tin học.\nchương trình có các yêu cầu cần đạt chung về năng lực tin học bắt buộc đối với mọi học sinh và có các yêu cầu bổ sung\nriêng tương ứng với học sinh chọn định hướng Tin học ứng dụng hoặc Khoa học máy tính.\na)Yêu cầu chung\n11\nThành phần\nBiểu hiện\nnăng lực\nNLa Phối hợp và sử dụng được đúng cách các hệ thống kĩ thuật số thông dụng; mô tả được chức năng các bộ\nphận chính bên trong máy tính, những thông số cơ bản của các thiết bị số; bước đầu tuỳ chỉnh được chế\nđộ hoạt động cho máy tính; trình bày được khái quát mối quan hệ giữa phần cứng, hệ điều hành và\nchương trình ứng dụng; biết sử dụng một số chức năng chủ yếu trong hệ điều hành để nâng cao hiệu quả\nsử dụng máy tính; so sánh được mạng LAN và Internet, biết được khái niệm IoT; giới thiệu được chức\nnăng cơ bản của một số thiết bị và giao thức mạng thông dụng, sử dụng được một số ứng dụng thiết thực\ntrên mạng; nhận biết được vai trò quan trọng của các hệ thống tự động hoá xử lí và truyền thông tin\ntrong xã hội tri thức.\nNLb Trình bày và nêu được ví dụ minh họa một số quy định về quyền thông tin và bản quyền, tránh được\nnhững vi phạm khi sử dụng thông tin, tài nguyên số; hiểu khái niệm, cơ chế phá hoại, lây lan của phần\nmềm độc hại và cách phòng chống; biết cách tự bảo vệ thông tin, dữ liệu và tài khoản cá nhân; hiểu\nđược rõ ràng hơn những mặt trái của Internet, nhận diện được những hành vi lừa đảo, thông tin mang\nnội dung xấu và biết cách xử lí phù hợp; thể hiện tính nhân văn khi tham gia thế giới ảo; có hiểu biết\ntổng quan về nhu cầu nhân lực, tính chất công việc của các ngành nghề trong lĩnh vực tin học cũng như\ncác ngành nghề khác có sử dụng ICT; sẵn sàng, tự tin, có tinh thần trách nhiệm và sáng tạo khi tham gia\ncác hoạt động tin học.\nNLc Biết được các cấu trúc dữ liệu cơ bản, các thuật toán sắp xếp và tìm kiếm cơ bản, viết được chương\ntrình, tạo được trang web đơn giản; biết khái niệm hệ cơ sở dữ liệu, biết kiến trúc hệ cơ sở dữ liệu tập\ntrung và phân tán; sử dụng được máy tìm kiếm để khai thác thông tin một cách hiệu quả, an toàn và hợp\npháp; tìm kiếm, lựa chọn được thông tin phù hợp và tin cậy; sử dụng được các công cụ kĩ thuật số để tổ\nchức, chia sẻ dữ liệu và thông tin trong quá trình phát hiện và giải quyết vấn đề; có những hiểu biết và\n12\nThành phần\nBiểu hiện\nnăng lực\nhình dung ban đầu về trí tuệ nhân tạo và nêu được một số ứng dụng điển hình của trí tuệ nhân tạo.\nNLd Khai thác được các dịch vụ tra cứu và trao đổi thông tin, các nguồn học liệu mở để cập nhật kiến thức,\nhỗ trợ học tập và tự học; sử dụng được một số phần mềm hỗ trợ học tập, tự tin, sẵn sàng tìm hiểu những\nphần mềm tương tự, qua đó có ý thức và khả năng tìm kiếm tri thức mới, tìm hiểu về nghề mình quan\ntâm.\nNLe Biết cách hợp tác trong công việc; sử dụng được phần mềm để lập kế hoạch, phân chia và quản lí công\nviệc; lựa chọn và sử dụng được những kênh phù hợp để trao đổi thông tin, thảo luận, hợp tác và mở\nmang tri thức; giao tiếp, hoà nhập được một cách an toàn trong môi trường số, biết tránh các tác động\nxấu thông qua một số biện pháp phòng tránh cơ bản.\nb)Yêu cầu bổ sung theo định hướng ICT và CS\nBiểu hiện\nThành\nphần năng\nĐịnh hướng ICT Định hướng CS\nlực\nKết nối được PC với các thiết bị số thông dụng – Hiểu biết được nguyên lí hoạt động của hệ thống\nBiết tổ chức lưu trữ, khai thác được dữ liệu phục thông tin bao gồm máy tính và các thiết bị số khác.\nvụ bài toán quản lí đơn giản trong thực tế. – Hiểu được các phép toán nhị phân cơ bản và ứng\nSử dụng được một số chức năng cơ bản của phần dụng hệ nhị phân trong tin học.\nTrình bày được sơ lược việc thiết kế mạng.\nBiết bảo vệ dữ liệu, cài đặt hay gỡ bỏ được phần – Hiểu và vận dụng được các phương pháp làm mịn\n13\nBiểu hiện\nThành\nphần năng\nĐịnh hướng ICT Định hướng CS\nlực\nmềm trên máy tính và thiết bị di động khi cần thiết. dần, thiết kế mô đun trong lập trình.\nSử dụng được các phần mềm thiết kế đồ hoạ, – Xác định được cấu trúc dữ liệu thích hợp để biểu diễn\nchỉnh sửa ảnh và làm phim hoạt hình để tạo ra sản thông tin, lựa chọn và xây dựng được thuật toán hiệu\nphẩm số phục vụ học tập và đáp ứng sở thích của cá quả để giải quyết vấn đề; sử dụng được ngôn ngữ lập\nnhân. trình bậc cao, qua đó phát triển tư duy điều khiển và tự\nđộng hoá; tạo được những sản phẩm số thiết thực như\nSử dụng thành thạo các phần mềm tin học văn\nchương trình điều khiển robot giáo dục.\nphòng, tạo được sản phẩm số có chất lượng thông\nqua các dự án giải quyết vấn đề thực tế. – Biết được mục tiêu và một số thành tựu của Khoa học\ndữ liệu và Học máy.\nPhân tích được dữ liệu với phần mềm bảng tính.\nBiết được vai trò của phần mềm mô phỏng.\nV. NỘI DUNG GIÁO DỤC\n1. Nội dung khái quát\n1.1. Nội dung cốt lõi"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "14"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "12",
+    "chuDe": "Chủ đề G. Hướng nghiệp với tin học",
+    "noiDung": "",
+    "yccd": "1.2. Chuyên đề học tập\na) Định hướng Tin học ứng dụng\nLớp Chuyên đề Mục tiêu\n10 Thực hành làm việc với các tệp văn bản\nGiúp học sinh rèn luyện kĩ năng sử dụng các phần mềm\nThực hành sử dụng phần mềm trình chiếu\nsoạn thảo văn bản, trình chiếu, bảng tính.\nThực hành sử dụng phần mềm bảng tính\n11 Thực hành sử dụng phần mềm vẽ trang trí\nGiúp học sinh rèn luyện kĩ năng sử dụng phần mềm vẽ\nThực hành sử dụng phần mềm làm phim hoạt hình\ntrang trí, làm phim hoạt hình và chỉnh sửa ảnh.\nThực hành sử dụng phần mềm chỉnh sửa ảnh\n12 Thực hành sử dụng phần mềm quản lí dự án Giúp học sinh:rèn luyện kĩ năng sử dụng phần mềm quản\nlí dự án; biết các giải pháp thông dụng để bảo vệ dữ liệu;\nThực hành bảo vệ dữ liệu, cài đặt và gỡ bỏ phần mềm\ncó khả năng cài đặt, gỡ bỏ phần mềm; phân tích được dữ\nThực hành phân tích dữ liệu với phần mềm bảng tính liệu với phần mềm bảng tính.\nb) Định hướng Khoa học máy tính\nLớp Chuyên đề Mục tiêu\n10 Thực hành với các bộ phận của robot giáo dục Giúp học sinh có kĩ năng lắp ráp robot giáo dục.\nGiúp học sinh có kĩ năng kết nối máy tính với robot giáo\nKết nối robot giáo dục với máy tính\ndục và cài đặt phần mềm hỗ trợ.\n15\nLớp Chuyên đề Mục tiêu\nGiúp học sinh hình thành khả năng lập trình điều khiển\nLập trình điều khiển robot giáo dục\nrobot giáo dục.\n11 Giúp học sinh có khả năng thiết kế thuật toán theo kĩ\nThực hành thiết kế thuật toán theo kĩ thuật Đệ quy\nthuật Đệ quy.\nGiúp học sinh có khả năng thiết kế thuật toán theo kĩ\nThực hành thiết kế thuật toán theo kĩ thuật Chia để trị\nthuật Chia để trị.\nGiúp học sinh có khả năng thiết kế thuật toán theo kĩ\nThực hành thiết kế thuật toán theo kĩ thuật Duyệt\nthuậtDuyệt.\n12 Giúp học sinh hiểu một số khái niệm cơ bản và ứng dụng\nTìm hiểu một vài kiểu dữ liệu tuyến tính\nmột số kiểu dữ liệu tuyến tính.\nTìm hiểu Cây tìm kiếm nhị phân trong sắp xếp và tìm Giúp học sinh hiểu một số khái niệm cơ bản và ứng dụng\nkiếm Cây tìm kiếm nhị phân trong sắp xếp và tìm kiếm.\nGiúp học sinh hiểu kĩ thuật duyệt Đồ thị theo chiều rộng,\nTìm hiểu kĩ thuật duyệt Đồ thị và ứng dụng\nchiều sâu và một vài ứng dụng.\n2. Nội dung cụ thể và yêu cầu cần đạt ở các lớp\n16\nNỘI DUNG GIÁO DỤC TOÀN CẤP HỌC"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "12",
+    "chuDe": "Chủ đề A. Máy tính Thông tin và xử lí thông tin",
+    "noiDung": "",
+    "yccd": "Phần cứng và phần mềm\nvà em\nKhám phá máy tính Những việc em có thể làm được\nnhờ máy tính\nLợi ích của việc gõ bàn phím\nLàm quen với cách gõ bàn phím\nđúng cách"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "12",
+    "chuDe": "Chủ đề B. Mạng máy",
+    "noiDung": "",
+    "yccd": "Xem tin và giải trí trên trang web Thông tin trên trang web Tìm kiếm thông tin trên website\ntính và Internet"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "12",
+    "chuDe": "Chủ đề C. Tổ chức Bước đầu tìm kiếm thông tin Tìm kiếm thông tin trong giải",
+    "noiDung": "",
+    "yccd": "Sắp xếp để dễ tìm\nlưu trữ, tìm kiếm và trên Internet quyết vấn đề\ntrao đổi thông tin\nLàm quen với thư mục lưu trữ Tổ chức cây thư mục lưu trữ Cây thư mục và tìm tệp trên\nthông tin trong máy tính thông tin trong máy tính máy tính"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "12",
+    "chuDe": "Chủ đề D. Đạo đức,",
+    "noiDung": "",
+    "yccd": "pháp luật và Sử dụng thông tin cá nhân trong\nBản quyền sử dụng phần mềm Bản quyền nội dung thông tin\nvăn hoá trong môi trường số một cách phù hợp\nmôi trường số"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "12",
+    "chuDe": "Chủ đề E. Ứng dụng Làm quen với bài trình chiếu",
+    "noiDung": "",
+    "yccd": "Tạo bài trình chiếu\ntin học đơn giản\nTập soạn thảo văn bản Thực hành soạn thảo văn bản\nChọn ít nhất 1 trong 2 chủ đề Chọn ít nhất 1 trong 2 chủ đề Chọn ít nhất 1 trong 2 chủ đề\ncon sau đây: con sau đây: con sau đây:\n17"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "12",
+    "chuDe": "Chủ đề Lớp 3 Lớp 4 Lớp 5",
+    "noiDung": "",
+    "yccd": "Sử dụng công cụ đa phương – Sử dụng công cụ đa phương – Sử dụng phần mềm đồ hoạ tạo\ntiện để tìm hiểu thế giới tự nhiên tiện để tìm hiểu lịch sử, văn hoá sản phẩm số đơn giản\nSử dụng phần mềm luyện tập – Sử dụng phần mềm luyện – Sử dụng công cụ đa phương\nthao tác với chuột máy tính tập gõ bàn phím tiện hỗ trợ tạo sản phẩm đơn giản"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "3",
+    "chuDe": "Chủ đề F. Giải quyết Thực hiện công việc theo các bước Làm quen với môi trường lập Chơi và khám phá trong môi",
+    "noiDung": "",
+    "yccd": "vấn đề với sự trợ trình trực quan trường lập trình trực quan\nNhiệm vụ của em và sự trợ giúp\ngiúp của máy tính\ncủa máy tính\nYÊU CẦU CẦN ĐẠT VÀ NỘI DUNG GIÁO DỤC Ở CÁC LỚP\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "3",
+    "chuDe": "Chủ đề A. Máy tính và em",
+    "noiDung": "",
+    "yccd": "Nêu được ví dụ đơn giản minh hoạ cho vai trò quan trọng của thông tin thu nhận hàng ngày đối với\nviệc ra quyết định của con người. Nhận biết được trong ví dụ của giáo viên, cái gì là thông tin và đâu là\nquyết định.\nNhận biết được ba dạng thông tin hay gặp: chữ, âm thanh, hình ảnh. Nhận ra được trong ví dụ của Thông tin và xử lí\ngiáo viên: Thông tin thu nhận và được xử lí là gì, kết quả của xử lí là hành động hay ý nghĩ gì. Nêu thông tin\nđược ví dụ minh hoạcho nhận xét: Bộ óc của con người là một bộ phận xử lí thông tin.\nNêu được ví dụ minh hoạ cho nhận xét: Cuộc sống quanh ta có những máy móc tiếp nhận thông tin để quyết\nđịnh hành động. Nhận ra được trong ví dụ của giáo viên, máy đã xử lí thông tin nào và kết quả xử lí ra sao.\n18\nYêu cầu cần đạt Nội dung\nNhận diện và phân biệt được hình dạng thường gặp của những máy tính thông dụng như máy tính để\nbàn, máy tính xách tay, máy tính bảng, điện thoại thông minh cùng các thành phần cơ bản của chúng\n(màn hình, thân máy, bàn phím, chuột).\nNêu được sơ lược về chức năng của bàn phím và chuột, màn hình và loa. Nhận biết được màn hình\ncảm ứng của máy tính bảng, điện thoại thông minh,... cũng là thiết bị tiếp nhận thông tin vào.\nCầm được chuột đúng cách, thực hiện được các thao tác cơ bản: di chuyển, nháy, nháy đúp, kéo\nthả chuột. Khám phá máy\nKhởi động được máy tính. Kích hoạt được một phần mềm ứng dụng. Ra khỏi được hệ thống đang tính\nchạy theo đúng cách. Nêu được ví dụ cụ thể về những thao tác không đúng cách sẽ gây tổn hại cho thiết\nbị khi sử dụng.\nBiết và ngồi đúng tư thế khi làm việc với máy tính, biết vị trí phù hợp của màn hình (với mắt, với\nnguồn sáng trong phòng,...). Nêu được tác hại của việc ngồi sai tư thế hoặc sử dụng máy tính quá thời\ngian quy định cho lứa tuổi. Nhận ra được tư thế ngồi sai khi làm việc với máy tính.\nBiết thực hiện quy tắc an toàn về điện, có ý thức đề phòng tai nạn về điện khi sử dụng máy tính.\nChỉ ra được khu vực chính của bàn phím và nêu được tên các hàng phím.\nLàm quen với\nBiết vị trí đặt các ngón tay trên hàng phím cơ sở và thực hiện được thao tác gõ các phím ở hàng cơ sở,\ncách gõ bàn phím\nhàng trên, hàng dưới đúng quy định của cách gõ bàn phím."
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "3",
+    "chuDe": "Chủ đề B. Mạng máy tính và Internet",
+    "noiDung": "",
+    "yccd": "Nêu được ví dụ về tin tức và chương trình giải trí có thể xem được khi truy cập Internet (như xem tin\ndự báo thời tiết, nghe ca nhạc,...). Xem tin và giải trí\nNêu được ví dụ thông tin nào đó không có sẵn trong máy tính đang sử dụng nhưng có thể tìm thấy trên trang web\ntrên Internet.\n19\nYêu cầu cần đạt Nội dung\nBiết được không phải thông tin nào trên Internet cũng phù hợp với lứa tuổi."
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "3",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",
+    "noiDung": "",
+    "yccd": "Giải thích được nếu sắp xếp những gì ta có một cách hợp lí thì khi cần sẽ tìm được nhanh hơn.\nSắp xếp được đồ vật hay dữ liệu hợp lí theo một số yêu cầu cụ thể. Ví dụ: xếp một số mảnh bìa có ghi\nchữ cái theo thứ tự abc; xếp sách vở vào một ngăn tủ, xếp ảnh vào một ngăn tủ khác, quần áo vào ngăn\nkhác nữa, trong ngăn tủ lớn xếp sách có thể chia làm các ngăn nhỏ hơn (ngăn chứa sách, ngăn chứa vở, Sắp xếp để dễ tìm\nngăn chứa truyện,...).\nNêu được cách tìm đúng và nhanh đối tượng cần tìm dựa trên sự sắp xếp.\nBiết được có thể biểu diễn một sắp xếp, phân loại cụ thể bằng sơ đồ hình cây.\nNhận biết được tệp, thư mục và ổ đĩa.\nMô tả sơ lược được vai trò của cấu trúc cây thư mục trong việc lưu các tệp và các thư mục.\nLàm quen với thư\nTìm hiểu được cấu trúc cây của một thư mục để biết nó chứa những thư mục con nào, những tệp nào. mục lưu trữ thông\ntin trong máy tính\nThực hiện được việc tạo, xoá, đổi tên thư mục.\nTìm được tệp ở thư mục cho trước theo yêu cầu."
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "3",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Biết được thông tin cá nhân và gia đình có thể được lưu trữ và trao đổi nhờ máy tính. Sử dụng thông tin\ncá nhân trong môi\nCó ý thức bảo vệ thông tin cá nhân và gia đình khi giao tiếp qua máy tính; biết được việc người xấu\ntrườngsốmột\ncó thể lợi dụng những thông tin này gây hại cho em và gia đình.\ncáchphùhợp"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "3",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Nhận biết được biểu tượng của phần mềm trình chiếu và kích hoạt được bằng cách nháy chuột vào Làm quen với bài\n20\nYêu cầu cần đạt Nội dung\nbiểu tượng. trình chiếu đơn\ngiản\nTạo được tệp trình chiếu, gõ được một vài dòng văn bản đơn giản không dấu, đưa được ảnh vào một\ntrang chiếu, lưu và đặt được tên cho tệp trình chiếu."
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "3",
+    "chuDe": "Chủ đề con (lựa",
+    "noiDung": "",
+    "yccd": "Nhận thấy nhờ sử dụng máy tính mà con người quan sát được và biết thêm về thế giới tự nhiên chọn):\nmột cách sinh động và trực quan. Ví dụ: Máy tính giúp quan sát về loài vật, về Trái Đất quay quanh Sử dụng công cụ\nMặt Trời.\nđa phương tiện để\nKể lại được những gì quan sát đã đem lại thêm hiểu biết mới. tìm hiểu thế giới\ntự nhiên\nCầm chuột đúng cách. Chủ đềcon (lựa\nThực hiện được các thao tác với chuột: di chuyển con trỏ chuột, kéo thả chuột, nháy nút chuột, nháy chọn):\nđúp, sử dụng nút cuộn của chuột. Sử dụng phần mềm\nluyện tập thao tác\nNhận thấy phần mềm đã hướng dẫn thao tác đúng với chuột máy tính.\nvới chuột máy tính"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "4",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Nêu được một số công việc hàng ngày được thực hiện theo từng bước, mỗi bước là một việc nhỏ hơn,\ncác bước phải được sắp xếp thứ tự.\nNhận biết được việc chia một nhiệm vụ lớn thành những nhiệm vụ nhỏ hơn là để dễ hiểu và dễ thực\nThực hiện công\nhiện hơn.\nviệc theo các bước\nNêu được ví dụ về một việc thường làm có thể chia thành những việc nhỏ hơn, chẳng hạn làm một\nphép tính hay chuẩn bị cặp sách trước khi đi học có thể gồm một số bước.\nSử dụng được cách nói “Nếu...Thì...” thể hiện quyết định thực hiện một việc hay không tuỳ thuộc vào\n21\nYêu cầu cần đạt Nội dung\nmột điều kiện có được thoả mãn hay không.\nPhát biểu được nhiệm vụ đặt ra bằng cách xác định những gì đã cho trước, cần làm gì hay cần tạo ra\nsản phẩm số nào. Nhiệm vụ của em\nChia được một công việc cụ thể thành những việc nhỏ hơn, trong đó có những việc có thể thực hiện và sự trợ giúp của\nvới trợ giúp của máy tính. máy tính\nThực hiện được nhiệm vụ do giáo viên đặt ra, có sử dụng máy tính.\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "4",
+    "chuDe": "Chủ đề A. Máy tính và em",
+    "noiDung": "",
+    "yccd": "Nêu được tên một số thiết bị phần cứng và phần mềm đã biết.\nNêu được sơ lược về vai trò của phần cứng, phần mềm và mối quan hệ phụ thuộc lẫn nhau giữa\nPhần cứng và phần\nchúng.\nmềm\nNêu được ví dụ cụ thể về một số thao tác không đúng sẽ gây ra lỗi cho phần cứng và phần mềm\ntrong quá trình sử dụng máy tính.\nGiải thích được lợi ích của việc gõ bàn phím đúng cách.\nLợi ích của việc gõ\nBiết vị trí đặt các ngón tay trên hàng phím số và thực hiện được thao tác gõ đúng cách.\nbàn phím đúng cách\nGõ được đúng cách một đoạn văn bản ngắn khoảng 50 từ."
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "4",
+    "chuDe": "Chủ đề B. Mạng máy tính và Internet",
+    "noiDung": "",
+    "yccd": "Nhận biết và phân biệt được các loại thông tin chính trên trang web: văn bản, hình ảnh, âm thanh, Thông tin trên trang\n22\nYêu cầu cần đạt Nội dung\nsiêu văn bản. web\nGiải thích được sơ lược tác hại khi trẻ em cố tình truy cập vào những trang web không phù hợp lứa\ntuổi và không nên xem."
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "4",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",
+    "noiDung": "",
+    "yccd": "Xác định được chủ đề (từ khoá) của thông tin cần tìm.\nBước đầu tìm kiếm\nBiết cách dùng máy tìm kiếm để tìm thông tin theo chủ đề (từ khoá). thông tin trên\nInternet\nThực hiện được việc tìm kiếm thông tin trên Internet có sự trợ giúp của giáo viên hoặc phụ huynh.\nThực hiện được các thao tác cơ bản với thư mục và tệp: tạo và xoá thư mục, xoá tệp, di chuyển một Tổ chức cây thư mục\nthư mục hay một tệp vào trong thư mục khác, sao chép thư mục và tệp, đổi tên tệp. lưu trữ thông tin\nNêu được tác hại khi thao tác nhầm, từ đó có ý thức cẩn thận khi thực hiện những thao tác nêu trên. trong máy tính"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "4",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Nêu được một vài ví dụ cụ thể về phần mềm miễn phí và phần mềm không miễn phí. Bản quyền sử dụng\nBiết rằng chỉ được sử dụng phần mềm có bản quyền khi được phép. phần mềm"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "4",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Thực hiện được thành thạo việc kích hoạt và ra khỏi phần mềm trình chiếu.\nTạo được tệp trình chiếu đơn giản (khoảng 4 trang) có chữ hoa và chữ thường, có ảnh, có sử dụng\ncông cụ gạch đầu dòng. Biết lưu tệp sản phẩm vào đúng thư mục theo yêu cầu. Tạo bài trình chiếu\nĐịnh dạng được kiểu, màu, kích thước chữ cho văn bản trên trang chiếu.\nSử dụng được một vài hiệu ứng chuyển trang đơn giản.\nNhận biết được biểu tượng của phần mềm soạn thảo văn bản và kích hoạt được bằng chuột. Tập soạn thảo văn\n23\nYêu cầu cần đạt Nội dung\nSoạn thảo được văn bản tiếng Việt có chữ hoa, có dấu và lưu trữ được vào thư mục theo yêu cầu. bản\nMở được tệp có sẵn, đặt và đổi được tên tệp.\nĐưa được hình ảnh vào văn bản.\nChỉnh sửa được văn bản với các thao tác chọn, xoá, sao chép, di chuyển một đoạn văn bản.\nNêu được ví dụ minh hoạ việc sử dụng phần mềm máy tính hoặc video giúp biết thêm những thông Chủ đề con (lựa\ntin sinh động về lịch sử, văn hoá. chọn):\nKể lại được điều quan sát và biết thêm qua sử dụng công cụ đa phương tiện. Sử dụng công cụ đa\nphương tiện để tìm\nhiểu lịch sử, văn hoá\nNhận thấy được phần mềm có thể giúp tập gõ đúng cách, có thể “hướng dẫn” luyện gõ bằng hệ Chủ đề con (lựa\nthống bảng chọn và các thông báo. chọn):\nQuen được với giao diện của phần mềm luyện gõ và tập gõ được theo yêu cầu thấp nhất, ví dụ như Sử dụng phần mềm\ntập gõ phím Shift tạo chữ hoa, các dấu và các số. luyện tập gõ bàn\nphím"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "5",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Nhận ra được chương trình máy tính qua các trò chơi.\nNêu được ví dụ cụ thể về sử dụng chương trình máy tính để diễn tả ý tưởng, câu chuyện theo Làm quen với môi\ntừng bước. trường lập trình trực\nquan\nTự thiết lập và tạo được chương trình đơn giản, ví dụ điều khiển một nhân vật chuyển động trên\nmàn hình.\n24\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "5",
+    "chuDe": "Chủ đề A. Máy tính và em",
+    "noiDung": "",
+    "yccd": "Nêu được ví dụ máy tính giúp giải trí, học tập, tìm kiếm, trao đổi thông tin, hợp tác với bạn bè và Những việc em có\ntạo ra sản phẩm số theo ý tưởng của bản thân. thể làm được nhờ\nThể hiện được mong muốn biết sử dụng máy tính thành thạo để làm được nhiều việc hơn. máy tính"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "5",
+    "chuDe": "Chủ đề B. Mạng máy tính và Internet",
+    "noiDung": "",
+    "yccd": "Tìm được trên website cho trước những thông tin phù hợp và có ích cho nhiệm vụ đặt ra. Tìm kiếm thông tin\nHợp tác, chia sẻ được thông tin với các bạn trong nhóm để hoàn thành công việc được giao. trên website"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "5",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",
+    "noiDung": "",
+    "yccd": "Giải thích được sự cần thiết, tầm quan trọng của việc thu thập và tìm kiếm thông tin trong giải quyết vấn đề.\nTìm kiếm thông tin\nTìm kiếm và chọn được thông tin phù hợp với vấn đề cần giải quyết. trong giải quyết vấn\nThể hiện được sự hợp tác với người khácđể giải quyết vấn đề cụ thể. đề\nTạo được các thư mục với cấu trúc cây hợp lí. Cây thư mục và tìm\nSử dụng được công cụ tìm kiếm trên máy tính để tìm các thư mục và các tệp. tệp trên máy tính"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "5",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Giải thích được một số khái niệm liên quan đến bản quyền nội dung thông tin.\nNhận biết và giải thích sơ lược được một số vấn đề đạo đức và tính hợp lệ của việc truy cập nội\nBản quyền nội dung\ndung, việc bảo mật thông tin.\nthông tin\nThể hiện được sự tôn trọng tính riêng tư và bản quyền nội dung thông tin.\nThể hiện được sự không đồng tình với hiện tượng sai trái, gian dối trong học tập và đời sống như\n25\nYêu cầu cần đạt Nội dung\nxem thư riêng haysao chép tệp của bạn khi chưa được sự đồng ý,…"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "5",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Thực hiện thành thạo các thao tác chọn, xoá, sao chép, di chuyển một đoạn văn bản.\nThực hành soạn thảo\nĐịnh dạng được kí tự để trình bày văn bản đẹp hơn: chọn kiểu, kích thước, màu sắc cho chữ.\nvăn bản\nĐưa được hình ảnh vào trong văn bản một cách thành thạo."
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "5",
+    "chuDe": "Chủ đề con (lựa",
+    "noiDung": "",
+    "yccd": "chọn):\nTạo được sản phẩm số đơn giản nhờ sử dụng phần mềm đồ hoạ, ví dụ thiệp chúc mừng để tặngngười\nSử dụng phần mềm\nthân nhân một dịpđặc biệt.\nđồ hoạ tạo sản phẩm\nsố đơn giản"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "5",
+    "chuDe": "Chủ đề con(lựa",
+    "noiDung": "",
+    "yccd": "Tạo được sản phẩm thủ công theo video hướng dẫn,ví dụ: gấp giấy, tạo đồ dùng tiện lợi cho chọn):\ngia đình,... Sử dụng công cụ đa\nphương tiện hỗ\ntrợtạo sản phẩm đơn\ngiản"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Nêu được ví dụ cụ thể mô tả các cấu trúctuần tự, lặp, rẽ nhánh và sử dụng được các cấu trúc điều Chơi và khám phá\nkhiển này trong một số chương trình đơn giản. trong môi trường lập\nSử dụng được biến nhớ và biểu thức trong một số chương trình đơn giản. trình trực quan\nHợp tác được theo nhóm để viết kịch bản và chương trình thể hiện kịch bản.\n26\nYêu cầu cần đạt Nội dung\nChạy thử được chương trình.\nNỘI DUNG GIÁO DỤC TOÀN CẤP HỌC"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề A. Máy Sơ lược về các thành",
+    "noiDung": "",
+    "yccd": "Thông tin và dữ liệu\ntính và cộng đồng phần của máy tính Sơ lược về lịch sử phát\nVai trò của máy tính\ntriển máy tính\nBiểu diễn thông tin\ntrong đời sống\nKhái niệm hệ điều hành\nvà lưu trữ dữ liệu\nvà phần mềm ứng dụng\ntrong máy tính"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề B. Mạng",
+    "noiDung": "",
+    "yccd": "Giới thiệu về mạng\nmáy tính và\nmáy tính và Internet\nInternet"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề C. Tổ chức Đặc điểm của thông tin",
+    "noiDung": "",
+    "yccd": "World Wide Web,\nlưu trữ, tìm kiếm Mạng xã hội và một số trong môi trường số Đánh giá chất lượng\nthư điện tử và công\nvà trao đổi thông kênh trao đổi thông tin thông tin trong giải quyết\ncụ tìm kiếm thông\nThông tin với giải quyết\ntin thông dụng trên Internet vấn đề\ntin\nvấn đề"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề D. Đạo",
+    "noiDung": "",
+    "yccd": "Đề phòng một số tác Văn hoá ứng xử qua Đạo đức và văn hoá\nđức, pháp luật và Một số vấn đề pháp lí về\nhại khi tham gia phương tiện truyền trong sử dụng công nghệ\nvăn hoá trong môi sử dụng dịch vụ Internet\nInternet thông số kĩ thuật số\ntrường số\n27"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề E. Ứng Xử lí và trực quan hoá dữ Phần mềm mô phỏng và",
+    "noiDung": "",
+    "yccd": "Soạn thảo văn bản Bảng tính điện tử cơ\ndụng tin học liệu bằng bảng tính điện tử khám phá tri thức\ncơ bản bản"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề con Chủ đề",
+    "noiDung": "",
+    "yccd": "Trình bày thông tin trong\n(lựa con (lựa\ntrao đổi vàhợp tác\nchọn):Soạn chọn):\nSơ đồ tư duy và thảo văn bản Làm quen"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề con Chủ",
+    "noiDung": "",
+    "yccd": "và phần\nphần mềm sơ đồ tư Phần mềm trình chiếu với phần (lựa chọn): đềcon(lựa\nduy cơ bản mềm trình mềm Sử dụng chọn):\nchiếunâng\nchỉnh sửa\nbảng tính Làm quen\ncao ảnh\nđiện tử nâng với phần\ncao mềm làm\nvideo"
+  },
+  {
+    "cap": "THCS",
+    "lop": "5",
+    "chuDe": "Chủ đề F. Giải",
+    "noiDung": "",
+    "yccd": "Khái niệm thuật toán\nquyết vấn đề với sự Một số thuật toán sắp Giải bài toán bằng máy\nvà biểu diễn thuật Lập trình trực quan\ntrợ giúp của máy xếp và tìm kiếm cơ bản tính\ntoán\ntính"
+  },
+  {
+    "cap": "THCS",
+    "lop": "6",
+    "chuDe": "Chủ đề G. Hướng Tin học và định hướng",
+    "noiDung": "",
+    "yccd": "Tin học và ngành nghề\nnghiệp với tin học nghề nghiệp\n28\nYÊU CẦU CẦN ĐẠT VÀ NỘI DUNG GIÁO DỤC Ở CÁC LỚP\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THCS",
+    "lop": "6",
+    "chuDe": "Chủ đề A. Máy tính và cộng đồng",
+    "noiDung": "",
+    "yccd": "Phân biệt được thông tin với vật mang tin.\nNhận biết được sự khác nhau giữa thông tin và dữ liệu.\nNêu được ví dụ minh hoạ mối quan hệ giữa thông tin và dữ liệu.\nThông tin và dữ\nNêu được ví dụ minh hoạtầm quan trọng của thông tin.\nliệu\nGiải thích được máy tính là công cụ hiệu quả để thu thập, lưu trữ, xử lí và truyền thông tin. Nêu được\nví dụ minh hoạ cụ thể.\nNêu được các bước cơ bản trong xử lí thông tin.\nGiải thích được có thể biểu diễn thông tinchỉ với hai kí hiệu 0 và 1.\nBiểu diễn thông\nBiết được bit là đơn vị nhỏ nhất trong lưu trữ thông tin.\ntin và lưu trữ dữ\nNêu được tên và độ lớn (xấp xỉ theo hệ thập phân) của các đơn vị cơ bản đo dung lượng thông tin:\nliệu trong máy\nByte, KB, MB, GB, quy đổi được một cách gần đúng giữa các đơn vị đo lường này. Ví dụ: 1KB bằng\ntính\nxấp xỉ 1 ngàn byte, 1 MB xấp xỉ 1 triệu byte, 1 GB xấp xỉ 1 tỉ byte.\nNêu được sơ lược khả năng lưu trữ của các thiết bị nhớ thông dụng như đĩa cứng, USB, CD, thẻ nhớ, …"
+  },
+  {
+    "cap": "THCS",
+    "lop": "6",
+    "chuDe": "Chủ đề B. Mạng máy tính và Internet",
+    "noiDung": "",
+    "yccd": "Nêu được khái niệm và lợi ích của mạng máy tính. Giới thiệu về\nNêu được ví dụ cụ thể về trường hợp mạng không dây tiện dụng hơn mạng có dây. mạng máy tính\nvà Internet\nNêu được các thành phần chủ yếu của một mạng máy tính (máy tính và các thiết bị kết nối) và tên của\n29\nYêu cầu cần đạt Nội dung\nmột vài thiết bị mạng cơ bản như máy tính, cáp nối, Switch, Access Point,...\nGiới thiệu tóm tắt được các đặc điểm và ích lợi chínhcủa Internet."
+  },
+  {
+    "cap": "THCS",
+    "lop": "6",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",
+    "noiDung": "",
+    "yccd": "Trình bày được sơ lược về các khái niệm WWW, website, địa chỉ của website, trình duyệt.\nXem và nêu được những thông tin chính trên trang web cho trước.\nKhai thác được thông tin trên một số trang web thông dụng như tra từ điển, xem thời tiết, tin thời sự,... World Wide Web,\nNêu được công dụng của máy tìm kiếm. thư điện tử và\nXác định được từ khoá ứng với một mục đích tìm kiếm cho trước. công cụ tìm kiếm\nthông tin\nNêu được những ưu, nhược điểm cơ bản của dịch vụ thư điện tử so với các phương thức liên lạc khác.\nBiết cách đăng kí tài khoản thư điện tử, thực hiện được một số thao tác cơ bản: đăng nhập tài khoản\nemail, soạn và gửi email, thoát ra."
+  },
+  {
+    "cap": "THCS",
+    "lop": "6",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Giới thiệu được sơ lược về một số tác hại và nguy cơ bị hại khi tham gia Internet.Nêu và thực hiện\nđược một số biện pháp phòng ngừa cơ bản với sự hướng dẫn của giáo viên.\nTrình bày được tầm quan trọng của sự an toàn và hợp pháp của thông tin cá nhân và tập thể, nêu được\nĐề phòng một số\nví dụ minh hoạ.\ntác hại khi tham\nBảo vệ được thông tin và tài khoản cá nhân với sự hỗ trợ của người lớn.\ngia Internet\nNêu được một vài cách thông dụng để chia sẻ thông tin của bản thân và tập thể sao cho an toàn và\nhợp pháp.\nNhận diện được một số thông điệp (chẳng hạn email, yêu cầu kết bạn, lời mời tham gia câu lạc bộ,...)\nlừa đảo hoặc mang nội dung xấu.\n30\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THCS",
+    "lop": "6",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Trình bày được tác dụng của công cụ căn lề, định dạng, tìm kiếm, thay thế trong phần mềm soạn thảo\nvăn bản.\nThực hiện được việc định dạng văn bản, trình bày trang văn bản và in.\nSoạn thảo văn\nSử dụng được công cụ tìm kiếm và thay thế của phần mềm soạn thảo.\nbảncơ bản\nTrình bày được thông tin ở dạng bảng.\nSoạn thảo được văn bản phục vụ học tập và sinh hoạt hàng ngày.\nNêu được các chức năng đặc trưng củanhững phần mềm soạn thảo văn bản.\nSắp xếp được một cách logic và trình bày được dưới dạng sơ đồ tư duy các ý tưởng, khái niệm.\nSơ đồ tư duy và\nGiải thích được lợi ích của sơ đồ tư duy, nêu được nhu cầu sử dụng phần mềm sơ đồ tư duy trong học\nphần mềm sơ đồ\ntập và trao đổi thông tin.\ntư duy\nSử dụng được phần mềm để tạo sơ đồ tư duy đơn giản phục vụ học tập và trao đổi thông tin."
+  },
+  {
+    "cap": "THCS",
+    "lop": "7",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Diễn tả được sơ lược khái niệm thuật toán, nêu được một vài ví dụ minh hoạ.\nKhái niệm thuật\nMô tả được thuật toán đơn giản có các cấu trúc tuần tự, rẽ nhánh và lặpdưới dạng liệt kê hoặc\ntoán và biểu diễn\nsơ đồ khối.\nthuật toán\nBiết được chương trình là mô tả một thuật toán để máy tính “hiểu” và thực hiện được.\n31\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THCS",
+    "lop": "7",
+    "chuDe": "Chủ đề A. Máy tính và cộng đồng",
+    "noiDung": "",
+    "yccd": "Biết và nhận ra được các thiết bị vào – ra có nhiều loại, hình dạng khác nhau,biết được chức năng của\nSơ lược về các\nmỗi loại thiết bị này trong thu thập, lưu trữ, xử lí và truyền thông tin.\nthành phần của\nThực hiện đúng các thao tác với các thiết bị thông dụng của máy tính. Nêu được ví dụ cụ thể về những\nmáy tính\nthao tác không đúng cách sẽ gây ra lỗi cho các thiết bị và hệ thống xử lí thông tin.\nGiải thích được sơ lược chức năng điều khiển và quản lí của hệ điều hành, qua đó phân biệt được hệ\nđiều hành với phần mềm ứng dụng.\nKhái niệm hệ\nNêu được tên một số phần mềm ứng dụng đã sử dụng.\nđiều hành và\nGiải thích được phần mở rộng của tên tệp cho biết tệp thuộc loại gì, nêu được ví dụ minh hoạ.\nphần mềm ứng\nThao tác thành thạo với tệp và thư mục:tạo, sao chép, di chuyển, đổi tên, xoá tệp và thư mục.\ndụng\nBiết được tệp chương trình cũng là dữ liệu, có thể được lưu trữ trong máy tính.\nNêu được ví dụ về biện phápbảo vệ dữ liệu như sao lưu, phòng chống virus,..."
+  },
+  {
+    "cap": "THCS",
+    "lop": "7",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",
+    "noiDung": "",
+    "yccd": "Nêu được một số chức năng cơ bản của mạng xã hội. Nhận biết được một số website là mạng xã hội.\nMạng xã hội và\nSử dụng được một số chức năng cơ bản của một mạng xã hội để giao lưu và chia sẻ thông tin. một số kênh trao\nNêu được tên một kênh trao đổi thông tin thông dụng trên Internet và loại thông tin trao đổi trên đổithôngtin\nkênh đó. thông dụng trên\nInternet\nNêu được ví dụ cụ thể về hậu quả của việc sử dụng thông tin vào mục đích sai trái."
+  },
+  {
+    "cap": "THCS",
+    "lop": "7",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "32\nYêu cầu cần đạt Nội dung\nNêu được một số ví dụ truy cập không hợp lệ vào các nguồn thông tin và kênh truyền thông tin.\nThực hiện được giao tiếp qua mạng (trực tuyến hay không trực tuyến) theo đúng quy tắc và bằng ngôn\nngữ lịch sự, thể hiện ứng xử có văn hoá. Văn hoá ứng xử\nBiết được tác hại của bệnh nghiện Internet, từ đó có ý thức phòng tránh. qua phương tiện\nNêu được cách ứng xử hợp lí khi gặp trên mạng hoặc các kênh truyền thông tin số những thông tin có truyền thông số\nnội dung xấu, thông tin không phù hợp lứa tuổi.\nBiết nhờ người lớn giúp đỡ, tư vấn khi cần thiết, chẳng hạn khi bị bắt nạt trên mạng."
+  },
+  {
+    "cap": "THCS",
+    "lop": "7",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Nêu được một số chức năng cơ bản của phần mềm bảng tính.\nThực hiện được một số phép toán thông dụng, sử dụng được một số hàm đơn giản như MAX, MIN,\nSUM, AVERAGE, COUNT,...\nSử dụng được công thức và dùng được địa chỉ trong công thức, tạo được bảng tính đơn giản có số liệu Bảng tính điện tử\ntính toán bằng công thức. cơ bản\nThực hiện được một số thao tác đơn giản:chọn phông chữ, căn chỉnh dữ liệu trong ô tính, thay đổi độ rộng cột.\nSử dụng được bảng tính điện tử để giải quyết một vài công việc cụ thể đơn giản.\nGiải thích được việc đưa các công thức vào bảng tính là một cách điều khiển tính toán tự động trên dữ liệu.\nNêu được một số chức năng cơ bản của phần mềm trình chiếu.\nTạo được một báo cáo có tiêu đề, cấu trúc phân cấp, ảnh minh hoạ, hiệu ứng động; biết sử dụng các Phần mềm trình\nđịnh dạng cho văn bản, ảnh minh hoạ và hiệu ứng một cách hợp lí. chiếu cơ bản\nSao chép được dữ liệu từ tệp văn bản sang trang trình chiếu."
+  },
+  {
+    "cap": "THCS",
+    "lop": "8",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "33\nYêu cầu cần đạt Nội dung\nGiải thích được một vài thuật toán sắp xếp và tìm kiếm cơ bản, bằng các bước thủ công (không cần\ndùng máy tính) biểu diễn và mô phỏng được hoạt động của thuật toán đó trên một bộ dữ liệu vào có kích\nMột số thuật toán\nthước nhỏ.\nsắp xếp và tìm\nGiải thích được mối liên quan giữa sắp xếp và tìm kiếm, nêu được ví dụ minh hoạ. kiếm cơ bản\nNêu được ý nghĩa của việc chia một bài toán thành những bài toán nhỏ hơn.\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THCS",
+    "lop": "8",
+    "chuDe": "Chủ đề A. Máy tính và cộng đồng",
+    "noiDung": "",
+    "yccd": "Trình bày được sơ lược lịch sử phát triển máy tính. Sơ lược về lịch\nNêu được ví dụ cho thấy sự phát triển máy tính đã đem đến những thay đổi lớn lao cho xã hội sử phát triển máy\nloài người. tính"
+  },
+  {
+    "cap": "THCS",
+    "lop": "8",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",
+    "noiDung": "",
+    "yccd": "Nêu được các đặc điểm của thông tin số: đa dạng, được thu thập ngày càng nhanh và nhiều, được lưu\ntrữ với dung lượng khổng lồ bởi nhiều tổ chức và cá nhân, có tính bản quyền, có độ tin cậy rất khác\nĐặc điểm của\nnhau, có các công cụ tìm kiếm, chuyển đổi, truyền và xử lí hiệu quả.\nthông tin trong\nTrình bày được tầm quan trọng của việc biết khai thác các nguồn thông tin đáng tin cậy, nêu được ví\nmôi trường số\ndụ minh hoạ.\nSử dụng được công cụ tìm kiếm, xử lí và trao đổi thông tin trong môi trường số. Nêu được ví dụ minh hoạ.\nChủ động tìm kiếm được thông tin để thực hiện nhiệm vụ (thông qua bài tập cụ thể). Thông tin với giải\n34\nYêu cầu cần đạt Nội dung\nĐánh giá được lợi ích của thông tin tìm được trong giải quyết vấn đề, nêu được ví dụ minh hoạ. quyết vấn đề"
+  },
+  {
+    "cap": "THCS",
+    "lop": "8",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Nhận biết và giải thích được một số biểu hiện vi phạm đạo đức và pháp luật, biểu hiện thiếu văn hoá\nĐạo đức và văn\nkhi sử dụng công nghệ kĩ thuật số. Ví dụ: thu âm, quay phim, chụp ảnh khi không được phép, dùng các\nhoá trong sử\nsản phẩm văn hoá vi phạm bản quyền,...\ndụng công nghệ\nBảo đảm được các sản phẩm số do bản thân tạo ra thể hiện được đạo đức, tính văn hoávà không vi\nkĩ thuật số\nphạm pháp luật."
+  },
+  {
+    "cap": "THCS",
+    "lop": "8",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Thực hiện được các thao táctạo biểu đồ, lọc và sắp xếp dữ liệu.Nêu được một số tình huống thực tế cần\nsử dụng các chức năng đó của phần mềm bảng tính.\nXử lí và trực\nGiải thích được sự khác nhau giữa địa chỉ tương đối và địa chỉ tuyệt đối của một ô tính.\nquan hoá dữ liệu\nGiải thích được sự thay đổi địa chỉ tương đối trong công thức khi sao chép công thức. bằng bảng tính\nđiện tử\nSao chép được dữ liệu từ các tệp văn bản, trang trình chiếu sang trang tính.\nSử dụng được phần mềm bảng tính trợ giúp giải quyết bài toán thực tế.\nSử dụng được phần mềm soạn thảo:"
+  },
+  {
+    "cap": "THCS",
+    "lop": "8",
+    "chuDe": "Chủ đềcon (lựa",
+    "noiDung": "",
+    "yccd": "+Thực hiện được các thao tác: chèn thêm, xoá bỏ, co dãn hình ảnh, vẽ hình đồ hoạ trong văn bản, tạo\nchọn):\ndanh sách dạng liệt kê, đánh số trang, thêm đầu trang và chân trang.\nSoạn thảo văn\n+ Tạo được một số sản phẩm là văn bản có tính thẩm mĩ phục vụ nhu cầu thực tế.\nbản và phần mềm\nSử dụng được phần mềm trình chiếu:\ntrình chiếunâng\n+ Chọnđặt được màu sắc, cỡ chữ hài hoà và hợp lí với nội dung.\ncao\n+ Đưa được vào trong trang chiếu đường dẫn đến video hay tài liệu khác.\n35\nYêu cầu cần đạt Nội dung\n+ Thực hiện được thao tác đánh số trang, thêm đầu trang và chân trang.\n+ Sử dụng được các bản mẫu (template).\n+ Tạo được các sản phẩm số phục vụ học tập, giao lưu và trao đổi thông tin."
+  },
+  {
+    "cap": "THCS",
+    "lop": "8",
+    "chuDe": "Chủ đề con(lựa",
+    "noiDung": "",
+    "yccd": "Nêu được một vài chức năng chính và thực hiện được một số thao tác cơ bản với phần mềm chỉnh chọn):\nsửa ảnh.\nLàm quen với\nTạo được một vài sản phẩm số đơn giản đáp ứng nhu cầu cá nhân, gia đình, trường học và địa phương. phần mềm chỉnh\nsửa ảnh"
+  },
+  {
+    "cap": "THCS",
+    "lop": "8",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Mô tả được kịch bản đơn giản dưới dạng thuật toán và tạo được một chương trình đơn giản.\nHiểu được chương trình là dãy các lệnh điều khiển máy tính thực hiện một thuật toán.\nThể hiện được cấu trúc tuần tự, rẽ nhánh và lặp ở chương trình trong môi trường lập trình trực quan. Lập trình\ntrực quan\nNêu được khái niệm hằng, biến, kiểu dữ liệu, biểu thức và sử dụng được các khái niệm này ở các\nchương trình đơn giản trong môi trường lập trình trực quan.\nChạy thử, tìm lỗi và sửa được lỗi cho chương trình."
+  },
+  {
+    "cap": "THCS",
+    "lop": "9",
+    "chuDe": "Chủ đề G. Hướng nghiệp với tin học",
+    "noiDung": "",
+    "yccd": "Nêuđược một số nghề nghiệp mà ứng dụng tin học sẽ làm tăng hiệu quả công việc.\nNêuđược tên một số nghề thuộc lĩnh vực tin học và một số nghề liên quan đến ứng dụng tin học. Tin học\nNhận thức và trình bày được vấn đề bình đẳng giới trong việc sử dụng máy tính và trong ứng dụng tin và ngành nghề\nhọc, nêu được ví dụ minh hoạ.\n36\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THCS",
+    "lop": "9",
+    "chuDe": "Chủ đề A. Máy tính và cộng đồng",
+    "noiDung": "",
+    "yccd": "Nhận biết được sự có mặt của các thiết bị có gắn bộ xử lí thông tin ở khắp nơi (trong gia đình, ở trường\nhọc, cửa hàng, bệnh viện, công sở, nhà máy,...), trong mọi lĩnh vực (y tế, ngân hàng, hàng không,\nVai trò của\ntoánhọc,sinh học,...), nêu được ví dụ minh hoạ.\nmáy tính trong\nNêu được khả năng của máy tính và chỉ ra được một số ứng dụng thực tế của nó trong khoa học\nđời sống\nkĩ thuật và đời sống.\nGiải thích được tác động của công nghệ thông tin lên giáo dục và xã hội thông qua các ví dụ cụ thể."
+  },
+  {
+    "cap": "THCS",
+    "lop": "9",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",
+    "noiDung": "",
+    "yccd": "Giải thích được sự cần thiết phải quan tâm đến chất lượng thông tin khi tìm kiếm, tiếp nhận và trao đổi Đánh giá chất\nthông tin.Nêu được ví dụ minh hoạ. lượng thông tin\nGiải thích được tính mới, tính chính xác, tính đầy đủ, tính sử dụng được của thông tin.Nêu được ví dụ trong giải quyết\nminh hoạ. vấn đề"
+  },
+  {
+    "cap": "THCS",
+    "lop": "9",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Trình bày được một số tác động tiêu cực của công nghệ kĩ thuật số đối với đời sống con người và xã\nhội, nêu được ví dụ minh hoạ. Một số vấn đề\nNêu được một số nội dung liên quan đến luật Công nghệ thông tin, nghị định về sử dụng dịch vụ pháp lí về sử\nInternet, các khía cạnh pháp lí của việc sở hữu, sử dụng và trao đổi thông tin. dụng dịch vụ\nNêu được một số hành vi vi phạm pháp luật, trái đạo đức,thiếu văn hoá khi hoạt động trong môi trường Internet\nsố thông qua một vài ví dụ.\n37\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THCS",
+    "lop": "9",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Nêu được ví dụ phần mềm mô phỏng.\nPhần mềm mô\nNêu được những kiến thức đã thu nhận từ việc khai thác một vài phần mềm mô phỏng.\nphỏng và khám\nNhận biết được sự mô phỏng thế giới thực nhờ máy tính có thể giúp con người khám phá tri thức và\nphá tri thức\ngiải quyết vấn đề.\nBiết được khả năng đính kèm văn bản, ảnh, video, trang tính vào sơ đồ tư duy. Trình bày thông\nSử dụng được hình ảnh, biểu đồ, video một cách hợp lí. tin trong trao đổi\nvà hợp tác\nSử dụng được bài trình chiếu và sơ đồ tư duy trong trao đổi thông tin và hợp tác."
+  },
+  {
+    "cap": "THCS",
+    "lop": "9",
+    "chuDe": "Chủ đề con (lựa",
+    "noiDung": "",
+    "yccd": "Thực hiện được dự án sử dụng bảng tính điện tử góp phần giải quyết một bài toán liên quan đến quản lí chọn):\ntài chính, dân số,... Ví dụ: quản lí chi tiêu của gia đình, quản lí thu chi quỹ lớp. Sử dụng bảng tính\nđiện tử nâng cao"
+  },
+  {
+    "cap": "THCS",
+    "lop": "9",
+    "chuDe": "Chủ đề con (lựa",
+    "noiDung": "",
+    "yccd": "Nêu được một số chức năng và thực hiện được một số thao tác cơ bản trong sử dụng một phần mềm\nchọn):\nlàm video.\nLàm quen với\nTạo được một vài đoạn video đáp ứng nhu cầu cuộc sống của cá nhân, gia đình, trường học, địa\nphần mềm làm\nphương.\nvideo"
+  },
+  {
+    "cap": "THCS",
+    "lop": "9",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Thông qua các ví dụ về lập trình trực quan: Giải bài toán bằng\nTrình bày được quá trình giải quyết vấn đề vàmô tả được giải pháp dưới dạng thuật toán (hoặc bằng máy tính\n38\nYêu cầu cần đạt Nội dung\nphương pháp liệt kê các bước hoặc bằng sơ đồ khối).\nSử dụng được cấu trúc tuần tự, rẽ nhánh, lặp trong mô tả thuật toán.\nGiải thích được trong quy trình giải quyết vấn đề có những bước (những vấn đề nhỏ hơn) có thể\nchuyển giao cho máy tính thực hiện, nêu được ví dụ minh hoạ.\nGiải thích được khái niệm bài toán trong tin học là một nhiệm vụ có thể giao cho máy tính thực hiện,\nnêu được ví dụ minh hoạ.\nGiải thích được chương trình là bản mô tả thuật toán bằng ngôn ngữ mà máy tính có thể “hiểu” và\nthực hiện.\nNêu được quy trình con người giao bài toán cho máy tính giải quyết."
+  },
+  {
+    "cap": "THPT",
+    "lop": "9",
+    "chuDe": "Chủ đề G. Hướng nghiệp với tin học",
+    "noiDung": "",
+    "yccd": "Trình bày được công việc đặc thù và sản phẩm chính của người làm tin họctrong ít nhất ba\nnhóm nghề.\nNêu và giải thíchđược ý kiến cá nhân (thích hay không thích,...) về một nhóm nghề nào đó.\nNhận biết được đặc trưng cơ bản của nhóm nghề thuộc hướng Tin học ứng dụng và nhóm nghề thuộc Tin học và\nhướng Khoa học máy tính. định hướng\nnghề nghiệp\nTìm hiểu được (thông qua Internet và những kênh thông tin khác) công việc ở một số doanh nghiệp,\ncông ticó sử dụng nhân lực thuộc các nhóm ngành đã được giới thiệu.\nGiải thích được cả nam và nữ đều có thể thích hợp với các ngành nghề trong lĩnh vực tin học, nêu được\nví dụ minh hoạ.\n39\nNỘI DUNG CỐT LÕI"
+  },
+  {
+    "cap": "THPT",
+    "lop": "9",
+    "chuDe": "Chủ đề A. Máy tính và Hệ điều hành và phần mềm ứng",
+    "noiDung": "",
+    "yccd": "Tin học và xử lí thông tin Giới thiệu Trí tuệ nhân tạo\nxã hội tri thức dụng\nCS ICT\nThế giới thiết bị số\nBiểu diễn thông tin Thực hành kết nối thiết bị số"
+  },
+  {
+    "cap": "THPT",
+    "lop": "9",
+    "chuDe": "Chủ đề B. Mạng máy Kết nối mạng",
+    "noiDung": "",
+    "yccd": "Internet hôm nay và ngày\ntính và Internet\nCS\nmai\nPhác thảo thiết kế mạng máy tính"
+  },
+  {
+    "cap": "THPT",
+    "lop": "9",
+    "chuDe": "Chủ đề C. Tổ chức lưu",
+    "noiDung": "",
+    "yccd": "Tìm kiếm và trao đổi thông tin\ntrữ, tìm kiếm và trao\ntrên mạng\nđổi thông tin"
+  },
+  {
+    "cap": "THPT",
+    "lop": "9",
+    "chuDe": "Chủ đề D. Đạo đức,",
+    "noiDung": "",
+    "yccd": "Nghĩa vụ tuân thủ pháp lí Ứng xử văn hoá và an toàn trên Gìn giữ tính nhân văn trong thế\npháp luật và văn hoá\ntrong môi trường số mạng giới ảo\ntrong môi trường số"
+  },
+  {
+    "cap": "THPT",
+    "lop": "9",
+    "chuDe": "Chủ đề E. Ứng dụng ICT ICT",
+    "noiDung": "",
+    "yccd": "ICT\ntin học Phần mềm chỉnh sửa ảnh và làm Thực hành sử dụng phần mềm tạo\nPhần mềm thiết kế đồ hoạ\nvideo trang web"
+  },
+  {
+    "cap": "THPT",
+    "lop": "9",
+    "chuDe": "Chủ đề F. Giải quyết Giới thiệu các hệ Cơ sở dữ liệu Tạo trang web",
+    "noiDung": "",
+    "yccd": "Lập trình cơ bản\nvấn đề với sự trợ giúp\nICT\n40"
+  },
+  {
+    "cap": "THPT",
+    "lop": "9",
+    "chuDe": "Chủ đề Lớp 10 Lớp 11 Lớp 12",
+    "noiDung": "",
+    "yccd": "của máy tính Thực hành tạo và khai thác Cơ\nsở dữ liệu\nCS CS\nKĩ thuật lập trình Giới thiệu Học máy và Khoa học\ndữ liệu\nCS\nMô phỏng trong giải quyết vấn đề"
+  },
+  {
+    "cap": "THPT",
+    "lop": "10",
+    "chuDe": "Chủ đề G. Hướng Giới thiệu nhóm nghề dịch vụ và",
+    "noiDung": "",
+    "yccd": "nghiệp với tin học quản trị\nGiới thiệu nhóm nghề Giới thiệu nghề Quản trị cơ sở\nGiới thiệu một số nghề ứng dụng\nthiết kế và lập trình dữ liệu\ntin học và một số ngành thuộc lĩnh\nvực tin học\nCHUYÊN ĐỀ HỌC TẬP\nChuyên đề Lớp 10 Lớp 11 Lớp 12\nĐỊNH HƯỚNG TIN HỌC ỨNG DỤNG\nThực hành làm việc với các Thực hành sử dụng phần mềm vẽ Thực hành sử dụng phần mềm\nChuyên đề 1\ntệp văn bản trang trí quản lí dự án\nThực hành sử dụng phần mềm Thực hành sử dụng phần mềm làm Thực hành bảo vệ dữ liệu, cài đặt\nChuyên đề 2\ntrình chiếu phim hoạt hình và gỡ bỏ phần mềm\n41\nChuyên đề Lớp 10 Lớp 11 Lớp 12\nChuyên đề 3 Thực hành sử dụng phần mềm Thực hành sử dụng phần mềm Thực hành phân tích dữ liệu\nbảng tính chỉnh sửa ảnh vớiphần mềm bảng tính\nĐỊNH HƯỚNG KHOA HỌC MÁY TÍNH\nThực hành với các bộ phận Thực hành thiết kế thuật toán theo Tìm hiểu một vài kiểu dữ liệu\nChuyên đề 1\ncủa robot giáo dục kĩ thuật Đệ quy tuyến tính\nChuyên đề 2 Kết nối robot giáo dục với Thực hành thiết kế thuật toán theo Tìm hiểu Cây tìm kiếm nhị phân\nmáy tính kĩ thuật Chia để trị trong sắp xếp và tìm kiếm\nChuyên đề 3 Lập trình điều khiển robot Thực hành thiết kế thuật toán theo Tìm hiểu kĩ thuật duyệt Đồ thị và\ngiáo dục kĩ thuật Duyệt ứng dụng\nYÊU CẦU CẦN ĐẠT VÀ NỘI DUNG CỐT LÕI Ở CÁC LỚP\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THPT",
+    "lop": "10",
+    "chuDe": "Chủ đề A. Máy tính và xã hội tri thức",
+    "noiDung": "",
+    "yccd": "Phân biệt được thông tin và dữ liệu, nêu được ví dụ minh hoạ.\nDữ liệu, thông\nTin học\nChuyển đổi được giữa các đơn vị lưu trữ thông tin: B, KB, MB,... tin và xử lí\nvà xử lí\nthông tin\nNêu được sự ưu việt của việc lưu trữ, xử lí và truyền thông tin bằng thiết bị số.\nthông\nTrình bày được những đóng góp cơ bản của tin học đối với xã hội, nêu được ví dụ minh hoạ. Vai trò của máy tin\nNêu được ví dụ cụ thể về thiết bị thông minh. Giải thích được vai trò của những thiết bị tính và các thiết\n42\nYêu cầu cần đạt Nội dung\nthông minh đối với sự phát triển của xã hội và cuộc cách mạng công nghiệp 4.0. bị thông minh\ntrong nền kinh tế\nNhận biết được một vài thiết bị số thông dụng khác ngoài máy tính để bàn và laptop, giải\ntri thức\nthích được các thiết bị đó cũng là những hệ thống xử lí thông tin.\nGiới thiệu được các thành tựu nổi bật ở một số mốc thời gian để minh hoạ sự phát triển của\nngành tin học.\nKĩ năng sử dụng\nKhởi động được một số thiết bị số thông dụng, sử dụng được các tệp dữ liệu, các chức năng\nthiết bị số của\nvà phần mềm ứng dụng cơ bản cài sẵn trên các thiết bị đó.\nmỗi công dân.\nThực hiện được các phép tính cơ bản AND, OR, NOT, giải thích được ứng dụng của hệ nhị\nCS\nphân trong tin học. Giải thích được sơ lược việc số hoávăn bản, hình ảnh, âm thanh.\nBiểu diễn thông tin\nGiải thích được sơ lược về chức năng của bảng mã chuẩn quốc tế (Ví dụ: Unicode)."
+  },
+  {
+    "cap": "THPT",
+    "lop": "10",
+    "chuDe": "Chủ đề B. Mạng máy tính và Internet",
+    "noiDung": "",
+    "yccd": "Trình bày được những thay đổi về chất lượng cuộc sống, phương thức học tập và làm việc\ntrong xã hội mà ở đó mạng máy tính được sử dụng phổ biến.\nKhái niệm mạng\nSo sánh được mạng LAN và Internet.\nmáy tính, Internet\nNêu được một số dịch vụ cụ thể mà Điện toán đám mây cung cấp cho người dùng. Internet, IoT. hôm nay\nNêu được khái niệm Internet vạn vật (IoT). Phân loại mạng và ngày\nmáy tính. mai\nNêu được ví dụ cụ thể về thay đổi trong cuộc sống mà IoT đem lại. Phát biểu ý kiến cá nhân\nvề ích lợicủa IoT.\nSử dụng được một số chức năng xử lí thông tin trên máy PC và thiết bị số,ví dụ dịch tự động Sử dụng dịch vụ\nvăn bản hay tiếng nói. web. Tự bảo vệ\n43\nYêu cầu cần đạt Nội dung\nKhai thác được một số nguồn học liệu mở trên Internet. khi tham gia\nmạng\nNêu được những nguy cơ và tác hại nếu tham gia các hoạt động trên Internet một cách bất\ncẩn và thiếu hiểu biết. Trình bày được một số cách đề phòng những tác hại đó.\nNêu được một vài cách phòng vệ khi bị bắt nạt trên mạng.\nBiết cách tự bảo vệ dữ liệu của cá nhân.\nTrình bày được sơ lược vềphần mềm độc hại. Sử dụng được một số công cụ thông dụng để\nngăn ngừa và diệt phần mềm độc hại."
+  },
+  {
+    "cap": "THPT",
+    "lop": "10",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Nêu được một số vấn đề nảy sinh về pháp luật, đạo đức, văn hoá khi việc giao tiếp qua mạng\ntrở nên phổ biến.\nNêu được ví dụ minh hoạ sự vi phạm bản quyền thông tin và sản phẩm số, qua ví dụ đó giải\nthích được sự vi phạm đã diễn ra thế nào và có thể dẫn tới hậu quả gì.\nTrình bày và giải thích được một số nội dung cơ bản của Luật Công nghệ thông tin, Nghị\nđịnh về quản lí, cung cấp, sử dụng các sản phẩm và dịch vụ Công nghệ thông tin, Luật An ninh\nmạng. Nêu được ví dụ minh hoạ. Nghĩa vụ tuân thủ pháp lí\nGiải thích được một số khía cạnh pháp lí của vấn đề bản quyền, của việc sở hữu, sử dụng và trong môi trường số\ntrao đổi thông tin trong môi trường số. Nêu được ví dụ minh hoạ.\nVận dụng được Luật và Nghị định nêu trên để xác định được tính hợp pháp của một hành vi\nnào đótrong lĩnh vực quản lí, cung cấp, sử dụng các sản phẩm và dịch vụ Công nghệ thông tin.\nNêu được ví dụ về những tác hại của việc chia sẻ và phổ biến thông tin một cách bất cẩn.\nNêu được một vài biện pháp đơn giản và thông dụng để nâng cao tính an toàn và hợp pháp\ncủa việc chia sẻ thông tin trong môi trường số.\n44\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THPT",
+    "lop": "10",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "quảng cáo, băng",
+    "yccd": "Sử dụng được một số chức năng cơ bản của phần mềm thiết kế đồ hoạ.\nICT\nTạo được sản phẩm số đơn giản, hữu ích và thực tế như thiết kế logo, tạo banner, topic\nPhần mềm thiết kế đồ hoạ\nrôn, áp phích, poster vàthiệp chúc mừng,…"
+  },
+  {
+    "cap": "THPT",
+    "lop": "10",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Môi trường và\nViết và thực hiện được một vài chương trình có sử dụng:hằng, biến, các cấu trúc điều khiển,\ncác yếu tố cơ\ncác toán tử, các kiểu dữ liệu chuẩn và mảng, các câu lệnh vào – ra. Qua đó phát triển được\nbảncủa một ngôn\nnăng lực giải quyết vấn đề và sáng tạo, rèn luyện được phẩm chất chăm chỉ, kiên trì và cẩn\nngữ lập trình bậc\nthận trong học và tự học.\ncao\nLập\nViết được chương trình có sử dụng chương trình con trong thư viện chuẩn. Chương trình\ntrình\ncon\nViết được chương trình con biểu diễn một thuật toán đơn giản và viết được chương trình có\ncơ bản\nsử dụng chương trình con này.\nĐọc hiểu được chương trình đơn giản.\nGiải quyết bài\nKiểm thử và gỡ lỗi được chương trình.\ntoán bằng lập\nViết và thực hiện được chương trình giải quyết bài toán đơn giản có vận dụng kiến thức\ntrình\nliên môn."
+  },
+  {
+    "cap": "THPT",
+    "lop": "11",
+    "chuDe": "Chủ đề G. Hướng nghiệp với tin học",
+    "noiDung": "",
+    "yccd": "Trình bày được thông tin hướng nghiệp về nhóm nghề Thiết kế và Lập trình thông qua phân\nGiới thiệu nhóm nghề thiết\ntích nghiệp vụ của một số nghề điển hình (Ví dụ: Thiết kế đồ hoạ, Thiết kế trò chơi máy tính,\nkế và lập trình\nLập trình viên, Phân tích thiết kế hệ thống,...):\n45\nYêu cầu cần đạt Nội dung\n+ Những nét sơ lược về công việc chính mà người làm nghề phải thực hiện.\n+ Yêu cầu thiết yếu về kiến thức và kĩ năng cần có để làm nghề.\n+ Ngành học có liên quan ở các bậc học tiếp theo.\n+ Nhu cầu nhân lực hiện tại và tương lai của nhóm nghề đó.\nTự tìm kiếm và khai thác được thông tin hướng nghiệp (qua các chương trình đào tạo, thông\nbáo tuyển dụng nhân lực,...) về một vài ngành nghề khác trong lĩnh vực tin học.\nGiao lưu được với bạn bè qua các kênh truyền thông tin số để tham khảo và trao đổi ý kiến\nvề những thông tin trên.\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THPT",
+    "lop": "11",
+    "chuDe": "Chủ đề A. Máy tính và xã hội tri thức",
+    "noiDung": "",
+    "yccd": "Trình bày được sơ lược lịch sử phát triển của hai hệ điều hành thông dụng cho PC, một hệ\nđiều hành là phần mềm thương mại và hệ điều hành còn lại là phần mềm nguồn mở. Sử dụng\nKhái niệm cơ\nđược một số chức năng cơ bản của một trong hai hệ điều hành đó.\nHệ điều\nbản về hệ điều\nTrình bày được vài nét chính về một hệ điều hành thông dụng cho thiết bị di động và sử hành và\nhành và phần\ndụng được một số tiện ích cơ bản của hệ điều hành đó. phần\nmềm ứng dụng\nTrình bày được một cách khái quát mối quan hệ giữa phần cứng, hệ điều hành và phần mềm mềm ứng\nứng dụng. Trình bày được vai trò riêng của mỗi thành phần trong hoạt động chung của cả hệ thống. dụng\nTrình bày được một số khái niệm có liên quan tới phần mềm nguồn mở: bản quyền phần Phần mềm\nmềm, giấy phép công cộng, phần mềm miễn phí. So sánh được phần mềm nguồn mở với phần nguồn mở,\n46\nYêu cầu cần đạt Nội dung\nmềm thương mại (nguồn đóng).Nêu được vai trò của phần mềm nguồn mở và phần mềm phần mềm chạy\nthương mại đối với sự phát triển của ICT. trên Internet\nNêu được tên một số phần mềm soạn thảo văn bản, phần mềm bảng tínhvà phần mềm trình\nchiếu nguồn mở, chẳng hạn Writer, Calc và Impress trong bộ OpenOffice.\nSử dụng được một số tiện ích có sẵn của hệ điều hành để nâng cao hiệu suất sử dụng\nmáy tính.\nKích hoạt và sử dụng được một vài chức năng cơ bản của một phần mềm soạn thảo văn bản,\nmột phần mềm bảng tính và một phần mềm trình chiếu chạy trên Internet. Ví dụ cácphần mềm\ntrong gói Google Docs.\nNhận diện được hình dạng, mô tả được chức năng của các bộ phận chính bên trong thân máy\ntính như CPU, RAM và các thiết bị lưu trữ. Nêu được tên và giải thích được đơn vị đo hiệu\nnăng của chúng như GHz, GB,...\nNhững bộ phận\nNhận biết được sơ đồ của các mạch logic AND, OR, NOT, giải thích được vai trò của các chính bên trong\nmạch logic đó trong thực hiện các tính toán nhị phân. máy tính\nTuỳ chỉnh được một vài chức năng cơ bản của máy tính và các thiết bị vào – ra thông dụng Thế giới\nđể phù hợp với nhu cầu sử dụng và đạt hiệu quả tốt hơn. thiết bị\nsố\nĐọc hiểu được một số điểm chính trong tài liệu hướng dẫn về thiết bị số thông dụng. Thực\nChức năng và\nhiện được một số những chỉ dẫn trong tài liệu đó.\nhoạt động của\nĐọc hiểu và giải thích được một số thông số cơ bản như kích thước màn hình, CPU, RAM,\nnhững thiết bị\ndung lượng lưu trữ, độ phân giải camera,... của các thiết bị số thông dụng.Ví dụ: PC, máy tính\nngoại vi và thiết\nbảng, điện thoại thông minh, tivi có khả năng kết nối Internet,...\nbị số thông dụng\nBiết được cách kết nối các bộ phận thân máy, bàn phím, chuột, màn hình của máy tính\n47\nYêu cầu cần đạt Nội dung\nvới nhau.\nBiết được cách kết nối PC với các thiết bị số thông dụng như máy in, điện thoại thông minh,\nmáy ảnh số,..."
+  },
+  {
+    "cap": "THPT",
+    "lop": "11",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",
+    "noiDung": "",
+    "yccd": "Sử dụng được một số công cụ trực tuyến như Google Driver hay Dropbox,... để lưu trữ và\nchia sẻ tệp tin.\nSử dụng được máy tìm kiếm, chẳng hạn máy tìm kiếm của Google, Yahoo, Bing,... trên PC\nTìm kiếm và trao đổi thông\nvà thiết bị số thông minhđể tìm kiếm thông tin bằng cách gõ từ khoá hoặc bằng tiếng nói.\ntin trên mạng\nXác lập được các lựa chọn theo tiêu chí tìm kiếm để nâng cao hiệu quả tìm kiếm thông tin.\nSử dụng được những chức năng nâng cao của dịch vụ mạng xã hội.\nBiết cách phân loại và đánh dấu các email."
+  },
+  {
+    "cap": "THPT",
+    "lop": "11",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Nêu được một số dạng lừa đảo phổ biến trên mạng và những biện pháp phòng tránh.\nỨng xử văn hoá và an toàn\nGiao tiếp được trên mạng qua email, chat, mạng xã hội,... và trong môi trường số một cách\ntrên mạng\nvăn minh, phù hợp với các quy tắc và văn hoá ứng xử."
+  },
+  {
+    "cap": "THPT",
+    "lop": "11",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Thực hiện được các thao tác xử lí ảnh cơ bản: cắt, phóng to, thu nhỏ, di chuyển, tẩy xoá ảnh Chỉnh sửa ảnh,\nICT\nvà tạo ảnh động. tạo ảnh động\nPhần\nTạo được các đoạn phim, nhập tư liệu từ ảnh và video có sẵn, biên tập được đoạn phim phục mềmchỉnh\nLàm phim hoạt\nvụ học tập và giải trí. sửa ảnh\nhình, video\nvà làm\nSử dụng được một số công cụ cơ bản biên tập phim: chỉnh sửa hình ảnh, âm thanh, tạo phụ\n48\nYêu cầu cần đạt Nội dung\nđề, tạo các hiệu ứng chuyển cảnh, căn chỉnh thời gian. video\nTạo được đoạn phim hoạt hình từ ảnh, có hội thoại giữa các nhân vật và có phụ đề."
+  },
+  {
+    "cap": "THPT",
+    "lop": "11",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Nhận biết được nhu cầu lưu trữ dữ liệu và khai thác thông tin cho bài toán quản lí.\nDiễn đạt được khái niệm hệ Cơ sở dữ liệu, các khái niệm cơ bản trong mô hình Cơ sở dữ liệu\nquan hệ như quan hệ (bảng), khoá, khoá ngoài, truy vấn, cập nhật dữ liệu,...\nGiới thiệu các hệ Cơ sở\nNêu được những khái niệm cơ bản của hệ Cơ sở dữ liệu. Giải thích được các khái niệm đó\ndữ liệu\nqua ví dụ minh hoạ.\nPhân biệt được hai loại kiến trúc hệ Cơ sở dữ liệu là tập trung và phân tán.\nNêu được tầm quan trọng và một số biện pháp bảo mật hệ Cơ sở dữ liệu.\nThực hiện được việc tạo lập Cơ sở dữ liệu cho một bài toán quản lí nhỏ bằng cách sử dụng một\nhệ Quản trị cơ sở dữ liệu quan hệ. Cụ thể là:\nTạo được các bảng và chỉ định được khoá cho mỗi bảng, thiết lập được mối quan hệ giữa các\nThực hành tạo\nbảng qua việc chỉ định khoá ngoài.\nvà cập nhật\nThực hiện được việc cập nhật Cơ sở dữ liệu. Cơ sở dữ liệu ICT\nNêu được một vài tổ chức cần ứng dụng Cơ sở dữ liệu để quản lí hoạt động của mình. Thực\nhành tạo\nThể hiện được tính cẩn thận, chăm chỉ,trách nhiệm trong việc lưu trữ và quản lí dữ liệu.\nvà khai\nThực hiện được việc khai thác thông tin trong Cơ sở dữ liệu cho một bài toán quản lí nhỏ bằng\nthác Cơ\nThực hành khai\ncách sử dụng một hệ Quản trị cơ sở dữ liệu quan hệ. Cụ thể là:\nsở dữ liệu\nthác Cơ sở dữ\nSử dụng được các truy vấn để tìm kiếm và kết xuất thông tin từ Cơ sở dữ liệu.\nliệu\nNêu được một vài nhận xét so sánh kết quả bài thực hành với một phần mềm quản lí do giáo\n49\nYêu cầu cần đạt Nội dung\nviên giới thiệu hoặc đã từng biết.\nGiải thích được tính ưu việt của việc quản lí dữ liệu một cách khoa học nhờ ứng dụng Cơ sở\ndữ liệu.\nTìm hiểu được thêm một vài chức năng của hệ Quản trị cơ sở dữ liệu.\nViết chương\nPhát biểu được bài toán sắp xếp và bài toán tìm kiếm. trình cho một số\nViết được chương trình cho một vài thuật toán sắp xếp và tìm kiếm. thuật toán sắp\nVận dụng được các thuật toán đã học để giải quyết một bài toán cụ thể. xếp, tìm kiếm\ncơ bản\nBiết được việc kiểm thử giúp lập trình viên phát hiện lỗi, làm tăng độ tin cậy của chương Kiểm thử và\ntrình nhưng chưa chứng minh được tính đúng của chương trình. đánh giá hiệu\nquả của chương\nTrình bày được sơ lược khái niệm độ phức tạp thời gian của thuật toán và phép toán tích cực.\nNêu được ví dụ minh hoạ. trình CS\nKĩ thuật\nVận dụng được những quy tắc thực hành xác định độ phức tạp thời gian của một số thuật\nlập trình\ntoán, chương trình đã biết.\nGiải thích và vận dụng được phương pháp làm mịn dần trong lập trình. Phương pháp\nlàm mịn dầnvà\nGiải thích và vận dụng được phương pháp thiết kế chương trình thành các mô đun cho một\nsử dụng mô đun\nbài toán cụ thể.\ntrong lập trình\nNhận biết được lợi ích của phương pháp nêu trên:Hỗ trợ làm việc đồng thời, dễ dàng bảo trì,\nphát triển chương trình và tái sử dụng các mô đun.\nTrình bày được cấu trúc dữ liệu mảng (một và hai chiều) và danh sách liên kết. Tổ chức dữ liệu\ntrong chương\n50\nYêu cầu cần đạt Nội dung\nTạo được một thư viện nhỏ và viết được chương trình có sử dụng thư viện vừa tạo ra. trình\nViết được chương trình vận dụng những kiến thức tích hợp liên môn để giải quyết vấn đề."
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề G. Hướng nghiệp với tin học",
+    "noiDung": "",
+    "yccd": "Trình bày được thông tin hướng nghiệp vềnghề Quản trị cơ sở dữ liệutheo các yếu tố sau:\n+ Những nét sơ lược về công việc chính mà người làm nghề phải thực hiện.\n+ Yêu cầu thiết yếu về kiến thức và kĩ năng cần có để làm nghề.\n+ Ngành học có liên quan ở các bậc học tiếp theo.\nGiới thiệunghề Quản trị cơ\n+ Nhu cầu nhân lực của xã hội trong hiện tại và tương lai gần về nghề đó.\nsở dữ liệu\nTự tìm kiếm và khai thác được thông tin hướng nghiệp (qua các chương trình đào tạo, thông\nbáo tuyển dụng nhân lực,...) về một vài ngành nghề khác trong lĩnh vực tin học.\nGiao lưu được với bạn bè qua các kênh truyền thông số để tham khảo và trao đổi ý kiến về\nnhững thông tin trên.\nYêu cầu cần đạt Nội dung"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề A. Máy tính và xã hội tri thức",
+    "noiDung": "",
+    "yccd": "Giải thích được sơ lược về khái niệm Trí tuệ nhân tạo (AI – Artificial Intelligence).\nNêu được ví dụ minh hoạ cho một số ứng dụng điển hình của AI như điều khiển tự động, chẩn Giới thiệu Trí tuệ nhân\nđoán bệnh, nhận dạng chữ viết tay, nhận dạng tiếng nói và khuôn mặt, trợ lí ảo,... tạo\nChỉ ra được một số lĩnh vực của khoa học công nghệ và đời sống đã và đang phát triển mạnh mẽ\n51\nYêu cầu cần đạt Nội dung\ndựa trên những thành tựu to lớn của AI.\nNêu được ví dụ để thấy một hệ thống AI có tri thức, có khả năng suy luận và khả năng học,...\nNêu được một cảnh báo về sự phát triển của AI trong tương lai.\nICT\nKết nối được PC với các thiết bị số thông dụng như điện thoại di động, tivicó khả năng kết nối\nThực hành kết nối thiết\nInternet, vòng đeo tay thông minh, thiết bị thực tại ảo,...\nbị số"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề B. Mạng máy tính và Internet",
+    "noiDung": "",
+    "yccd": "Nêu được chức năng chính của một số thiết bị mạng thông dụng. Ví dụ: Access Point, Switch,\nThiết bị và giao\nModem. Kết nối được các thiết bị đó với PC.\nthức mạng\nMô tả sơ lược được vai trò và chức năng của giao thức mạng nói chung và giao thức TCP/IP nói riêng.\nCác chức năng\nKết\nSử dụng được các chức năng mạng của hệ điều hành để chia sẻ tài nguyên. mạng của hệ\nnối\nđiều hành\nmạng\nThiết lập kết\nKết nối được thiết bị di động vào mạng máy tính trong điều kiện phần cứng và phần mềm đã nối và sử dụng\nđược chuẩn bị đầy đủ. mạng trên thiết\nbị di động\nNhận diệnhình dạng và phân biệt được chức năng các thiết bị mạng: Server, Switch, Modem,\nCS\nAccess Point, cáp mạng.\nPhác thảo thiết kế mạng\nNêu được khái niệm và ứng dụng của một số loại đường truyền hữu tuyến và vô tuyến thông dụng.\nmáy tính\nTrình bày và giải thích sơ lược được việc thiết kế mạng LAN cho một tổ chức nhỏ, ví dụ cho\n52\nYêu cầu cần đạt Nội dung\nmột trường phổ thông."
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi trường số",
+    "noiDung": "",
+    "yccd": "Phân tích được ưu và nhược điểm về giao tiếp trong thế giới ảo qua các ví dụ cụ thể. Gìn giữ tính nhân văn\nPhân tích được tính nhân văn trong ứng xử ở một số tình huống tham gia thế giới ảo. trong thế giới ảo"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "Sử dụng được một số chức năng cơ bản của phần mềm tạo trang web.\nICT\nTạo được một trang web tĩnh đơn giản gồm một vài thành phần cơ bản:\nThực hành sử dụng\n+ Menu: bảng chọn chính để liên kết đến các trang web tĩnh khác.\nphần mềm tạo trang web\n+ Content:tiêu đề trang, khung hiển thị các bài viết, ảnh đại diện, mẫu biểu (form)."
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính",
+    "noiDung": "",
+    "yccd": "Hiểu và giải thích được cấu trúc của một trang web dưới dạng HTML.\nSử dụng được các thẻ HTML để trình bày trang web:\nCấu trúc\n+ Định dạng văn bản, phông chữ, tạo liên kết, danh sách. trang web\n+ Đưa các tệp dữ liệu đa phương tiện vào trang web (Ví dụ: ảnh, âm thanh, video). dưới dạng\nTạo trang\nHTML\n+ Tạo bảng, khung (frame).\nweb\n+ Tạo mẫu biểu (form).\nHiểu và sử dụng được một số thuộc tính cơ bản của CSS: màu sắc, phông chữ, nền, đường viền, Sử dụng CSS\nkích cỡ,... trong tạo\nSử dụng được các yếu tố của vùng chọn (selector) như class, id, tag,... trang web\n53\nYêu cầu cần đạt Nội dung\nSử dụng được CSS làm trang web đẹp, đa dạng và sinh động hơn.\nNêu được sơ lược về mục tiêu và một số thành tựu của Khoa học dữ liệu, nêu được ví dụ minh hoạ.\nBiết được vai trò của máy tính đối với sự phát triển của Khoa học dữ liệu. Giới thiệu\nCS\nBiết được tính ưu việt trong việc sử dụng máy tính và thuật toán hiệu quả để xử lí khối dữ liệu Khoa học\nGiới thiệu\nlớn, nêu được ví dụ minh hoạ. dữ liệu\nHọc máy\nNêu được trải nghiệm của bản thân trong việc trích rút thông tin và tri thức hữu ích từ dữ liệu đã có. và Khoa\nhọc dữ\nGiải thích được sơ lược về khái niệm Học máy.\nGiới thiệu\nliệu\nNêu được vai trò của Học máy trong những công việc như lọc thư rác, chẩn đoán bệnh, phân tích thị\nHọc máy\ntrường, nhận dạng tiếng nói và chữ viết, dịch tự động,...\nNêu được một vài lĩnh vực trong đời sống có sử dụng kĩ thuật mô phỏng. CS\nNêu được một vài vấn đề thực tế mà ở đó có thể cần dùng kĩ thuật mô phỏng để giải quyết. Mô phỏng trong giải\nSử dụng và giải thích được lợi ích của một vài phần mềm mô phỏng. quyết vấn đề"
+  },
+  {
+    "cap": "TIỂU HỌC",
+    "lop": "12",
+    "chuDe": "Chủ đề G. Hướng nghiệp với tin học",
+    "noiDung": "+ Tính an (hoặc n!).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTechnology\n(Digital Literacy\n(Internet of Things\n(Computer Science\nIntelligence\n\n\n\n\n\nBiết\n\n\n\n\nHiểu\n\n\nVận dụng",
+    "yccd": "Trình bày được thông tin hướng nghiệp nhóm nghề Dịch vụ và Quản trị (Sửa chữa và bảo trì máy\ntính, Quản trị mạng, Bảo mật hệ thống thông tin, Quản trị và bảo trì hệ thống) theo các yếu tố sau:\n+ Những nét sơ lược về công việc chính mà người làm nghề phải thực hiện.\nGiới thiệu nhóm nghề\n+ Yêu cầu thiết yếu về kiến thức và kĩ năng cần có để làm nghề.\ndịch vụ và quản trị\n+ Ngành học có liên quan ở các bậc học tiếp theo.\n+ Nhu cầu nhân lực của xã hội trong hiện tại và tương lai gần về nhóm nghề đó.\nTự tìm kiếm và khai thác được thông tin hướng nghiệp qua các chương trình đào tạo, thông báo\n54\nYêu cầu cần đạt Nội dung\ntuyển dụng nhân lực,...) về một vài ngành nghề khác trong lĩnh vực tin học.\nGiao lưu được với bạn bè qua các kênh truyền thông số để tham khảo và trao đổi ý kiến về\nnhững thông tin trên.\nGiới thiệu một số nghề\nNêu được tên một số ngành nghề và lĩnh vực có sử dụng nhân lực tin học, đồng thời giải thích\nứng dụng tin học và\nđược vai trò và công việc của chuyên viên tin học trong một số ngành nghề.\nmột số ngành thuộc\nTìm hiểu được thông tin ngành đào tạo của một số cơ sở đào tạo Công nghệ thông tin.\nlĩnh vực tin học\nYÊU CẦU CẦN ĐẠT VÀ NỘI DUNG CHUYÊN ĐỀ HỌC TẬP\nTHEO ĐỊNH HƯỚNG TIN HỌC ỨNG DỤNG\nChuyên đề học tập định hướng Tin học ứng dụng giúp học sinh thành thạo hơn trong sử dụng các phần mềm thông dụng\nthiết yếu để nâng cao hiệu suất công việc, tạo cơ hội cho học sinh làm ra sản phẩm số thiết thực cho học tập và cuộc sống.\nYêu cầu cần đạt Nội dung\nChuyên đề 10.1:Thực hành làm việc với các tệp văn bản\nTạo được một số văn bản hữu ích, thiết thực, đáp ứng nhu cầu học tập và đời sống như:\n+ Tiểu luận hay báo cáo về một chủ đề thuộc môn học nào đó. Dự án: Soạn thảo tài\n+ Biên bản buổi họp bầu cán bộ lớp. liệu văn bản\n+ Hướng dẫn thể thức tham gia câu lạc bộ ca nhạc.\n+ Chương trình thi đấu thể thao.\n55\nYêu cầu cần đạt Nội dung\n+ Giới thiệu một vài điểm du lịch tại địa phương.\nSản phẩm văn bản đáp ứng được yêu cầu thực tế đặt ra, có thông tin đa dạng, phong phú, hình\nảnhvà hoạ tiết hấp dẫn được thu thập từ nhiều nguồn dữ liệu khác nhau.\nLàm việc được theo nhóm với tinh thần hợp tác.\nChuyên đề 10.2: Thực hành sử dụng phần mềm trình chiếu\nTạo được bài thuyết trình với sử dụng phần mềm trình chiếu, đạt các yêu cầu sau:\nDự án: Chuẩn bị bài\n+ Nội dung thiết thực, thu hút được sự quan tâm của người nghe, có cấu trúc logic và hợp lí.\nthuyết trình về một\n+ Có các đoạn video, hình ảnh, hoạ tiết, hiệu ứng tương tác hấp dẫn để minh hoạ.\nchủ đề thực tế\nLàm việc được theo nhóm với tinh thần hợp tác.\nChuyên đề 10.3: Thực hành sử dụng phần mềm bảng tính\nĐọc hiểu được một số công thức cơ bản trong bảng tính điện tử. Tạo được các công thức tính toán\nvà hiển thị được các thông tin thống kê trong bảng tính,ví dụ tỉ lệ xếp loại kết quả học tập, số tiền thu\nchi hàng tháng,...\nDự án: Tạo bảng\nTạo được bảng tính có cấu trúc hợp lí, có tính thẩm mĩ và được minh hoạ bằng những đồ thị, biểu đồ sinh\ntính quản lí dữ liệu\nđộng.\nthực tế\nTạo được bảng tính hỗ trợ bài toán quản lí có nhiều số liệu và tính toán đáp ứng nhu cầu thực tế. Ví dụ:\nbảng tổng kết điểm của lớp, quản lí chi tiêu quỹ lớp,...\nLàm việc được theo nhóm với tinh thần hợp tác.\n56\nYêu cầu cần đạt Nội dung\nChuyên đề 11.1:Thực hành sử dụng phần mềm vẽ trang trí\nTạo được sản phẩm thiết thực như logo, trang báo tường, thiệp chúc mừng,...với sử dụng các phần\nThực hành sử dụng\nmềm đồ hoạ, thoả mãn các yêu cầu sau:\nphần mềm vẽ trang\n+ Bố cục hợp lí, sinh động, có hoạ tiết mang tính thẩm mĩ.\ntrí\n+ Thể hiện được thông điệp cần truyền tải.\nChuyên đề 11.2: Thực hành sử dụng phần mềm làm phim hoạt hình\nTạo được một vài đoạn phim hoạt hình 2D hoặc 3D bằng cách sử dụng các chức năng chính của\nmột phần mềm làm phim hoạt hình 2D, 3D.\nThực hành sử dụng\nThiết kế được các nhân vật hoạt hình, tạo được các hình động, các đoạn hội thoại giữa các nhân vật\nphần mềm làm phim\nbằng âm thanh và phụ đề.\nhoạt hình\nTạo được đoạn phim hoạt hình từ các nguồn dữ liệu khác nhau.\nCắt, chỉnh sửa được ảnh vàtạo được bộ sưu tập ảnh.\nChuyên đề 11.3: Thực hành sử dụng phần mềm chỉnh sửa ảnh\nSử dụng được các chức năng chính của phần mềm chỉnh sửa ảnh:\nThực hành sử dụng\n+ Tạo và chỉnh sửa được ảnh động từ các ảnh tĩnh với tốc độ hiển thị hợp lí.\nphần mềm chỉnh sửa\n+ Tạo được hiệu ứng chữ chạy, thêm các hiệu ứng vào ảnh động.\nảnh\n+ Biên tập và chỉnh sửa được màu sắc ảnh động, biến đổi được ảnh theo yêu cầu.\n57\nYêu cầu cần đạt Nội dung\nChuyên đề 12.1:Thực hành sử dụng phần mềm quản lí dự án\nVới một dự án thực tế gồm nhiều học sinh tham gia, ví dụ dự án làm website giới thiệu về trường,\ntỉnh hoặc thành phố, biết sử dụng các chức năng chính của phần mềm quản lí dự án để:\n+ Thực hiện được chức năng đặt tiến độ cho các nhiệm vụ cần thực hiện.\nThực hành sử dụng\n+ Thực hiện được chức năng phân bổ nguồn lực và chi phí cho các công việc.\nphần mềm quản lí\n+ Quản lí được dự án theo tiến độ.\ndự án\n+ Chia sẻ được dữ liệu với những thành viên trong nhóm để tăng năng suất làm việc.\n+ Chuẩn bị được báo cáo.\n+ Nêu được tính ưu việt của việc sử dụng phần mềm quản lí dự án.\nChuyên đề 12.2: Thực hành bảo vệ dữ liệu, cài đặt và gỡ bỏ phần mềm\nNêu được một số tình huống có thể dẫn tới mất dữ liệu, hỏng tệp dữ liệu và giải thích được tác hại\ncủa các sự cố đó.\nThực hiện được một số biện pháp bảo vệ dữ liệu: sao lưu và khôi phục dữ liệu, phòng chống và diệt\nvirus, nén và giải nén dữ liệu có sử dụng mật khẩu.\nThực hành bảo vệ dữ\nNêu được một số tình huống dẫn tới việc phải cài đặt, cài đặt lại hay gỡ bỏ hệ điều hành hoặc một liệu, cài đặt và gỡ bỏ\nvài phần mềm trên máy tính và thiết bị di động. phần mềm\nThực hiện được các bước cài đặt hệ điều hành trên máy tính cá nhân.\nThực hiện được các bước cài đặt một phần mềm trên máy tính cá nhân hay thiết bị thông minh.\nThực hiện được các bước gỡ bỏ một phần mềm trên máy tính cá nhân và thiết bị thông minh.\n58\nYêu cầu cần đạt Nội dung\nViết được bản hướng dẫn mô tả các bước cài đặt hay gỡ bỏ hệ điều hành hoặc phần mềm.\nChuyên đề 12.3:Thực hành phân tích dữ liệu với phần mềm bảng tính\nSử dụng được các hàm (Ví dụ: RAND, RANDBETWEEN,...) chọn trực tiếp ngẫu nhiên các mẫu\ndữ liệu.\nSử dụng được các hàm tổ hợp (Ví dụ: COMBINA, PERMUT,...) tính xác suất một biến cố theo xác\nsuất cổ điển, tính xác suất biến ngẫu nhiên theo phân phối nhị thức (BINOMDIST) trong một số bài\ntoán đơn giản.\nMô tả được dữ liệu thống kê của một bài toán thực tếvới sử dụng phần mềm bảng tính:\n+ Trình bày được dữ liệu thống kê bằng: bảng tần số, tần suất một, hai chiều, bảng thống kê theo số\nliệu gộp nhóm và bảng tổng hợp nhiều chiều; Thực hành phân tích\n+ Mô tả được các thống kê của bảng số liệu tổng hợp bằng các loại biểu đồ thông dụng (pie chart, dữ liệu với phần\ncolumn chart, histogram); mềmbảng tính\n+ Sử dụng được các hàm tính các đặc trưng về độ tập trung: trung bình cộng (mean), trung vị\n(median), tứ phân vị (quartile), mốt (mode);\n+ Sử dụng được các hàm tính các đặc trưng về độ phân tán: khoảng biến thiên, phương sai và độ lệch\nchuẩn, hệ số biến thiên;\n+ Giải quyết được bài toán thực tế đơn giản về kiểm định giả thuyết, dựa trên số trung bình của quần\nthể và sự khác biệt hai số trung bình quần thể.\nPhân tích được dữ liệu về tương quan tuyến tính ở mức đơn giản trong một bài toán thực tế với sử\ndụng phần mềm bảng tính.\n59\nYÊU CẦU CẦN ĐẠT VÀ NỘI DUNG CHUYÊN ĐỀ HỌC TẬP\nTHEO ĐỊNH HƯỚNG KHOA HỌC MÁY TÍNH\nChuyên đề học tập định hướng Khoa học máy tính nhằm giúp học sinh: tìm hiểu robot giáo dục; thực hành thiết kế thuật\ntoán theo các kĩ thuật Đệ quy, Chia để trị và Duyệt; tìm hiểu và biết ứng dụng một số kiểu dữ liệu tuyến tính, cây và đồ thị.\nYêu cầu cần đạt Nội dung\nChuyên đề 10.1: Thực hành với các bộ phận của robot giáo dục\nTrình bày được sơ lược về phân loại, vai trò và cơ chế hoạt động của những bộ phận chính của\nrobot giáo dục như: pin (pin đũa, pin cúc,...), động cơ (động cơ DC, động cơ servo hoặc động cơ – Tìm hiểu các thành phần\nbước), bảng mạch, cảm biến, đèn LED, loa, còi, dây cáp, bánh xe, thiết bị điều khiển từ xa,... của robot giáo dục\nLắp ráp được robot giáo dục từ các bộ phận và linh kiện (gắn pin, lắp bánh xe, gắn động cơ,...). – Lắp ráp robot giáo dục\nKiểm tra được tình trạng sẵn sàng hoạt động của robot giáo dục.\nChuyên đề 10.2:Kết nối robot giáo dục với máy tính\nCài đặt được phần mềm hỗ trợ và kết nối được robot giáo dục với máy tính, máy tính bảng – Cài đặt những gói phần\nhoặc điện thoại thông minh thông qua các cổng như wifi, bluetooth hay USB, … mềm hỗ trợ\nKiểm tra được kết quả kết nối robot giáo dục với máy tính. – Lắp ráp thiết bị kết nối\nrobot giáo dục với máy tính\nChuyên đề 10.3:Lập trình điều khiển robot giáo dục\nCài đặt được phần mềm hỗ trợ lập trình (khi cần) để lập trình điều khiển robot giáo dục.\nLập trình điều khiển robot\nViết và thực hiện được chương trình điều khiển robot làmmột vài thao tác đơn giản như cử\ngiáo dục\nđộng cánh tay, di chuyển tiến lùi, …\n60\nYêu cầu cần đạt Nội dung\nChuyên đề 11.1:Thực hành thiết kế thuật toán theo kĩ thuật Đệ quy\nTrình bày được tính đệ quy trong một vài định nghĩa sự vật, sự việc.\nXác định được phần cơ sở và phần đệ quy trong mô tả đệ quy.\nỨng dụng được kĩ thuật Đệ quy trong thiết kế một vài thuật toán như:\nKhái niệm Đệ quy\n+ Tìm phần tử thứ n của dãy Fibonaci. – Thực hành thiết kế\n+ Bài toán Tháp Hà Nội. thuật toán theo kĩ thuật\nĐệ quy\nViết được chương trình sử dụng kĩ thuậtĐệ quy cho một vài bài toán đơn giản.\nNhận biết được tính ưu việt của kĩ thuật Đệ quy trong định nghĩa sự vật,mô tả và thiết kế\nthuật toán.\nChuyên đề 11.2:Thực hành thiết kế thuật toán theo kĩ thuật Chia để trị\nGiải thích được sơ lược về kĩ thuật Chia để trị (Divide and Conquer).\nThực hành thiết kế thuật\nNêu được ý tưởng thiết kế thuật toán theo kĩ thuậtChia để trị, giải thích được mối liên hệ giữa\ntoán theo kĩ thuật Chia\nthiết kế thuật toán theo kĩ thuậtChia để trị và Đệ quy, nêu được ví dụ minh hoạ.\nđể trị\nViết được chương trình đơn giản có sử dụngkĩ thuật Chia để trị.\nChuyên đề 11.3:Thực hành thiết kế thuật toán theo kĩ thuật Duyệt\nNêu được ý tưởngcủa kĩ thuật Duyệt và ví dụ minh hoạ (như tìm phần tử lớn nhất hoặc nhỏ\nnhất trong một dãy số, tìm một số trong một dãy số,...). – Kĩ thuật Duyệt\nNêu được ý tưởngcủa kĩ thuật Quay luivà nêu được ví dụ minh hoạ (như in các xâu nhị phân độ – Kĩ thuật Quay lui\n61\nYêu cầu cần đạt Nội dung\ndài n, tìm tất cả các hoán vị của n phần tử,...).\nNhận ra được mối liên quan giữa thiết kế thuật toán theo kĩ thuật Quay lui và kĩ thuật Đệ quy.\nViết được chương trình đơn giản có sử dụng kĩ thuậtDuyệt.\nViết được chương trình đơn giản có sử dụng kĩ thuật Quay lui.\nYêu cầu cần đạt Nội dung\nChuyên đề 12.1:Tìm hiểu một vài kiểu dữ liệu tuyến tính\nMô tả được khái niệm kiểu dữ liệu Hàng đợi và Ngăn xếp thông qua cơ chế hoạt động của các – Kiểu dữ liệu Hàng đợi\nkiểu dữ liệu này. và Ngăn xếp\nBiểu diễn được Hàng đợi và Ngăn xếp bằng mảng một chiều. – Biểu diễn Hàng đợi,\nGiải thích và viết được chương trình con thực hiện các phép toán cơ bản: khởi tạo, thêm, bớt Ngăn xếp\nphần tử cho Hàng đợi và Ngăn xếp. – Ứng dụng Hàng đợi và\nNêu được một số ứng dụng kiểu dữ liệu Hàng đợi và Ngăn xếp. Ngăn xếp\nChuyên đề 12.2:Tìm hiểu Cây tìm kiếm nhị phân trong sắp xếp và tìm kiếm\nNêu được khái niệm Cây, Cây nhị phân và biểu diễn được Cây nhị phân bằng mảng một chiều. – Cây nhị phân,biểu diễn\nTrình bày và mô phỏng được các phép toán Duyệt trước, Duyệt giữa và Duyệt sau Cây nhị và duyệt Cây nhị phân\nphân được cho bằng biểu diễn trực quan. – Cây tìm kiếm nhị phân\nTrình bày được khái niệm Cây tìm kiếm nhị phân. và ứng dụng trong sắp\nxếp và tìm kiếm\nMô phỏng được thuật toán tạo Cây tìm kiếm nhị phân biểu diễn một tập số nguyên dương và\n62\nYêu cầu cần đạt Nội dung\nthuật toán xác định một giá trị đã cho có thuộc tập hợp đó hay không.\nViết được chương trình duyệt Cây nhị phân.\nỨng dụng được Cây tìm kiếm nhị phân giải bài toán sắp xếp và tìm kiếm.\nChuyên đề 12.3:Tìm hiểu kĩ thuật duyệt Đồ thị và ứng dụng\nTrình bày được khái niệm Đồ thị.\nBiểu diễn và duyệt đồ\nBiểu diễn được đồ thị bằng ma trận kề và danh sách đỉnh kề. thị theo chiều rộng và\nTrình bày được ý tưởng của duyệt đồ thị theo chiều rộng và chiều sâu. chiều sâu\nMô phỏng được thuật toán duyệt theo chiều rộng và theo chiều sâu một đồ thị cụ thể cho bằng – Một số ứng dụng của\nbiểu diễn trực quan. duyệt đồ thị theo chiều\nrộng và chiều sâu\nNêu được vài ứng dụng của kĩ thuật duyệt Đồ thị trong một số bài toán thực tế.\nVI. PHƯƠNG PHÁP GIÁO DỤC\n1. Định hướng chung\na) Phát huy khả năng phát hiện và giải quyết vấn đề thực tiễn; bồi dưỡng sự tự tin và khả năng tự học, tự rèn luyện\nkĩ năng sử dụng các công cụ kĩ thuật số giúp học sinh có thể liên tục phát triển năng lực tin học, thích ứng được với những\nthay đổi nhanh chóng của công nghệ kĩ thuật số.\nb) Tổ chức và hướng dẫn hoạt động để học sinh tích cực, chủ động và sáng tạo trong khám phá kiến thức, trong vận\ndụng tri thức giải quyết vấn đề. Khuyến khích học sinh làm ra sản phẩm số.\nc) Vận dụng các phương pháp giáo dục và các hình thức tổ chức dạy học một cách linh hoạt, sáng tạo, phù hợp với mục\ntiêu, nội dung giáo dục, đối tượng học sinh và điều kiện cụ thể. Chủ động phối hợp với những môn học khác để đạt hiệu quả\ntrong dạy học liên môn và dạy học theo định hướng STEM.\n63\n2.Định hướng về phương pháp hình thành, phát triển phẩm chất chủ yếu và năng lực chung\nMôn Tin học có nhiều cơ hội kết hợp việc hình thành và phát triển năng lực tin học với việc hình thành và phát triển cho\nhọc sinh năm phẩm chất chủ yếu và ba năng lực chung đã được quy định trong Chương trình tổng thể.\na) Phương pháp hình thành và phát triển phẩm chất chủ yếu\nMột số chủ đề của môn Tin học giúp giáo viên có cơ hội hình thành và phát triển một cách hiệu quả cho học sinh những\nphẩm chất chủ yếu: yêu nước, nhân ái, chăm chỉ, trung thực và trách nhiệm. Các chủ đề tập trung vào nội dung thuật toán và\nlập trình, các chủ đề “Đạo đức, pháp luật và văn hoá trong môi trường số”, “Ứng dụng tin học” và “Hướng nghiệp với tin\nhọc” tạo ra nhiều tình huống bộc lộ được phẩm chất qua các ứng xử, đặc biệt trong môi trường số. Giáo viên cần căn cứ vào\ncác biểu hiện của những phẩm chất được mô tả trong Chương trình tổng thể để hình thành và phát triển phẩm chất cho học\nsinh trong suốt cả quá trình giáo dục tin học.\nb) Phương pháp hình thành và phát triển năng lực chung\nNội dung và các yêu cầu cần đạt của một số chủ đề trong Chương trình môn Tin học giúp hình thành và phát triển trực\ntiếp ba thành phần của năng lực tin học: (NLd) “Ứng dụng công nghệ thông tin và truyền thông trong học và tự học”; (NLe)\n“Hợp tác trong môi trường số” và (NLc) “Giải quyết vấn đề với sự hỗ trợ của công nghệ thông tin và truyền thông”. Thông\nqua các chủ đề đó, giáo viên cần kết hợp góp phần cụ thể, trực tiếp phát triển ba năng lực chung “tự chủ và tự học”, “giao\ntiếp và hợp tác”, “giải quyết vấn đề và sáng tạo”. Giáo viên cần căn cứ vào tình huống cụ thể trong môi trường số và dựa\nvào các biểu hiện được mô tả trong Chương trình tổng thể để phát triển các năng lực chung nêu trên.\n3. Định hướng về phương pháp, hình thức tổ chức dạy học đặc thù trong giáo dục tin học\nTrong quá trình tổ chức dạy học, giáo viên cần:\na) Áp dụng các phương pháp dạy học tích cực, coi trọng dạy học trực quan và thực hành. Khuyến khích sử dụng\nphương pháp dạy học theo dự án để phát huy khả năng làm việc nhóm, khả năng tự học và tính chủ động của học sinh. Việc\ndạy học ở phòng thực hành máy tính cần được tổ chức linh hoạt nhằm đem lại cho học sinh sự hào hứng, chủ động khám\nphá, nhưng phải bảo đảm thực hiện nhiệm vụ được giao.\n64\nb) Tuỳ theo nội dung bài, ở mỗi hoạt động, lựa chọn hình thức tổ chức dạy học phù hợp. Một số chủ đề liên quan trực\ntiếp đến lập luận, suy diễn logic, tư duy thuật toán và giải quyết vấn đề có thể được dạy học không nhất thiết phải sử dụng\nmáy tính.\nc) Gắn nội dung kiến thức với các vấn đề thực tế, yêu cầu học sinh không chỉ đề xuất giải pháp cho vấn đề mà còn phải\nbiết kiểm chứng hiệu quả của giải pháp thông qua sản phẩm số.\nniềm đam mê và giúp học sinh phát hiện khả năng của bản thân đối với môn Tin học, chuẩn bị cho sự lựa chọn môn Tin học\nkhông chỉ về nội dung kiến thức mà cả về phương pháp dạy học. Phương pháp dạy học thực hành rất quan trọng trong các\nchủ đề định hướng Tin học ứng dụng với mục tiêu rèn luyện và phát triển kĩ năng sử dụng công cụ kĩ thuật số. Phương pháp\ndạy học nêu và giải quyết vấn đề phù hợp với nhiều chủ đề của định hướng Khoa học máy tính với mục tiêu phát triển tư\nduy máy tính cho học sinh.\nVII. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC\n1. Định hướng chung\na)Đánh giá thường xuyên hay định kì đều bám sát nămthành phần của năng lực tin học và các mạch nội dung DL, ICT,\nCS, đồng thời cũng dựa vào các biểu hiện năm phẩm chất chủ yếu và ba năng lực chung được xác định trong chương trình\ntổng thể.\nb)Với các chủ đề có trọng tâm là ICT, cần coi trọng đánh giá khả năng vận dụng kiến thức kĩ năng làm ra sản phẩm.\nVới các chủ đề có trọng tâm là CS, chú trọng đánh giá năng lực sáng tạo và tư duy có tính hệ thống. Với mạch nội dung DL,\nphải phối hợp đánh giá cách học sinh xử lí tình huống cụ thể với đánh giá thông qua quan sát thái độ, tình cảm, hành vi ứng\nxử của học sinh trong môi trường số. Giáo viên cần lập hồ sơ học tập dưới dạng cơ sở dữ liệu đơn giản để lưu trữ, cập nhật\nkết quả đánh giá thường xuyên đối với mỗi học sinh trong cả quá trình học tập của năm học, cấp học.\nc)Kết luận đánh giá của giáo viên về năng lực tin học của mỗi học sinh dựa trên sự tổng hợp các kết quả đánh giá thường\n65\nxuyên và kết quả đánh giá định kì.\n2. Một số lưu ý trong đánh giá\na) Đánh giá năng lực tin học trên diện rộng phải căn cứ yêu cầu cần đạt đối với các chủ đề bắt buộc; tránh xây dựng công\ncụ đánh giá dựa vào nội dung của chủ đề lựa chọn cụ thể.\nb)Cần tạo cơ hội cho học sinh đánh giá chất lượng sản phẩm bằng cách khuyến khích học sinh giới thiệu rộng rãi sản\nphẩm số của mình cho bạn bè, thầy cô và người thân để nhận được nhiều nhận xét góp ý.\nc)Để đánh giá chính xác và khách quan hơn, giáo viên thu thập thêm thông tin bằng cách tổ chức các buổi giới thiệu sản\nphẩm số do học sinh làm ra, khích lệ học sinh tự do trao đổi thảo luận với nhau hoặc với giáo viên.\nVIII. GIẢI THÍCH VÀ HƯỚNG DẪN THỰC HIỆN CHƯƠNG TRÌNH\n1. Giải thích thuật ngữ\nTrong Chương trình môn Tin học, các thuật ngữ dưới đây được dùng với nghĩa như sau:\na) Một số thuật ngữ tin học\nCác thuật ngữ được sắp xếp theo thứ tự ABC; có chú thích thuật ngữ tiếng Anh trong dấu ngoặc đơn ( ).\nThuật ngữ Giải thích\nBa mạch kiến thức DL, Mỗi mạch trong ba mạch kiến thức DL, ICT, CS tự nó chứa ít nhiều những kiến thức thuộc\nICT, CS hoà quyện một hoặc cả hai mạch kiến thức còn lại, không thể tách rời; do đó mỗi kiến thức cung cấp cho\nhọc sinh có sự hoà lẫn, bện chặt vào nhau của ba mạch kiến thức;tuỳ theo ý nghĩa và vai trò\ntrọng tâm của một nội dung trong hệ thống kiến thức Tin học phổ thông mà xem nội dung đó\nthuộc về mạch kiến thức nào.\nCách mạng công nghiệp lần Cuộc cách mạng công nghiệp dựa trên nền tảng công nghệ số và tích hợp các công nghệ thông\nthứ tư (IR 4.0) minh để tạo ra quy trình, phương thức sản xuất mới. Sự tích hợp Internet vạn vật (IoT), trí tuệ\n66\nThuật ngữ Giải thích\nnhân tạo, tự động hoá, điện toán đám mây cùng các tiến bộ đột phá trong công nghệ thông tin,\ncông nghệ sinh học, công nghệ nano và các công nghệ khác vào trung tâm của hệ thống sản\nxuất và sản phẩm cho phép làm mờ ranh giới giữa các hệ thống thực (thế giới vật lí, thế giới\ncác thực thể) và các hệ thống ảo (thế giới số, không gian số). Điều đó tạo ra một nền sản xuất\nthông minh mà ở đó sản phẩm được sản xuất trong thế giới vật lí nhưng quá trình tính toán,\nthiết kế, tạo mẫu,... được thực hiện trên không gian số.\nCông nghệ thông tin và Tập hợp các phương pháp khoa học, các phương tiện và công cụ kĩ thuật hiện đại – chủ yếu là\nTruyền thông (Information kĩ thuật máy tính và viễn thông – nhằm tổ chức khai thác và sử dụng có hiệu quả các nguồn tài\nand Communication nguyên thông tin phong phú và tiềm năng trong mọi lĩnh vực hoạt động của con người và xã hội.\nICT)\nCông nghệ số Công nghệ về các tài nguyên số bao gồm việc số hoá và quản trị, xử lí các dữ liệu số.\n(Digital Technology)\nDữ liệu lớn Tập hợp dữ liệu rất lớn, đa dạng và phức tạp mà các công nghệ xử lí dữ liệu truyền thống\n(Big Data) không xử lí được. Công nghệ xử lí dữ liệu lớn bao gồm việc phân tích, thu thập, giám sát, tìm\nkiếm, chia sẻ, lưu trữ, khai phá ngữ nghĩa và truyền dữ liệu.\nHọc vấn số hoá phổ thông Khả năng sử dụng các hệ thống máy tính một cách tự tin và hiệu quả, bao gồm:\nDL)\n+ Các kĩ năng cơ bản sử dụng bàn phím, chuột,...\n+ Sử dụng các chức năng cơ bản của phần mềm soạn thảo văn bản, trình chiếu, bảng tính,...\n+ Sử dụng Internet để duyệt web, tìm kiếm thông tin, tạo ra nội dung cho các trang web. Liên\nlạc và hợp tác qua e-mail, mạng xã hội, các diễn đàn thảo luận,...\nInternet vạn vật Hệ thống liên mạng bao gồm các phương tiện và vật dụng, các thiết bị thông minh được cài\nIoT) đặt các cảm biến, phần mềm chuyên dụng giúp chúng có thể tự động kết nối, thu thập và trao\n67\nThuật ngữ Giải thích\nđổi dữ liệu trên cơ sở hạ tầng Internet mà không nhất thiết có sự tương tác trực tiếp giữa con\nngười với con người, hay con người với máy tính.\nKinh tế tri thức Nền kinh tế chủ yếu dựa vào tri thức trên cơ sở phát triển khoa học và công nghệ cao, lấy tri\n(Knowledge Economy) thức làm động lực chủ yếu cho tăng trưởng kinh tế.\nKhoa học dữ liệu Khoa học về các quá trình và các hệ thống trích chọn tri thức từ dữ liệu ở các dạng khác nhau\n(Data Science) để tạo ra các quyết định dẫn dắt hành động. Khoa học dữ liệu được phát triển tiếp nối từ phân\ntích dữ liệu, khoa học thống kê, khai phá dữ liệu,...\nKhoa học máy tính Khoa họcnghiên cứu các nguyên lí và thực hành làm cơ sở cho sự hiểu biết và mô hình hoá\nCS) tính toán, ứng dụng của chúng trong việc phát triển máy tính và các hệ thống máy tính. Ngày\nnay, khoa học máy tính được xem là nền tảng cho các ngành khác trong lĩnh vực ICT nghiên\ncứu về các nguyên tắc cơ bản và thực tiễn của việc tính toán, tư duy máy tính và ứng dụng\nchúng trong việc thiết kế và phát triển phần cứng, phần mềm, các hệ thống máy tính.\nMạng cảm biến không dây Mạng kết nối các cảm biến (sensor) với nhau thông qua sóng vô tuyến hoặc ánh sáng.\n(Wireless Sensor Network)\nMạng xã hội Mạng kết nối người dùng lại với nhau thông qua Internet để chia sẻ các sở thích hay thông tin\n(Social Network) cùng quan tâm, không phân biệt đối tượng tham gia, không phụ thuộc không gian và thời gian.\nDịch vụ mạng xã hội có những loại hình như chat, e-mail, phim ảnh, voice chat, chia sẻ tệp và\nxã luận,...\nRobot giáo dục Loại robot được thiết kế phục vụ mục đích giáo dục, giúp học sinh hiểu và thực hành những\nkiến thức kĩ năng về cơ khí, điện tử và điều khiển tự động.\nScratch Ngôn ngữ lập trình trực quan được MIT phát triểnvà đang được sử dụng ở nhiều trường phổ\nthông trên thế giới.\n68\nThuật ngữ Giải thích\nThế giới ảo (Virtual World) Thế giới do con người tạo ra trong môi trường số.\nTrí tuệ nhân tạo(Artificial Khả năng máy tính và thiết bị bắt chước cách “nhận thức”, “xử lí” và “giải quyết vấn đề”\nAI) giống như con người nói riêng và các sinh vật thông minh nói chung. Con người viết và cài\nđặt các chương trình để máy tính và các thiết bị có được khả năng đó. Trí tuệ nhân tạo là một\nlĩnh vực và đối tượng nghiên cứu của ngành khoa học máy tính.\nTư duy máy tính Quá trình nhận biết các khía cạnh tính toán trong thế giới xung quanh ta, từ đó giúp giải quyết\n(Computer Thinking hoặc vấn đề.Ví dụ biết cách chia vấn đề thành những phần có thể giải quyết và đưa ra các thuật toán\nComputational Thinking) để giải quyết chúng. Tư duy máy tính là kĩ năng cơ bản và cần thiết đối với tất cả mọi người,\nkhông chỉ cho các nhà khoa học máy tính. Tư duy máy tính là một quá trình nhận thức và suy\nluận logic để giải quyết vấn đề, là khả năng:\nPhân rã công việc và dữ liệu.\nKhái quát hoá, xác định và sử dụng các dạng mẫu.\nTrừu tượng hoá, lựa chọn cách biểu diễn.\nĐánh giá và ước lượng.\nPhát triển thuật toán.\nTư duy máy tính không chỉ cho phép học sinh tiếp cận các chủ đề tin học một cách thuận lợi,\nmà quan trọng hơn, nó phát triển cho học sinh kĩ năng tư duy giải quyết vấn đề trong học tập và\ncuộc sống.\nb) Từ ngữ thể hiện mức độ đáp ứng yêu cầu cần đạt\nChương trình môn Tin học sử dụng một số động từ để thể hiện mức độ đáp ứng yêu cầu cần đạt về năng lực của học\nsinh. Một số động từ được sử dụng ở các mức độ khác nhau nhưng trong mỗi trường hợp thể hiện một hành động có đối\ntượng và yêu cầu cụ thể. Trong bảng tổng hợp dưới đây, đối tượng, yêu cầu cụ thể của mỗi hành động được chỉ dẫn bằng các\n69\ntừ ngữ khác nhau đặt trong ngoặc đơn.\nTrong quá trình dạy học, đặc biệt là khi đặt câu hỏi thảo luận, ra đề kiểm tra đánh giá, giáo viên có thể dùng những động\ntừ nêu trong bảng tổng hợp hoặc thay thế bằng các động từ có nghĩa tương đương cho phù hợp với tình huống sư phạm và\nnhiệm vụ cụ thể giao cho học sinh.\nMức độ Động từ mô tả mức độ\nKể lại được (điều quan sát, điều biết thêm), nêu được (công việc, ví dụ, tên thiết bị, tên nghề, tên thành phần,\ntên và độ lớn đơn vị đo dung lượng, vai trò, lợi ích, khả năng, khái niệm, thông tin chính, công dụng, ưu điểm,\nnhược điểm, tác hại, nhu cầu, chức năng, ý nghĩa, đặc điểm, nội dung liên quan đến Luật Công nghệ thông tin,\nhành vi vi phạm pháp luật, các bước, quy trình, dịch vụ, cách, dạng lừa đảo phổ biến trên mạng, cảnh báo, mục\ntiêu và thành tựu, trải nghiệm của bản thân, lĩnh vực sử dụng kĩ thuật mô phỏng, ý tưởng của kĩ thuật, ứng dụng\ncủa đường truyền, ứng dụng của kiểu dữ liệu tuyến tính, ứng dụng của Duyệt đồ thị, tình huống dẫn đến mất dữ\nliệu, tình huống phải cài đặt phần mềm).\nKhởi động được (máy tính, một số thiết bị thông dụng), kích hoạt được (phần mềm).\nBiết được (không phải thông tin nào trên Internet cũng phù hợp với lứa tuổi, tác hại của bệnh nghiện Internet,\nngười xấu có thể lợi dụng, thông tin cá nhân có thể được lưu trữ, có thể biểu diễn sắp xếp phân loại, chức năng của\nthiết bị, cách kết nối các bộ phận, cách kết nối PC với thiết bị, bit là đơn vị nhỏ nhất, chương trình máy tính là\nmột mô tả thuật toán, tệp chương trình cũng là dữ liệu, việc kiểm thử chương trình giúp phát hiện lỗi, khả năng\nđính kèm, vai trò của máy tính, tính ưu việt của việc sử dụng máy tính), nhận biết được (cái gì là thông tin và\nđâu là quyết định, ba dạng thông tin hay gặp, màn hình cảm biến, tệp, thư mục, ổ đĩa, nhu cầu lưu trữ dữ liệu,\nbiểu tượng của phần mềm, mục đích chia một nhiệm vụ lớn thành các nhiệm vụ nhỏ hơn, sự khác nhau giữa\nthông tin và dữ liệu, sự có mặt của các thiết bị, thiết bị số thông dụng, sơ đồ mạch logic, mạng xã hội, sự mô\nphỏng thế giới thực, đặc trưng cơ bản của nhóm nghề, lợi ích của phương pháp làm mịn dần, tính ưu việt của kĩ\nthuật Đệ quy), nhận thấy (phần mềm có thể giúp tập gõ bàn phím), biết cách (dùng máy tìm kiếm, đăng kí tài\nkhoản thư điện tử).\n70\nMức độ Động từ mô tả mức độ\nNhận ra được (thông tin thu nhận và được xử lí là gì, chương trình máy tính, thiết bị vào – ra), nhận diện được\n(hình dạng các bộ phận chính, một số thông điệp lừa đảo trên mạng), chỉ ra được (khu vực chính của bàn phím,\nlĩnh vực phát triển mạnh mẽ dựa trên AI).\nThực hiện được (các thao tác, quyền sở hữu trí tuệ ở mức đơn giản, tạo thư mục, tìm kiếm thông tin, ra khỏi\nphần mềm, định dạng, các phép tính cơ bản AND OR NOT, chương trình, chỉ dẫn trong tài liệu, tạo lập cơ sở\ndữ liệu, cập nhật cơ sở dữ liệu, một số chức năng trong phần mềm), tìm kiếm được (thông tin).\nDiễn tả được (khái niệm thuật toán), diễn đạt được (một số khái niệm trong chủ đề cơ sở dữ liệu), mô tả được\n(chức năng của các bộ phận, dữ liệu thống kê, khái niệm kiểu dữ liệu tuyến tính, thuật toán, kịch bản, giải pháp),\ntrình bày được (tác dụng của một số công cụ, thông tin ở dạng bảng, ý tưởng dưới dạng sơ đồ tư duy, khái niệm,\ntầm quan trọng, lịch sử máy tính, vấn đề bình đẳng giới, tác động tiêu cực, quá trình giải quyết vấn đề, công\nviệc đặc thù và sản phẩm chính, thông tin hướng nghiệp, những đóng góp cơ bản, những thay đổi, phương thức\nhọc tập và làm việc, cách đề phòng, lịch sử của hệ điều hành, cấu trúc dữ liệu, vai trò và cơ chế hoạt động, tính\nđệ quy, ý tưởng của kĩ thuật duyệt), phát biểu được (nhiệm vụ đặt ra, bài toán sắp xếp và tìm kiếm), nêu được\n(ví dụ minh hoạ, nhận xét, mối quan hệ, vấn đề nảy sinh về đạo đức và pháp luật khi giao tiếp trên mạng).\nGiải thích được (ví dụ minh hoạ, lợi ích, máy tính là công cụ hiệu quả, sự cần thiết, tính chất của thông tin,\nmột số khái niệm, có những bước có thể chuyển giao cho máy tính, chương trình là bản mô tả thuật toán, biểu\ndiễn thông tin chỉ với hai kí hiệu 0 và 1, ứng dụng của hệ nhị phân, vai trò của các mạch logic, việc số hoá văn\nbản, chức năng của bảng mã, chức năng của hệ điều hành, phần mở rộng của tên tệp, việc đưa các công thức vào\nbảng tính, sự khác nhau giữa địa chỉ tương đối và địa chỉ tuyệt đối, sự thay đổi địa chỉ tương đối, thuật toán sắp\nxếp và tìm kiếm, mối liên quan giữa sắp xếp và tìm kiếm, tác hại, sự cần thiết và tầm quan trọng, những biểu\nhiện, tác động, ý kiến, sự bình đẳng giới trong tin học, vai trò của thiết bị, sự vi phạm bản quyền, nội dung của\nluật, đơn vị đo hiệu năng, thông số, tính ưu việt, cấu trúc của trang web, kĩ thuật thiết kế thuật toán.\nHiểu được (chương trình là dãy các lệnh điều khiển máy tính), tìm hiểu được (cấu trúc cây của thư mục, chức\n71\nMức độ Động từ mô tả mức độ\nnăng của hệ quản trị cơ sở dữ liệu, công việc ở một số doanh nghiệp, thông tin ngành đào tạo), mô phỏng được\n(các phép toán Duyệt cây nhị phân, thuật toán tạo Cây tìm kiếm nhị phân, thuật toán duyệt Duyệt đồ thị), biểu\ndiễn được (Hàng đợi và Ngăn xếp, Cây tìm kiếm nhị phân, Đồ thị), phân tích được (thiết bị số khác cũng là hệ\nthống xử lí thông tin, ưu nhược điểm về giao tiếp trong thế giới ảo, tính nhân văn trong ứng xử, tương quan\ntuyến tính), đọc hiểu được (chương trình, tài liệu hướng dẫn, công thức trong bảng tính điện tử), phân biệt được\n(hình dạng, các loại thông tin, thông tin với vật mang tin, hệ điều hành với phần mềm ứng dụng, thông tin và dữ\nliệu, hai loại kiến trúc tập trung và phân tán của hệ Cơ sở dữ liệu, chức năng), so sánh được (mạng LAN và\nInternet, phần mềm nguồn mở với phần mềm thương mại), đánh giá được (lợi ích của thông tin).\nTìm được (tệp, thông tin), biên tập được (phim, màu sắc ảnh), cắt được (ảnh), chuẩn bị được (báo cáo của dự\nán), thể hiện được (mong muốn biết sử dụng máy tính, sự hợp tác của mình, sự tôn trọng tính riêng tư và bản\nquyền nội dung thông tin), biết dùng (công cụ gạch đầu dòng), dùng được (địa chỉ trong công thức), chạy thử\nđược (chương trình), chuyển đổi được (giữa các đơn vị lưu trữ thông tin), cài đặt được (phần mềm), kết nối\nđược (PC với các thiết bị số), chia sẻ được (thông tin, dữ liệu), khai thác được (thông tin, một số nguồn học liệu\nmở), lưu trữ được (văn bản), chỉnh sửa được (văn bản, ảnh, màu sắc), tuỳ chỉnh được (chức năng của máy tính),\nxác lập được (các lựa chọn theo tiêu chí tìm kiếm), định dạng được (kí tự, kiểu chữ, màu chữ, kích thước chữ),\nlắp ráp được (robot giáo dục), soạn thảo được (văn bản), tạo được (tệp, chương trình, thư viện, thư mục, sản\nphẩm số).\nXác định được (cấu trúc dữ liệu thích hợp, chủ đề của thông tin cần tìm, phần cơ sở và phần đệ quy trong mô\ntả đệ quy), chia được (công việc thành những việc nhỏ hơn), chọn được (thông tin phù hợp), chuẩn bị được (báo\ncáo), thiết lập được (mối quan hệ giữa các bảng), sử dụng được (công cụ tìm kiếm, biến nhớ và biểu thức, phần\nmềm), vận dụng được (quy tắc thực hành, phương pháp làm mịn dần).\nThực hiện được (biện pháp bảo vệ dữ liệu, cài đặt hoặc gỡ bỏ phần mềm, biện pháp phòng ngừa, nhiệm vụ\ngiáo viên đặt ra, giao tiếp qua mạng, dự án, khai thác cơ sở dữ liệu, thao tác xử lí ảnh), bảo vệ được (thông tin),\n72\nMức độ Động từ mô tả mức độ\nhợp tác được (theo nhóm để viết kịch bản), kiểm thử được (chương trình), viết được (chương trình, bản hướng\ndẫn), thiết kế được (các nhân vật hoạt hình), quản lí được (dự án).\n2. Thời lượng thực hiện chương trình\ncó chuyên đề học tập Tin học theo hai định hướng ICT và CS, mỗi định hướng 35 tiết/lớp/năm học.\nThời lượng dành cho các nội dung giáo dục do tác giả sách giáo khoa và giáo viên chủ động sắp xếp căn cứ vào yêu cầu\ncần đạt ở mỗi lớp và thực tế dạy học. Tuy nhiên, cần bảo đảm tỉ lệ hợp lí giữa các nội dung. Dưới đây là phương án đề xuất\nthời lượng tham khảo theo tỉ lệ % dành cho các nội dung ở mỗi lớp."
+  },
+  {
+    "cap": "THCS",
+    "lop": "12",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy tính 17% 23% 45%",
+    "noiDung": "",
+    "yccd": "Đánh giá định kì 6% 6% 6%\n73\nChú thích: Với mỗi nội dung, thời lượng thực hành khoảng 35%."
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề G. Hướng nghiệp với tin học 0% 0% 6% 8%",
+    "noiDung": "",
+    "yccd": "Đánh giá định kì 6% 6% 6% 6%\nChú thích: Với mỗi nội dung, thời lượng thực hành khoảng 40%.\nỞ lớp 8 cần chọn 1 trong 2 chủ đề con (mỗi chủ đề con lựa chọn đều khoảng 28%).\nỞ lớp 9 cần chọn 1 trong 2 chủ đề con(mỗi chủ đề con lựa chọn đều khoảng 37%)."
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề A. Máy tính và xã hội tri thức 11% 14% 5%",
+    "noiDung": "",
+    "yccd": "74"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề Lớp 10 Lớp 11 Lớp 12",
+    "noiDung": "",
+    "yccd": "ICT CS ICT CS\n0%\n0% 10% 6% 0%\n10%"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề B. Mạng máy tính và Internet 10% 0%",
+    "noiDung": "",
+    "yccd": "ICT CS\n0% 12%"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề C. Tổ chức lưu trữ, tìm kiếm và trao đổi thông",
+    "noiDung": "",
+    "yccd": "0% 8% 0%\ntin"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề D. Đạo đức, pháp luật và văn hoá trong môi",
+    "noiDung": "",
+    "yccd": "5% 4% 4%\ntrường số\nICT CS ICT CS ICT CS"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề E. Ứng dụng tin học",
+    "noiDung": "",
+    "yccd": "10% 0% 20% 0% 23% 0%\n21% 37%"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề F. Giải quyết vấn đề với sự trợ giúp của máy",
+    "noiDung": "",
+    "yccd": "ICT CS ICT CS\ntính 54%\n26% 46% 0% 17%"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề G. Hướng nghiệp với tin học 7% 4% 10%",
+    "noiDung": "",
+    "yccd": "Đánh giá định kì 3% 3% 5%\n75\nChú thích:\nThời lượng thực hành của định hướng Tin học ứng dụng khoảng 50%, của định hướng Khoa học máy tính khoảng 35%.\nThời lượng dành cho mỗi chủ đề bao gồm: Thời lượng chung cho cả hai định hướng ICT và CS; thời lượng dành cho\nmỗi định hướng: Tin học ứng dụng (ICT), Khoa học máy tính (CS).\nPhân bổ số tiết dành cho các chuyên đề học tập (bao gồm cả đánh giá định kì) ở các lớp như sau:\nChuyên đề Lớp 10 Lớp 11 Lớp 12\nChuyên đề 10.1, chuyên đề 11.1, chuyên đề 12.1 10 10 10\nChuyên đề 10.2, chuyên đề 11.2, chuyên đề 12.2 10 10 10\nChuyên đề 10.3, chuyên đề 11.3, chuyên đề 12.3 15 15 15\n3. Thiết bị dạy học\na) Thiết bị phục vụ giáo viên dạy học: máy tính cá nhân, máy chiếu, màn hình chiếu.\nb) Thiết bị phục vụ học sinh thực hành\nMáy tính\n+ Cấu hình máy tính: Phải đáp ứng cài đặt được các hệ điều hành và phần mềm thông dụng. Các máy tính phải được kết\nnối mạng LAN và Internet, có trang bị những thiết bị phục vụ thực hành như loa, tai nghe, micro, camera,…\n+ Phần mềm: Các máy tính cần được cài đặt hệ điều hành và các phần mềm ứng dụng thuộc loại có bản quyền, mã\n76\nnguồn mở hoặc miễn phí.\nCác thiết bị khác:\n+ Thiết bị mạng bao gồm Switch, Modem, Access Point, cáp mạng, dây mạng dùng để kết nối mạng LAN và Internet\ncho các máy tính, phục vụ học sinh thực hành các bài học về thiết bị số và thiết kế mạng.\n+ Máy chiếu và màn hình.\n+ Robot: Trong giờ học chuyên đề về robot, cần có ít nhất 1 robot giáo dục/mỗi nhóm (tối đa 8 học sinh).\nc) Phòng thực hành máy tính\nPhòng thực hành phải có đủ diện tích để sắp xếp thiết bị; có máy tính, máy chiếu, màn hình, máy in; có máy tính dùng\nlàm server để lưu trữ các học liệu điện tử, cài đặt các phần mềm quản lí học tập, phần mềm quản lí nhà trường và phần mềm\ntường lửa; có nội quy phòng thực hành,...\n4. Thực hiện chương trình phù hợp với điều kiện thực tế và đối tượng học sinh\nChương trình môn Tin học được thiết kế theo hướng mở để đáp ứng đặc thù của tin học và phù hợp với tính chất của\nmột môn học bắt buộc có một số chủ đề lựa chọn (phân hoá). Tính mở của chương trình khích lệ hứng thú học tập, đáp ứng\nsở thích cá nhân và đem lại nhiều cơ hội hướng nghiệp cho học sinh, đồng thời tạo thuận lợi cho địa phương tổ chức, triển khai\ndạy tin học khả thi và có hiệu quả hơn.\na) Về các chủ đề con bắt buộc và lựachọn\nĐể thực hiện theo định hướng phân hoá, chương trình môn Tin học thiết kế có tính mở:\nCó chủ đề con bắt buộc đối với tất cả học sinh trong toàn quốc.\nCó các chủ đề conlựachọn để cơ sở giáo dục lựa chọn với yêu cầu bảo đảm số lượng chủ đề và tổng thời lượng theo\nquy định. Việc lựa chọn là linh hoạt, có thể thay đổi hằng năm.\nb) Về bảo đảm liên thông\nNội dung dạy học phải bảo đảm yếu tố sư phạm, phù hợp lứa tuổi, tâm - sinh lí và khả năng tiếp thu của học sinh. Vì\n77\nvậy, trong chương trình có nhiều chủ đề phân bố xuyên suốt qua một số lớp khác nhau (Ví dụ: thuật toán, lập trình, xử lí\nthông tin, ứng dụng tin học, soạn thảo văn bản, trình chiếu,...). Cùng một chủ đề, ở các lớp khác nhau có thể có các tiêu đề\ngiống nhau, nhưng với các yêu cầu cần đạt khác nhau và mức độ nâng cao dần. Chương trình bảo đảm tính liên thông, hệ\nthống, đồng tâm, không trùng lặp và ở mỗi lớp, học sinh có đủ kiến thức, kĩ năng tạo được sản phẩm số hoàn thiện, đạt yêu\ncầu tương ứng với nội dung chương trình lớp đó.\nc) Về lựa chọn phần cứng và phần mềm\nCác cơ sở giáo dục cần quan tâm đầu tư để phòng máy tính được kết nối mạng và Internet. Cần có lộ trình tăng cường\nđầu tư các thiết bị phần cứng để học sinh làm quen, sử dụng. Các trường có điều kiện nên trang bị thêm các thiết bị kĩ thuật\nsố hiện đại như máy ảnh số, máy tính bảng, thiết bị thông minh (điện thoại thông minh, robot giáo dục,...). Những cơ sở giáo\ndục chưa đủ điều kiện có thể thu thập hình ảnh các thiết bị đó trên mạng để giới thiệu cho học sinh.\nCơ sở giáo dục cần thu thập, lưu trữ không chỉ các phần mềm phổ biến thiết yếu như các phần mềm soạn thảo, trình\nchiếu, bảng tính,... mà cả các phần mềm học tập, vui chơi, giải trí, phần mềm đồ hoạ, thiết kế, công cụ hoạt hình, mô\nphỏng,... nhằm cung cấp không chỉ cho môn Tin học mà cho tất cả các môn học và hoạt động giáo dục khác.\nd) Về phần mềm mã nguồn đóng và mã nguồn mở\nVề hệ điều hành, bộ phần mềm văn phòng và các phần mềm khác: Chương trình chỉ đưa ra yêu cầu cần đạt mà không\nbắt buộc sử dụng phần mềm cụ thể nào; không phân biệt là mã nguồn mở hay mã nguồn đóng. Khuyến khích lựa chọn các\nphiên bản mới, thông dụng và miễn phí.\nCác phần mềm học tập, vui chơi, giải trí: Trong chương trình có các nội dung yêu cầu phải sử dụng các loại phần mềm\nhọc tập, phần mềm trò chơi, giải trí với các yêu cầu cần đạt tương ứng. Khuyến khích giáo viên, tác giả sách giáo khoa chủ\nđộng khai thác, lựa chọn nguồn tài nguyên ở các kho học liệu số (chủ yếu trên Internet) rất phong phú, đa dạng và phần lớn\nlà miễn phí để biên soạn giáo án và sách giáo khoa. Trên thị trường, các loại phần mềm khác nhau và các phiên bản mới liên\ntục ra đời. Do vậy, cần định kì thu thập, cập nhật các phần mềm mới, phiên bản mới.\ne)Về lựa chọn các định hướng Tin học ứng dụng, Khoa học máy tính\nỞ mỗi lớp trung học phổ thông, chương trình môn Tin học cũng như chuyên đề học tập đều đưa ra hai định hướng phân\n78\nhoá lựa chọn là Tin học ứng dụng và Khoa học máy tính. Tuỳ theo nguyện vọng của học sinh và cha mẹ học sinh, tuỳ điều\nkiện tổ chức dạy học, nhà trường có thể chọn chương trình định hướng Tin học ứng dụng cho một số lớp và chọn chương\ntrình theo định hướng Khoa học máy tính cho một số lớp khác. Không quy định tỉ lệ chọn, có thể thay đổi tỉ lệ này hằng năm\ntuỳ theo nguyện vọng lựa chọn ngành nghề của học sinh và xu thế phát triển nhu cầu nhân lực của xã hội.\ng)Về lựa chọn các chủ đề con cụ thể của dự án học tập, sản phẩm số\nMột trong những điểm mới của chương trình là khuyến khích dạy học theo dự án và học sinh làm ra sản phẩm số hoàn\nthiện, vận dụng kiến thức liên môn trong dạy học giải quyết vấn đề thực tế. Chương trình chỉ đưa ra các yêu cầu cần đạt và\nmột số gợi ý có tính định hướng. Việc đưa ra các chủ đề, nhiệm vụ cụ thể cho mỗi nhóm hoặc mỗi cá nhân học sinh thực\nhiện do tác giả sách giáo khoa và giáo viên tự quyết định. Ngoài ra, giáo viên cũng có thể khuyến khích học sinh tự đề xuất\nnhiệm vụ với sự trợ giúp, hướng dẫn và phê duyệt của giáo viên. Cách thức, kế hoạch thực hiện, hình thức kiểm tra giám sát\nvà đánh giá kết quả hoàn toàn do giáo viên và tổ chuyên môn quyết định.\n5. Cách tiếp cận mới của chương trình\n5.1. Quan hệ giữa năng lực tin học với các mạch kiến thức tin học\na) Chương trình môn Tin học thực hiện mục tiêu hình thành, phát triển phẩm chất, năng lực cho học sinh thông qua giáo\ndục thái độ, trang bị kiến thức và rèn luyện kĩ năng cho học sinh. Năm thành phần năng lực tin học và ba mạch kiến thức tin\nhọc có mối quan hệ tương hỗ chặt chẽ. Khi vận dụng kiến thức, kĩ năng đến một mức độ nhất định để đáp ứng yêu cầu của\nthực tế, năng lực tin học của học sinh sẽ được phát triển. Đồng thời, khi năng lực tin học của học sinh được phát triển lên\nmột mức mới thì những kiến thức, kĩ năng đã học sẽ được củng cố vững chắc, góp phần quan trọng để học sinh tiếp thu\nnhững kiến thức mới, phát triển những kĩ năng mới.\nb) Mối quan hệ tương hỗ biện chứng giữa năm thành phần của năng lực tin học, ba mạch kiến thức và bảy chủ đề nội\ndung được mô tả trong hình vẽ dưới đây, trong đó:\nDL, ICT, CS có phần hoà quyện được thể hiện bằng hình tròn ở tâm. Mũi tên một chiều thểhiện phần này được tạo ra\ntừ cả ba mạch kiến thức.\nMỗi mạch kiến thức thể hiện ở các hình vành khăn. Mỗi một chủ đề trong bảy chủ đề (A, B, C, D, E, F, G) đều góp\n79\nphần phát triển ba mạch kiến thức, tuy mức độ khác nhau. Tên các chủ đề ghi ởmỗi một trong ba vành khăn thể hiện mức độ\nảnh hưởng cao hơn đối với mạch kiến thức đó.\nNămthành phần (vành ngoài cùng), ba mạch kiến thức, bảy chủ đề nội dung có mối quan hệ tương hỗ trực tiếp hoặc\ngián tiếp(thể hiện bằng mũi tên hai chiều) vàkênh truyền liên kết.\nNăm thành phần\nNLa: Sử dụng và quản lí các phương tiện công nghệ thông tin và truyền\nthông.\nNLb: Ứng xử phù hợp trong môi trường số.\nNLc: Giải quyết vấn đề với sự hỗ trợ của công nghệ thông tin và truyền\nthông.\nNLd: Ứng dụng công nghệ thông tin và truyền thông trong học và tự học.\nBa mạch kiến thức\nDL: Học vấn số hoá phổ thông.\nICT: Công nghệ thông tin và truyền thông.\nCS: Khoa học máy tính.\nBảy chủ đề nội dung"
+  },
+  {
+    "cap": "THPT",
+    "lop": "12",
+    "chuDe": "Chủ đề F: Giải quyết vấn đề với sự trợ giúp của máy tính.",
+    "noiDung": "",
+    "yccd": "Thể hiện mối quan hệ"
+  },
+  {
+    "cap": "THCS",
+    "lop": "12",
+    "chuDe": "Chủ đề G: Hướng nghiệp với tin học.",
+    "noiDung": "",
+    "yccd": "80\n5.2. Một số nội dung và cách tiếp cận mới của chương trình\na)Về sự hoà quyện ba mạch kiến thức DL, ICT, CS\nChương trình môn Tin học mới của Việt Nam cũng như các nước tiên tiến nói chung đều bao gồm ba mạch kiến thức\nDL, ICT, CS.\nDL đề cập đến khả năng sử dụng các công cụ kĩ thuật số thông dụng để hoà nhập với cộng đồng, thích ứng với thời\nđại một cách an toàn, có trách nhiệm. DL còn bao gồm cả khía cạnh đạo đức, pháp luật, ứng xử có văn hoá và ảnh hưởng\ncủa tin học đối với xã hội số.\nICT đề cập đến việc máy tính và các công cụ kĩ thuật số làm việc ra sao và có thể ứng dụng chúng như thế nào. ICT\nchú trọng việc lựa chọn, đánh giá để sử dụng và áp dụng hệ thống máy tính; cài đặt phần cứng, phần mềm, hỗ trợ hoạt động\ncủa các tổ chức, giải quyết vấn đề thực tế một cách sáng tạo và có hiệu quả.\nCS đề cập đến các nguyên lí và thực hành làm cơ sở để hiểu biết và mô hình hoá tính toán, ứng dụng chúng trong việc\nphát triển máy tính và các hệ thống máy tính. CS giúp nhận biết và phân tích các vấn đề theo cách tiếp cận tin học. Mục tiêu\ncốt lõi của CS là hình thành và phát triển tư duy máy tính. Tư duy máy tính sử dụng phương pháp trừu tượng hoá, cách\nphân rã một nhiệm vụ, một thiết kế lớn và phức tạp thành những vấn đề nhỏ, đơn giản hơn để có thể đưa ra các thuật toán\ngiải quyết chúng. Tư duy máy tính bóc tách các mối quan hệ để trích chọn các đặc trưng, biểu đạt ngắn gọn vấn đề hoặc mô\nhình hoá các khía cạnh quan trọng của vấn đề, làm cho vấn đề đó dễ khai báo và có thể xử lí được.\nNhư vậy, CS đề cập đến các yếu tố khoa học cơ bản, có tính độc lập cao với các công nghệ cụ thể nên bền vững, ít thay\nđổi nhanh. ICT và DL liên quan đến yếu tố công nghệ, sử dụng và áp dụng công nghệ số, có tốc độ phát triển, thay đổi\nnhanh. Do vậy, theo định kì ngắn hạn (2,3 năm một lần),Chương trình môn Tin học cần được cập nhật, nhất là mạch ICT và\nDL nhằm đáp ứng tính thời sự, hiện đại.\nMỗi một trong ba mạch kiến thức DL, ICT, CS tự nó chứa ít nhiều những kiến thức thuộc một hoặc cả hai mạch kiến\nthức còn lại, không thể tách rời.Các chủ đề khác nhau trong chương trình có hàm lượng DL, ICT, CS khác nhau. Quá trình\ngiải quyết bài toán cụ thể thường đòi hỏi phải vận dụng tích hợp kiến thức, kĩ năng của đồng thời ba mạch kiến thức DL,\nICT, CS và của các môn học khác.\n81\nNhững năm gần đây, với nhu cầu phát triển nhân lực cho cuộc cách mạng công nghiệp lần thứ tư, trong chương trình\ngiáo dục phổ thông của nhiều nước tiên tiến như Anh, Mĩ, Nga,..., mạch tri thức CS đã được điều chỉnh gia tăng đáng kể và\nchương trình mới chưa thể đưa CS thành mạch kiến thức cốt lõi như chương trình các nước tiên tiến. Chương trình chỉ đặt\nmục tiêu trước mắt là hướng tới chuẩn chương trình các nước phát triển. Bên cạnh việc tiếp tục coi trọng các mạch kiến\nthức, kĩ năng ICT và DL như chương trình hiện hành, điểm mới là mạch kiến thức CS được chú trọng hơn đối với tất cả học\nsinh ngay từ giai đoạn giáo dục cơ bản và được tăng cường ở giai đoạn giáo dục định hướng nghề nghiệp. Mỗi học sinh\nkhông chỉ được rèn luyện kĩ năng sử dụng ICT và DL mà còn được trang bị khả năng tự học, tư duy giải quyết vấn đề để\nthích ứng với sự thay đổi nhanh chóng của công nghệ kĩ thuật số trong tương lai.\nb)Về thuật toán và lập trình, tổ chức lưu trữ, tìm kiếm và trao đổi thông tin\nThuật toán là phương pháp giải quyết một bài toán, một vấn đề cụ thể. Thuật toán có thể được mô tả bằng chương\ntrình để máy tính thực hiện, hoặc cũng có thể mô tả bằng văn bản hay bằng sơ đồ khối để con người hiểu và thực hiện. Học\nsinh cần hiểu được có thể có một vài thuật toán khác nhau giải quyết cùng một vấn đề. Học sinh cần được chuẩn bị để đánh\ngiá tính hiệu quả của thuật toán về mặt thời gian thực hiện và về mức độ khó để chuyển đổi sang chương trình máy tính.\nCó thể coi lập trình là khía cạnh thực hành của CS, là con đường tốt để học sinh học tin học nói chung và CS nói\nriêng. Học lập trình để học cách tư duy máy tính, để hiểu phần mềm hoạt động như thế nào. Đây cũng là tri thức cơ bản khi\nchúng ta sống trong thế giới công nghệ số, có rất nhiều hệ thống và thiết bị vận hành tự động, được điều khiển bằng chương\ntrình máy tính. Thông qua học lập trình, học sinh có được khả năng tìm giải pháp giải quyết vấn đề bằng tư duy logic, trừu tượng\nhoá, mô hình hoá, tổng quát hoá và điều khiển. Học lập trình không chỉ là học ngôn ngữ lập trình và viết các dòng lệnh mà\nthông qua lập trình học sinh có thể tạo ra sản phẩm số hoàn thiện cho bản thân.\nViệc chọn ngôn ngữ lập trình cụ thể thích hợp trong dạy học cũng rất quan trọng và nên dựa trên một số yếu tố sau đây:\n Bộ công cụ ngôn ngữ lập trình phải thông dụng trong và ngoài nước, có sẵn tài nguyên để dễ dàng khai thác sử dụng,\ncó giải pháp khả thi về bản quyền, có xu hướng ngày càng phát triển.\n Ngôn ngữ lập trình đã chọn được cộng đồng giáo viên ưa thích, dễ dàng cài đặt trên máy (ở nhà và ở trường) giúp học\n82\nsinh tự học thuận lợi và trao đổi rộng lớn trong cộng đồng.\nPython, Java,…\nChương trình môn Tin học chỉ đưa ra các định hướng chung về tiêu chí lựa chọn chứ không xác định ngôn ngữ lập trình\ncụ thể.\nTổ chức lưu trữ, tìm kiếm và trao đổi thông tin là một trong các mạch kiến thức, kĩ năng cốt yếu trong chương trình.\nemail, biết biểu diễn và lưu trữ thông tin các dạng văn bản, âm thanh, hình ảnh và số trong máy tính. Ở cấp trung học phổ\nthông, học sinh biết tìm kiếm, khai thác đánh giá nguồn thông tin trên mạng để đáp ứng nhu cầu cá nhân, hỗ trợ giải quyết\nvấn đề thực tế, nhận biết nhu cầu tổ chức lưu trữ và khai thác dữ liệu cho bài toán quản lí, bước đầu có khái niệm về dữ liệu\nlớn và trích chọn tri thức.\nc) Về hai định hướng trong chuyên đề học tập\nCụm chuyên đề Tin học ứng dụng\nCụm chuyên đề Tin học ứng dụng theo định hướng thực hành, hướng nghiệp, không đòi hỏi kiến thức sâu của tin học,\nnhằm rèn luyện nâng cao năng lực chủ yếu về DL và ICT. Các chuyên đề trong định hướng Tin học ứng dụng nhằm giúp\nhọc sinh có thêm cơ hội thực hành dưới sự hướng dẫn của giáo viên để trau dồi kĩ năng sử dụng các phần mềm công cụ.\nĐồng thời, Chương trình có một số chuyên đề về những thành tựu mới của công nghệ kĩ thuật số, có tính thời sự, nhằm đáp\nứng sở thích vui chơi, giải trí, học tập của đại bộ phận giới trẻ.\nVới những học sinh không chọn học môn Tin học thìchọn học cụm chuyên đề Tin học ứng dụng là một cơ hội phát\ntriển kĩ năng tin học đểchuẩn bị học các ngành nghề khác nhau một cách hiệu quả, hoặc đểđáp ứng nhu cầu cá nhân. Học\nsinh trung học phổ thông đã có thể làm ra các sản phẩm số hoàn thiện, có chất lượng cao, có thể ứng dụng được trong thực\n83\ntế. Cần khuyến khích học sinh tham gia các diễn đàn, mạng xã hội để giới thiệu, trao đổi, đánh giá sản phẩm số của bản thân và\ncủa bạn bè. Cần khuyến khích học sinh tự học bằng việc khai thác học liệu thông qua Internet một cách hợp lí.\nCụm chuyên đề Khoa học máy tính\nCụm chuyên đề theo định hướng Khoa học máy tính chú trọng hơn đếnmạch kiến thức CS nhằm cung cấp kiến thức\nchuyên sâu tin học cho học sinh thuộc nhóm đối tượng có nguyện vọng tiếp tục học lên hoặc ra đời lập nghiệp trong lĩnh vực\ntin học.\nCác chuyên đề theo định hướng khoa học máy tính tập trung phát triển tư duy máy tính, năng lực phân tích bài toán, lựa\nchọn kiểu dữ liệu và thiết kế thuật toán.\nd)Về giáo dục STEM, thực hành, trải nghiệm sáng tạo và làm ra sản phẩm số\nMột yêu cầu quan trọng của chương trình là phải gắn kết học lí thuyết với thực hành, sáng tạo ra các sản phẩm số của\ncá nhân, của nhóm. Sản phẩm có thể chỉ đơn giản là một văn bản, một hình vẽ hay phức tạp hơn như một phần mềm trò chơi\nđược thiết kế theo trí tưởng tượng phù hợp với sở thích cá nhân, một phần mềm học tập, một trang web đơn giản của cá nhân,…\ne)Về tích hợp nội môn, liên môn\nMôn Tin học thực hiện dạy học tích hợp, thể hiện ở những điểm sau:\nTích hợp nội môn, giữa các mạch kiến thức DL, ICT, CS nhằm phát triển hài hoà năm thành phần, qua đó nâng cao\ndần năng lực tin học.\nTích hợp liên môn với các môn học khác bằng cách ứng dụng công nghệ thông tin và truyền thông vào các môn học\nđó. Việc ứng dụng này chủ yếu do chính các môn học và hoạt động giáo dục chủ động thực hiện. Tuy nhiên, giáo viên tin\nhọc cần thông qua các ví dụ, bài tập và nhất là các dự án, vận dụng kiến thức, kĩ năng của các môn học khác giúp học sinh\nnâng cao khả năng giải quyết vấn đề, tích hợp kiến thức và kĩ năng liên môn làm ra sản phẩm số hoàn thiện.\ng)Về giáo dục tin học với giáo dục hướng nghiệp, khởi nghiệp và bình đẳng giới\nMục tiêu giáo dục hướng nghiệp trong lĩnh vực giáo dục tin học là nhằm cung cấp cho học sinh những hiểu biết tổng\n84\nquát về các ngành nghề, nghề nghiệp tin học và các ứng dụng, dịch vụ tin học rất đa dạng, phong phú trong các lĩnh vực\nkhoa học, công nghệ và kinh tế,..; vai trò và ảnh hưởng của tin học trong cuộc cách mạng công nghiệp lần thứ tư. Thêm nữa,\nhọc sinh cần biết một cách kháiquát yêu cầu chínhvề: năng lực, kiến thức và kĩ năng, phẩm chất con người; nguồn lực, chi\nphí cần có của mỗi người khi chọn lựa ngành nghề, nghề nghiệp trong lĩnh vực tin học; nhu cầu của xã hội hiện tại và dự báo\ntương lai về việc làm, thị trường lao động trong lĩnh vực tin học. Điều đó cũng tạo điều kiện ban đầu và cơ hội cho tuổi trẻ\ntự tin khởi nghiệp.Chương trình quan tâm đến vấn đề bình đẳng giới, tránh quan niệm sai lầm cho rằng, nghề nghiệp trong\nlĩnh vực tin học chỉ dành riêng cho nam giới. Hơn nữa, đức tính chịu khó, chăm chỉ, kiên nhẫn, khéo léo, có tính thẩm\nmĩ,...của nữ giới là một lợi thế giúp họ có nhiều cơ hội việc làm và thành đạt trong lĩnh vực tin học.\n85"
+  }
+]

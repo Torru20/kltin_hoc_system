@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Khai báo bảng màu chuyên nghiệp */
+  --navy-dark: #001e3c;      /* Navy đậm cho Header/Sidebar */
+  --navy-main: #0a1929;      /* Navy chuẩn */
+  --cream-light: #fcfaf5;    /* Trắng kem sáng rất dịu mắt */
+  --text-primary: #1a2027;   /* Chữ đen xám (dễ đọc hơn đen tuyền) */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cream-light); /* Nền trắng kem sáng */
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tinh chỉnh thanh cuộn cho hợp tông Navy */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy-main);
+  border-radius: 10px;
+}
+
+/* Ép font cho toàn bộ các thành phần MUI */
+* {
+  font-family: 'Inter', sans-serif !important;
+}
+body {
+  background-color: #fcfaf5 !important; /* Màu trắng kem sáng */
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Sửa lại các Card của Bootstrap nếu bạn có dùng */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+}
+
+/* Làm cho Navbar của Bootstrap mượt hơn */
+.navbar {
+  padding: 0.8rem 1rem;
+}
