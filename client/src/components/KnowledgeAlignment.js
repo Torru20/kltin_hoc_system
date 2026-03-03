@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Box, Typography, Paper, MenuItem, TextField, 
   Stepper, Step, StepLabel, StepContent, Divider, Alert, Grid, 
-  CircularProgress, Tabs, Tab, InputAdornment 
+  CircularProgress, Tabs, Tab, InputAdornment,Stack
 } from '@mui/material';
 import { School, AccountTree, Search, FilterAlt } from '@mui/icons-material';
 
@@ -153,10 +153,12 @@ const KnowledgeAlignment = () => {
         )}
 
         {/* PHẦN 2: GIAO DIỆN BỘ LỌC CŨ (5 BƯỚC) - ĐÃ CHỈNH THÀNH TỪNG HÀNG */}
+        {/* PHẦN 2: GIAO DIỆN BỘ LỌC CŨ (5 BƯỚC) - ÉP CHẶT HÀNG DỌC */}
         {searchMode === 1 && (
-          <Grid container spacing={2} sx={{ mb: 4 }}>
+          <Stack spacing={3} sx={{ mb: 4, width: '100%' }}>
+            
             {/* Bước 1 */}
-            <Grid item xs={12}>
+            <Box>
               <TextField 
                 select 
                 fullWidth 
@@ -167,10 +169,10 @@ const KnowledgeAlignment = () => {
               >
                 {capHocs.map(c => <MenuItem key={c.id} value={c.id}>{c.ten}</MenuItem>)}
               </TextField>
-            </Grid>
+            </Box>
 
             {/* Bước 2 */}
-            <Grid item xs={12}>
+            <Box>
               <TextField 
                 select 
                 fullWidth 
@@ -181,10 +183,10 @@ const KnowledgeAlignment = () => {
               >
                 {lops.map(l => <MenuItem key={l.id} value={l.id}>{l.ten}</MenuItem>)}
               </TextField>
-            </Grid>
+            </Box>
 
             {/* Bước 3 */}
-            <Grid item xs={12}>
+            <Box>
               <TextField 
                 select 
                 fullWidth 
@@ -195,10 +197,10 @@ const KnowledgeAlignment = () => {
               >
                 {chuDes.map(cd => <MenuItem key={cd.id} value={cd.id}>{cd.ten}</MenuItem>)}
               </TextField>
-            </Grid>
+            </Box>
 
             {/* Bước 4 */}
-            <Grid item xs={12}>
+            <Box>
               <TextField 
                 select 
                 fullWidth 
@@ -208,10 +210,10 @@ const KnowledgeAlignment = () => {
               >
                 {dinhHuongs.map(dh => <MenuItem key={dh.MaDH} value={dh.MaDH}>{dh.TenDH}</MenuItem>)}
               </TextField>
-            </Grid>
+            </Box>
 
             {/* Bước 5 */}
-            <Grid item xs={12}>
+            <Box>
               <TextField 
                 select 
                 fullWidth 
@@ -219,12 +221,15 @@ const KnowledgeAlignment = () => {
                 value={selectedNDCB} 
                 onChange={(e) => setSelectedNDCB(e.target.value)} 
                 disabled={noiDungCBs.length === 0}
-                variant="filled" // Làm nổi bật bước cuối cùng
+                variant="filled"
+                color="primary"
+                helperText="Vui lòng chọn nội dung để xem đường liên thông"
               >
                 {noiDungCBs.map(nd => <MenuItem key={nd.id} value={nd.id}>{nd.ten}</MenuItem>)}
               </TextField>
-            </Grid>
-          </Grid>
+            </Box>
+
+          </Stack>
         )}
 
         <Divider sx={{ mb: 4 }} />
