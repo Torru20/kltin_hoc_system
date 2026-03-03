@@ -152,35 +152,75 @@ const KnowledgeAlignment = () => {
           </Box>
         )}
 
-        {/* PHẦN 2: GIAO DIỆN BỘ LỌC CŨ (5 BƯỚC) */}
+        {/* PHẦN 2: GIAO DIỆN BỘ LỌC CŨ (5 BƯỚC) - ĐÃ CHỈNH THÀNH TỪNG HÀNG */}
         {searchMode === 1 && (
-          <Grid container spacing={3} sx={{ mb: 4 }}>
-            <Grid item xs={12} sm={6} md={3}>
-              <TextField select fullWidth label="1. Cấp học" value={selectedCap} onChange={(e) => setSelectedCap(e.target.value)}>
+          <Grid container spacing={2} sx={{ mb: 4 }}>
+            {/* Bước 1 */}
+            <Grid item xs={12}>
+              <TextField 
+                select 
+                fullWidth 
+                label="1. Cấp học" 
+                value={selectedCap} 
+                onChange={(e) => setSelectedCap(e.target.value)}
+                sx={{ backgroundColor: '#fff' }}
+              >
                 {capHocs.map(c => <MenuItem key={c.id} value={c.id}>{c.ten}</MenuItem>)}
               </TextField>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={3}>
-              <TextField select fullWidth label="2. Lớp" value={selectedLop} onChange={(e) => setSelectedLop(e.target.value)} disabled={!selectedCap}>
+            {/* Bước 2 */}
+            <Grid item xs={12}>
+              <TextField 
+                select 
+                fullWidth 
+                label="2. Lớp" 
+                value={selectedLop} 
+                onChange={(e) => setSelectedLop(e.target.value)} 
+                disabled={!selectedCap}
+              >
                 {lops.map(l => <MenuItem key={l.id} value={l.id}>{l.ten}</MenuItem>)}
               </TextField>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={3}>
-              <TextField select fullWidth label="3. Chủ đề" value={selectedChuDe} onChange={(e) => setSelectedChuDe(e.target.value)} disabled={!selectedCap}>
+            {/* Bước 3 */}
+            <Grid item xs={12}>
+              <TextField 
+                select 
+                fullWidth 
+                label="3. Chủ đề" 
+                value={selectedChuDe} 
+                onChange={(e) => setSelectedChuDe(e.target.value)} 
+                disabled={!selectedCap}
+              >
                 {chuDes.map(cd => <MenuItem key={cd.id} value={cd.id}>{cd.ten}</MenuItem>)}
               </TextField>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={3}>
-              <TextField select fullWidth label="4. Định hướng" value={selectedDH} onChange={(e) => setSelectedDH(e.target.value)}>
+            {/* Bước 4 */}
+            <Grid item xs={12}>
+              <TextField 
+                select 
+                fullWidth 
+                label="4. Định hướng" 
+                value={selectedDH} 
+                onChange={(e) => setSelectedDH(e.target.value)}
+              >
                 {dinhHuongs.map(dh => <MenuItem key={dh.MaDH} value={dh.MaDH}>{dh.TenDH}</MenuItem>)}
               </TextField>
             </Grid>
 
+            {/* Bước 5 */}
             <Grid item xs={12}>
-              <TextField select fullWidth label="5. Chọn Nội dung cơ bản để tra cứu" value={selectedNDCB} onChange={(e) => setSelectedNDCB(e.target.value)} disabled={noiDungCBs.length === 0}>
+              <TextField 
+                select 
+                fullWidth 
+                label="5. Chọn Nội dung cơ bản để tra cứu" 
+                value={selectedNDCB} 
+                onChange={(e) => setSelectedNDCB(e.target.value)} 
+                disabled={noiDungCBs.length === 0}
+                variant="filled" // Làm nổi bật bước cuối cùng
+              >
                 {noiDungCBs.map(nd => <MenuItem key={nd.id} value={nd.id}>{nd.ten}</MenuItem>)}
               </TextField>
             </Grid>
