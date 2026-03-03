@@ -1510,6 +1510,7 @@ app.get('/api/dacta/export/:maMaTran', async (req, res) => {
 
         // 5. Trả về đúng cấu trúc FE cần
         res.json({
+            success: true,
             header: {
                 tenMaTran: mtktInfo.TenMaTran,
                 thoiGian: mtktInfo.TongThoiGian
