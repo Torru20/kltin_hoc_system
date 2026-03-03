@@ -1300,7 +1300,7 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
     const { maKHBD } = req.params;
     try {
         // 1. Lấy thông tin bài dạy chính (Bổ sung ThietBiGV, ThietBiHS, ThoiLuong)
-        const [infoRows] = await db.promise().query(
+        const [infoRows] = await db.query(
             `SELECT k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, p.TenBai, l.TenLop 
              FROM KHBD k 
              JOIN PHANPHOISGK p ON k.MaPhanPhoi = p.MaPhanPhoi 
@@ -1315,7 +1315,7 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
         const rawInfo = infoRows[0];
 
         // 2. Lấy TOÀN BỘ mục tiêu từ bảng KHBD_MUCTIEU (Cần thiết để đánh số liên kết)
-        const [objectives] = await db.promise().query(
+        const [objectives] = await db.query(
             `SELECT LoaiMucTieu, NoiDungHienThi, MaKHBD_MT 
              FROM KHBD_MUCTIEU 
              WHERE MaKHBD = ? 
@@ -1323,7 +1323,7 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
         );
 
         // 3. Lấy Tiến trình tổng quan (Mục III)
-        const [processData] = await db.promise().query(
+        const [processData] = await db.query(
             `SELECT TenHoatDong as ten, MucTieu as mucTieu, NoiDungTrongTam as noiDung, PhuongPhapKyThuat as phuongPhap 
              FROM KHBD_TIENTRINH_TONGQUAN 
              WHERE MaKHBD = ? 
@@ -1331,7 +1331,7 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
         );
 
         // 4. Lấy Hoạt động chi tiết và các bước tổ chức
-        const [dbActivities] = await db.promise().query(
+        const [dbActivities] = await db.query(
             `SELECT MaHoatDong, TenHoatDong, NoiDungHoatDong, SPDuKien 
              FROM KHBD_HOATDONG 
              WHERE MaKHBD = ?`, [maKHBD]
@@ -1342,7 +1342,7 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
         const activities = [];
         for (let act of dbActivities) {
             // Lấy các bước của từng hoạt động
-            const [steps] = await db.promise().query(
+            const [steps] = await db.query(
                 `SELECT TenBuoc as step, HD_GV as gv, HD_HS as hs 
                  FROM HD_TIENTRINH 
                  WHERE MaHoatDong = ?`, [act.MaHoatDong]
@@ -1352,7 +1352,7 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
             const sortedSteps = steps.sort((a, b) => (stepPriority[a.step] || 99) - (stepPriority[b.step] || 99));
 
             // Map mục tiêu liên kết (để hiển thị dạng (1), (2) trong Word)
-            const [links] = await db.promise().query(
+            const [links] = await db.query(
                 `SELECT MaKHBD_MT FROM HD_MUCTIEU_LIENKET WHERE MaHoatDong = ?`, [act.MaHoatDong]
             );
             
@@ -1431,7 +1431,7 @@ app.get('/api/get-specification/:maMaTran', async (req, res) => {
             ORDER BY n.MaNDCB, b.MaMucDo;
         `;
         
-        const [rows] = await db.promise().query(sql, [maMaTran]);
+        const [rows] = await db.query(sql, [maMaTran]);
         res.json({ success: true, data: rows });
     } catch (err) {
         res.status(500).json({ error: err.message });
