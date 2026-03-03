@@ -350,12 +350,37 @@ const ProfilePage = () => {
     const [downloadingDacTaId, setDownloadingDacTaId] = useState(null);
     const handleDownloadDacTa = async (maMaTran) => {
         setDownloadingDacTaId(maMaTran);
+        const token = localStorage.getItem('token');
+
         try {
-            const response = await axios.get(`/api/dacta/export/${maMaTran}`);
-            // Response.data lúc này sẽ chứa { header, dacTaRows, pointConfig }
-            await exportDacTaDirect(response.data.header, response.data.dacTaRows, response.data.pointConfig);
+            const response = await fetch(`https://kltin-hoc-system.onrender.com/api/dacta/export/${maMaTran}`, {
+                headers: { 
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json' // Thêm cái này cho chuẩn REST
+                }
+            });
+
+            if (!response.ok) {
+                // Nếu server trả về 404 hoặc 500, nó sẽ nhảy vào đây
+                const errorData = await response.json();
+                throw new Error(errorData.error || `Server báo lỗi ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.success) {
+                // ĐẢM BẢO: Các biến header, dacTaRows, pointConfig phải khớp với tên trong res.json của BE
+                await exportDacTaDirect(
+                    result.header, 
+                    result.dacTaRows || result.matrixRows, // "Bảo hiểm": lấy cái nào có dữ liệu
+                    result.pointConfig
+                );
+            } else {
+                alert("Lỗi: " + result.error);
+            }
         } catch (error) {
-            alert("Lỗi khi tải bản đặc tả");
+            console.error("Lỗi chi tiết:", error);
+            alert("Không thể tải bản đặc tả: " + error.message);
         } finally {
             setDownloadingDacTaId(null);
         }
