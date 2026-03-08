@@ -743,7 +743,13 @@ app.post('/api/save-full-exam', (req, res) => {
 
 //lay list MTKT từ db
 app.get('/api/get-exams', (req, res) => {
-    // Truy vấn lấy danh sách đề thi từ bảng DETHI join với bảng MTKT
+    // Lấy userId từ query params (do FE gửi lên qua axios params)
+    const { userId } = req.query;
+
+    if (!userId) {
+        return res.status(400).json({ error: "Thiếu mã người dùng (userId)" });
+    }
+
     const query = `
         SELECT 
             m.MaMaTran, 
@@ -752,14 +758,14 @@ app.get('/api/get-exams', (req, res) => {
             d.NgayTao 
         FROM MTKT m
         JOIN DETHI d ON m.MaMaTran = d.MaMaTran
+        WHERE m.UserID = ?
         ORDER BY d.NgayTao DESC`;
 
-    pool.query(query, (err, results) => {
+    pool.query(query, [userId], (err, results) => {
         if (err) {
             console.error("Lỗi SQL:", err);
             return res.status(500).json({ error: err.message });
         }
-        console.log("Dữ liệu gửi về FE:", results); // Xem log ở terminal nodejs
         res.json(results);
     });
 });

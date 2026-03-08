@@ -10,10 +10,21 @@ const ExamList = () => {
     const navigate = useNavigate();
 
     // 1. Lấy danh sách đề thi khi load trang
+    
     useEffect(() => {
         const fetchExams = async () => {
+            // Lấy userId và token từ localStorage
+            const userId = localStorage.getItem('userId');
+            const token = localStorage.getItem('token');
+
             try {
-                const res = await axios.get('https://kltin-hoc-system.onrender.com/api/get-exams');
+                // Gửi userId qua params để Backend lọc dữ liệu
+                const res = await axios.get('https://kltin-hoc-system.onrender.com/api/get-exams', {
+                    params: { userId: userId }, // Gửi mã người dùng
+                    headers: { 
+                        'Authorization': `Bearer ${token}` // Gửi token nếu cần xác thực
+                    }
+                });
                 setExams(res.data);
             } catch (err) {
                 console.error("Lỗi fetch danh sách:", err);
@@ -23,7 +34,6 @@ const ExamList = () => {
         };
         fetchExams();
     }, []);
-
     // 2. Hàm xử lý Xuất file Word
     const handleDownload = async (exam) => {
     try {
