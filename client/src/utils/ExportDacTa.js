@@ -67,6 +67,7 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig,options =
       vd: { lc: 0, ds: 0, tr: 0, tl: 0 },
     };
 
+    // Lấy đúng cấu hình điểm như bên MTKT
     const p = pointConfig || { 
       tn_nhieu_lc: 0.25, 
       tn_dung_sai: 1.0, 
@@ -76,7 +77,7 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig,options =
       tu_luan_vd: 1.5 
     };
 
-    // --- 6. ĐỔ DỮ LIỆU ---
+    // --- 6. ĐỔ DỮ LIỆU & TÍCH LŨY SỐ CÂU ---
     dacTaRows.forEach((row, idx) => {
       const m = mapMucDo(row.maMucDo);
       const maNL = row.maNL || "";
@@ -118,28 +119,21 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig,options =
       }));
     });
 
-    // --- 7. BA HÀNG CUỐI (TỔNG KẾT) ---
+    // --- 7. BA HÀNG CUỐI (LOGIC TÍNH NHƯ MTKT) ---
 
-    // 1. Tính điểm cho từng loại câu hỏi (Cột dọc)
-    // Nhiều lựa chọn: (Tổng NB + Tổng TH + Tổng VD) * điểm_mỗi_câu
+    // Tính điểm theo cụm cột (Dọc)
     const scoreLC = (stats.nb.lc + stats.th.lc + stats.vd.lc) * p.tn_nhieu_lc;
-    
-    // Đúng - Sai: (Tổng NB + Tổng TH + Tổng VD) * điểm_mỗi_câu
     const scoreDS = (stats.nb.ds + stats.th.ds + stats.vd.ds) * p.tn_dung_sai;
-    
-    // Trả lời ngắn: (Tổng NB + Tổng TH + Tổng VD) * điểm_mỗi_câu
     const scoreTR = (stats.nb.tr + stats.th.tr + stats.vd.tr) * p.tl_ngan;
-    
-    // Tự luận: Tính riêng từng mức độ vì điểm khác nhau
     const scoreTL = (stats.nb.tl * p.tu_luan_nb) + (stats.th.tl * p.tu_luan_th) + (stats.vd.tl * p.tu_luan_vd);
 
-    // 2. Chuyển đổi sang tỉ lệ % (Điểm / 10 * 100)
+    // Tính % cho hàng "Tỉ lệ %" (Dưới mỗi cụm cột)
     const rateLC = Math.round((scoreLC / 10) * 100);
     const rateDS = Math.round((scoreDS / 10) * 100);
     const rateTR = Math.round((scoreTR / 10) * 100);
     const rateTL = Math.round((scoreTL / 10) * 100);
 
-    // 3. Tính điểm theo mức độ (Hàng ngang) để ra Tỉ lệ chung
+    // Tính điểm theo mức độ (Ngang) để ra "Tỉ lệ chung"
     const scoreTotalNB = (stats.nb.lc * p.tn_nhieu_lc) + (stats.nb.ds * p.tn_dung_sai) + (stats.nb.tr * p.tl_ngan) + (stats.nb.tl * p.tu_luan_nb);
     const scoreTotalTH = (stats.th.lc * p.tn_nhieu_lc) + (stats.th.ds * p.tn_dung_sai) + (stats.th.tr * p.tl_ngan) + (stats.th.tl * p.tu_luan_th);
     const scoreTotalVD = (stats.vd.lc * p.tn_nhieu_lc) + (stats.vd.ds * p.tn_dung_sai) + (stats.vd.tr * p.tl_ngan) + (stats.vd.tl * p.tu_luan_vd);
@@ -148,7 +142,7 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig,options =
     const totalRateTH = Math.round((scoreTotalTH / 10) * 100);
     const totalRateVD = Math.round((scoreTotalVD / 10) * 100);
 
-    // HÀNG 1: TỔNG CỘNG (12 cột dữ liệu)
+    // HÀNG 1: TỔNG CỘNG SỐ CÂU
     tableRows.push(new TableRow({
       children: [
         createCell("Tổng cộng", { bold: true, colSpan: 4 }),
@@ -159,23 +153,23 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig,options =
       ]
     }));
 
-    // HÀNG 2: TỈ LỆ % (4 cụm cột: 3+3+3+3 = 12 cột)
+    // HÀNG 2: TỈ LỆ % (Theo cụm loại câu hỏi)
     tableRows.push(new TableRow({
       children: [
         createCell("Tỉ lệ %", { bold: true, colSpan: 4 }),
-        createCell(`${rateLC}%`, { bold: true, colSpan: 3 }), // Nhiều lựa chọn
-        createCell(`${rateDS}%`, { bold: true, colSpan: 3 }), // Đúng - Sai
-        createCell(`${rateTR}%`, { bold: true, colSpan: 3 }), // Trả lời ngắn
-        createCell(`${rateTL}%`, { bold: true, colSpan: 3 }), // Tự luận
+        createCell(`${rateLC}%`, { bold: true, colSpan: 3 }),
+        createCell(`${rateDS}%`, { bold: true, colSpan: 3 }),
+        createCell(`${rateTR}%`, { bold: true, colSpan: 3 }),
+        createCell(`${rateTL}%`, { bold: true, colSpan: 3 }),
       ]
     }));
 
-    // HÀNG 3: TỈ LỆ CHUNG (Cụm NB+TH và Cụm VD: 6+6 = 12 cột)
+    // HÀNG 3: TỈ LỆ CHUNG (NB+TH và VD)
     tableRows.push(new TableRow({
       children: [
         createCell("Tỉ lệ chung", { bold: true, colSpan: 4 }),
-        createCell(`${totalRateNB + totalRateTH}%`, { bold: true, colSpan: 6 }), // NB + TH
-        createCell(`${totalRateVD}%`, { bold: true, colSpan: 6 }),               // VD
+        createCell(`${totalRateNB + totalRateTH}%`, { bold: true, colSpan: 6 }),
+        createCell(`${totalRateVD}%`, { bold: true, colSpan: 6 }),
       ]
     }));
 
