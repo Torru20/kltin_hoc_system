@@ -23,28 +23,26 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig, options 
       return parseFloat(num).toFixed(2).replace(/\.?0+$/, "").replace('.', ',');
     };
 
-    // --- 1. TÍNH TOÁN DỮ LIỆU TỔNG HỢP (Logic sao chép từ MTKT) ---
-    const colTotals = Array(15).fill(0); // 12 cột câu hỏi + 3 cột tổng số câu
-    const colScores = Array(12).fill(0); // 12 cột điểm
+    // --- 1. TÍNH TOÁN DỮ LIỆU TỔNG HỢP (Logic chuẩn từ MTKT) ---
+    const colTotals = Array(15).fill(0); 
+    const colScores = Array(12).fill(0); 
     const totalPointsByLevel = { nb: 0, th: 0, vd: 0 };
     let finalGlobalPoints = 0;
 
-    // Duyệt qua dacTaRows để gom dữ liệu
     dacTaRows.forEach((row) => {
-      const rowM = mapMucDo(row.maMucDo); // Mức độ của dòng hiện tại
+      const rowM = mapMucDo(row.maMucDo);
       let cIdx = 0;
 
-      // A. Trắc nghiệm
+      // A. Trắc nghiệm (Nhiều LC, Đúng Sai, Trả lời ngắn)
       groupTNKQ.forEach(tKey => {
         lvls.forEach(lKey => {
-          // Chỉ tính nếu mức độ của dòng khớp với cột đang duyệt
           const qty = (rowM === lKey) ? (parseInt(row[tKey]) || 0) : 0;
           const p = parseFloat(pointConfig[tKey]) || 0;
           const score = qty * p;
 
           colTotals[cIdx] += qty;
           colScores[cIdx] += score;
-          totalPointsByLevel[lKey] += score;
+          if (rowM === lKey) totalPointsByLevel[lKey] += score;
           finalGlobalPoints += score;
           cIdx++;
         });
@@ -58,47 +56,66 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig, options 
 
         colTotals[cIdx] += qty;
         colScores[cIdx] += score;
-        totalPointsByLevel[lKey] += score;
+        if (rowM === lKey) totalPointsByLevel[lKey] += score;
         finalGlobalPoints += score;
         cIdx++;
       });
     });
 
-    // C. Tổng số câu dọc theo mức độ (Cột 13, 14, 15)
-    // Tính tổng số câu của từng mức độ bằng cách cộng dồn dacTaRows
+    // C. Tổng số câu theo mức độ (Cột 13, 14, 15)
     dacTaRows.forEach(row => {
-        const rowM = mapMucDo(row.maMucDo);
-        const totalInRow = (parseInt(row.tn_nhieu_lc) || 0) + 
-                           (parseInt(row.tn_dung_sai) || 0) + 
-                           (parseInt(row.tl_ngan) || 0) + 
-                           (parseInt(row.tu_luan) || 0);
-        if (rowM === 'nb') colTotals[12] += totalInRow;
-        else if (rowM === 'th') colTotals[13] += totalInRow;
-        else if (rowM === 'vd') colTotals[14] += totalInRow;
+      const rowM = mapMucDo(row.maMucDo);
+      const rowQty = (parseInt(row.tn_nhieu_lc) || 0) + (parseInt(row.tn_dung_sai) || 0) + 
+                     (parseInt(row.tl_ngan) || 0) + (parseInt(row.tu_luan) || 0);
+      if (rowM === 'nb') colTotals[12] += rowQty;
+      else if (rowM === 'th') colTotals[13] += rowQty;
+      else if (rowM === 'vd') colTotals[14] += rowQty;
     });
 
-    // --- 2. XÂY DỰNG HEADER (4 TẦNG) ---
-    // Tầng 1
+    // --- 2. HEADER 4 TẦNG ---
     tableRows.push(new TableRow({
       children: [
-        createCell("TT", { vMerge: true }),
-        createCell("Chủ đề/Chương", { vMerge: true }),
-        createCell("Nội dung kiến thức", { vMerge: true }),
-        createCell("Yêu cầu cần đạt", { vMerge: true }),
-        createCell("Số câu hỏi ở các mức độ đánh giá", { colSpan: 12, bold: true }),
-        createCell("Tổng số câu", { colSpan: 3, bold: true }),
-        createCell("Tổng % điểm", { vMerge: true, bold: true })
+        createCell("TT", { bold: true, vMerge: true }),
+        createCell("Chủ đề/Chương", { bold: true, vMerge: true }),
+        createCell("Nội dung/Đơn vị kiến thức", { bold: true, vMerge: true }),
+        createCell("Yêu cầu cần đạt", { bold: true, vMerge: true }),
+        createCell("Số câu hỏi ở các mức độ đánh giá", { bold: true, colSpan: 12 }),
       ]
     }));
-    // Tầng 2, 3, 4 ... (Tiếp tục cấu trúc phân cấp tương tự MTKT)
-    // [Phần code Header này giữ nguyên cấu trúc bạn đã có để đảm bảo hiển thị đúng]
-    // ... (Tôi sẽ bỏ qua phần đẩy Header lặp lại để tập trung vào dữ liệu)
 
-    // --- 3. DỮ LIỆU CÁC HÀNG ---
+    tableRows.push(new TableRow({
+      children: [
+        createCell("", { continueVMerge: true }), createCell("", { continueVMerge: true }),
+        createCell("", { continueVMerge: true }), createCell("", { continueVMerge: true }),
+        createCell("TNKQ", { bold: true, colSpan: 9 }),
+        createCell("Tự luận", { bold: true, colSpan: 3 }),
+      ]
+    }));
+
+    tableRows.push(new TableRow({
+      children: [
+        createCell("", { continueVMerge: true }), createCell("", { continueVMerge: true }),
+        createCell("", { continueVMerge: true }), createCell("", { continueVMerge: true }),
+        createCell("Nhiều lựa chọn", { bold: true, colSpan: 3 }),
+        createCell("Đúng - Sai", { bold: true, colSpan: 3 }),
+        createCell("Trả lời ngắn", { bold: true, colSpan: 3 }),
+        createCell("Tự luận", { bold: true, colSpan: 3 }),
+      ]
+    }));
+
+    const headerLvls = ["Biết", "Hiểu", "VD"];
+    tableRows.push(new TableRow({
+      children: [
+        createCell("", { continueVMerge: true }), createCell("", { continueVMerge: true }),
+        createCell("", { continueVMerge: true }), createCell("", { continueVMerge: true }),
+        ...[...headerLvls, ...headerLvls, ...headerLvls, ...headerLvls].map(text => createCell(text, { bold: true }))
+      ]
+    }));
+
+    // --- 3. ĐIỀN DỮ LIỆU CÁC HÀNG ---
     dacTaRows.forEach((row, idx) => {
       const rowM = mapMucDo(row.maMucDo);
       const maNL = row.maNL || "";
-      let rowScore = 0;
       const cells = [
         createCell(String(idx + 1)),
         createCell(row.tenChuDe, { vMerge: row.isFirstOfChuDe, continueVMerge: !row.isFirstOfChuDe, align: AlignmentType.LEFT }),
@@ -106,78 +123,62 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig, options 
         createCell(row.noiDungYCCD, { align: AlignmentType.LEFT })
       ];
 
-      const rowLevelTotal = { nb: 0, th: 0, vd: 0 };
-
-      // Hàm helper để điền số câu vào đúng cột mức độ
-      const fillCells = (val, typeKey, isTuLuan = false) => {
+      const fillRowCells = (val, targetType) => {
         lvls.forEach(lKey => {
-          const isMatch = (rowM === lKey);
-          const qty = isMatch ? (parseInt(val) || 0) : 0;
-          if (isMatch) {
-              rowLevelTotal[lKey] += qty;
-              const pKey = isTuLuan ? `tu_luan_${lKey}` : typeKey;
-              rowScore += qty * (parseFloat(pointConfig[pKey]) || 0);
-          }
+          const qty = (rowM === lKey) ? (parseInt(val) || 0) : 0;
           cells.push(createCell(qty > 0 ? (maNL ? `${qty}(${maNL})` : String(qty)) : ""));
         });
       };
 
-      fillCells(row.tn_nhieu_lc, 'tn_nhieu_lc');
-      fillCells(row.tn_dung_sai, 'tn_dung_sai');
-      fillCells(row.tl_ngan, 'tl_ngan');
-      fillCells(row.tu_luan, 'tu_luan', true);
+      fillRowCells(row.tn_nhieu_lc, 'tn_nhieu_lc');
+      fillRowCells(row.tn_dung_sai, 'tn_dung_sai');
+      fillRowCells(row.tl_ngan, 'tl_ngan');
+      fillRowCells(row.tu_luan, 'tu_luan');
 
-      // 3 cột tổng số câu theo mức độ
-      lvls.forEach(l => cells.push(createCell(rowLevelTotal[l] > 0 ? String(rowLevelTotal[l]) : "0", { bold: true })));
-      // Cột Tổng % điểm
-      cells.push(createCell(`${formatPoint((rowScore / 10) * 100)}%`, { bold: true }));
-      
       tableRows.push(new TableRow({ children: cells }));
     });
 
-    // --- 4. CÁC HÀNG TỔNG KẾT (Y HỆT MTKT) ---
-    
-    // Hàng Tổng số câu
+    // --- 4. HÀNG TỔNG SỐ CÂU ---
     tableRows.push(new TableRow({
       children: [
         createCell("Tổng số câu", { colSpan: 4, bold: true }),
-        ...colTotals.map(t => createCell(String(t), { bold: true })),
-        createCell(String(colTotals.slice(12, 15).reduce((a, b) => a + b, 0)), { bold: true }),
+        ...colTotals.slice(0, 12).map(t => createCell(String(t), { bold: true })),
       ]
     }));
 
-    // Hàng Tổng điểm
-    const scoreCells = [createCell("Tổng điểm", { colSpan: 4, bold: true })];
-    for (let i = 0; i < 12; i++) scoreCells.push(createCell(formatPoint(colScores[i])));
-    scoreCells.push(createCell(formatPoint(totalPointsByLevel.nb), { bold: true }));
-    scoreCells.push(createCell(formatPoint(totalPointsByLevel.th), { bold: true }));
-    scoreCells.push(createCell(formatPoint(totalPointsByLevel.vd), { bold: true }));
-    scoreCells.push(createCell(formatPoint(finalGlobalPoints), { bold: true }));
-    tableRows.push(new TableRow({ children: scoreCells }));
+    // --- 5. HÀNG TỈ LỆ % (Tính theo LOẠI CÂU HỎI - Đúng ý bạn) ---
+    const scoreByGroup = [
+      colScores[0] + colScores[1] + colScores[2], // % Nhiều lựa chọn
+      colScores[3] + colScores[4] + colScores[5], // % Đúng - Sai
+      colScores[6] + colScores[7] + colScores[8], // % Trả lời ngắn
+      colScores[9] + colScores[10] + colScores[11] // % Tự luận
+    ];
 
-    // Hàng Tỉ lệ % điểm
-    const pctCells = [createCell("Tỉ lệ % điểm", { colSpan: 4, bold: true })];
-    for (let i = 0; i < 12; i++) pctCells.push(createCell(`${formatPoint((colScores[i] / 10) * 100)}%`));
-    pctCells.push(createCell(`${formatPoint((totalPointsByLevel.nb / 10) * 100)}%`, { bold: true }));
-    pctCells.push(createCell(`${formatPoint((totalPointsByLevel.th / 10) * 100)}%`, { bold: true }));
-    pctCells.push(createCell(`${formatPoint((totalPointsByLevel.vd / 10) * 100)}%`, { bold: true }));
-    pctCells.push(createCell(`${formatPoint((finalGlobalPoints / 10) * 100)}%`, { bold: true }));
-    tableRows.push(new TableRow({ children: pctCells }));
+    tableRows.push(new TableRow({
+      children: [
+        createCell("Tỉ lệ %", { colSpan: 4, bold: true }),
+        ...scoreByGroup.map(s => createCell(`${formatPoint((s / 10) * 100)}%`, { colSpan: 3, bold: true })),
+      ]
+    }));
 
-    // --- 8. XUẤT FILE ---
+    // --- 6. HÀNG TỈ LỆ CHUNG (NB+TH và VD) ---
+    const pctNB_TH = ((totalPointsByLevel.nb + totalPointsByLevel.th) / 10) * 100;
+    const pctVD = (totalPointsByLevel.vd / 10) * 100;
+
+    tableRows.push(new TableRow({
+      children: [
+        createCell("Tỉ lệ chung", { colSpan: 4, bold: true }),
+        createCell(`${formatPoint(pctNB_TH)}% (Biết + Hiểu)`, { colSpan: 6, bold: true }),
+        createCell(`${formatPoint(pctVD)}% (Vận dụng)`, { colSpan: 6, bold: true }),
+      ]
+    }));
+
+    // --- 7. XUẤT FILE ---
     const doc = new Document({
       sections: [{
         properties: { 
-          page: { 
-          size: { orientation: PageOrientation.LANDSCAPE },
-          // Lề cực mỏng (khoảng 1cm mỗi bên) để lấy thêm chỗ cho 16 cột
-          margin: {
-            top: 567,    // ~1cm
-            right: 567, 
-            bottom: 567, 
-            left: 567,
-          },
-        } },
+          page: { size: { orientation: PageOrientation.LANDSCAPE }, margin: { top: 567, right: 567, bottom: 567, left: 567 } } 
+        },
         children: [
           new Paragraph({
             alignment: AlignmentType.CENTER,
@@ -193,10 +194,7 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig, options 
             ]
           }),
           new Table({
-            // Chiều rộng trang ngang A4 trừ lề mỏng là khoảng 15,800 DXA
-            width: { size: 15800, type: WidthType.DXA },
-            // Chia lại tỉ lệ: Cột Yêu cầu (4) và Nội dung (3) cần thu hẹp bớt để cứu các cột cuối
-            columnWidths: [450, 1600, 1600, 3200, 745, 745, 745, 745, 745, 745, 745, 745, 745, 745, 745, 745],
+            width: { size: 100, type: WidthType.PERCENTAGE },
             rows: tableRows,
           }),
         ],
@@ -204,15 +202,14 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig, options 
     });
 
     const blob = await Packer.toBlob(doc);
-    if (options && options.getBlob) {
-        return blob; // Phải có dòng này thì hàm upload mới nhận được dữ liệu
-    }
+    if (options.getBlob) return blob;
     saveAs(blob, `Ban_Dac_Ta_${header.tenMaTran}.docx`);
-    
   } catch (error) {
     console.error("Lỗi xuất Word:", error);
   }
 };
+
+
 
     
 
