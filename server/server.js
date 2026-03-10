@@ -1190,114 +1190,104 @@ app.get('/api/export-matrix-word/:maMaTran', async (req, res) => {
 });
 
 // lưu khbd vào db
-app.post('/api/save-khbd', (req, res) => {
-    // 1. Nhận thêm processData từ body
+app.post('/api/save-khbd', async (req, res) => {
+    // 1. Nhận dữ liệu từ body
     const { header, objectives, activities, processData } = req.body; 
     const maKHBD = `KHBD_${Date.now()}`;
 
-    // 1. Lưu vào bảng KHBD
-    pool.query(
-        `INSERT INTO KHBD (MaKHBD, MaNDCB, UserID, MaPhanPhoi, GhiChu,ThietBiGV, ThietBiHS) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-        [maKHBD, header.maNDCB, header.userId, header.maPhanPhoi, header.ghiChu, header.thietBiGV, header.thietBiHS],
-        (err) => {
-            if (err) return res.status(500).json({ error: "Lỗi lưu KHBD: " + err.message });
+    try {
+        // --- 1. Lưu vào bảng chính KHBD (Dùng await db.query) ---
+        await db.query(
+            `INSERT INTO KHBD (MaKHBD, MaNDCB, UserID, MaPhanPhoi, GhiChu, ThietBiGV, ThietBiHS) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [maKHBD, header.maNDCB, header.userId, header.maPhanPhoi, header.ghiChu, header.thietBiGV, header.thietBiHS]
+        );
 
-            // --- PHẦN MỚI: 1b. Lưu vào bảng Tiến trình tổng quan (processData) ---
-            if (processData && processData.length > 0) {
-                const processValues = processData.map((p, index) => [
-                    maKHBD, 
-                    p.ten || p.HoatDong, 
-                    p.mucTieu || p.MucTieu, 
-                    p.noiDung || p.NoiDung, 
-                    p.phuongPhap || p.PhuongPhap,
-                    
-                    index + 1 // Lưu STT để sau này lấy ra đúng thứ tự
-                ]);
+        // --- 1b. Lưu vào bảng Tiến trình tổng quan (processData) ---
+        if (processData && processData.length > 0) {
+            const processValues = processData.map((p, index) => [
+                maKHBD, 
+                p.ten || p.HoatDong, 
+                p.mucTieu || p.MucTieu, 
+                p.noiDung || p.NoiDung, 
+                p.phuongPhap || p.PhuongPhap,
+                index + 1
+            ]);
 
-                pool.query(
-                    `INSERT INTO KHBD_TIENTRINH_TONGQUAN (MaKHBD, TenHoatDong, MucTieu, NoiDungTrongTam, PhuongPhapKyThuat, STT) VALUES ?`,
-                    [processValues],
-                    (errProc) => {
-                        if (errProc) console.error("Lỗi lưu bảng tổng quan:", errProc);
-                    }
-                );
-            }
-            // ------------------------------------------------------------------
-
-            // 2. Lưu vào bảng KHBD_MUCTIEU (giữ nguyên logic của bạn)
-            let mapMucTieu = {}; 
-            if (objectives && objectives.length > 0) {
-                const objValues = objectives.map((obj, index) => {
-                    const maMT = `MT_${Math.random().toString(36).substr(2, 9)}_${index}`;
-                    mapMucTieu[index + 1] = maMT; 
-                    return [maMT, maKHBD, obj.type, obj.ref, obj.content];
-                });
-
-                pool.query(
-                    `INSERT INTO KHBD_MUCTIEU (MaKHBD_MT, MaKHBD, LoaiMucTieu, MaThamChieu, NoiDungHienThi) VALUES ?`,
-                    [objValues],
-                    (errObj) => { 
-                        if (errObj) {
-                            console.error("Lỗi lưu mục tiêu:", errObj);
-                        } else {
-                            saveActivities(activities, maKHBD, mapMucTieu);
-                        }
-                    }
-                );
-            } else {
-                saveActivities(activities, maKHBD, {});
-            }
-
-            res.json({ success: true, maKHBD });
+            await db.query(
+                `INSERT INTO KHBD_TIENTRINH_TONGQUAN (MaKHBD, TenHoatDong, MucTieu, NoiDungTrongTam, PhuongPhapKyThuat, STT) VALUES ?`,
+                [processValues]
+            );
         }
-    );
 
-    // Hàm phụ trợ giữ nguyên, nhưng nhớ xóa cột PhuongPhapKyThuat nếu bạn đã chạy lệnh DROP COLUMN
-    function saveActivities(activities, maKHBD, mapMucTieu) {
-        if (!activities || activities.length === 0) return;
+        // --- 2. Lưu vào bảng KHBD_MUCTIEU ---
+        let mapMucTieu = {}; 
+        if (objectives && objectives.length > 0) {
+            const objValues = objectives.map((obj, index) => {
+                const maMT = `MT_${Math.random().toString(36).substr(2, 9)}_${index}`;
+                mapMucTieu[index + 1] = maMT; 
+                return [maMT, maKHBD, obj.type, obj.ref, obj.content];
+            });
 
-        activities.forEach((act) => {
+            await db.query(
+                `INSERT INTO KHBD_MUCTIEU (MaKHBD_MT, MaKHBD, LoaiMucTieu, MaThamChieu, NoiDungHienThi) VALUES ?`,
+                [objValues]
+            );
+        }
+
+        // --- 3. Lưu Activities (Gọi hàm phụ trợ đã được cập nhật async) ---
+        if (activities && activities.length > 0) {
+            await saveActivitiesAsync(activities, maKHBD, mapMucTieu);
+        }
+
+        // Trả về kết quả thành công sau khi tất cả các bước hoàn tất
+        res.json({ success: true, maKHBD });
+
+    } catch (err) {
+        console.error("❌ Lỗi lưu KHBD:", err.message);
+        res.status(500).json({ success: false, error: "Lỗi lưu KHBD: " + err.message });
+    }
+
+    // --- Hàm phụ trợ cập nhật sang Async/Await để đồng bộ ---
+    async function saveActivitiesAsync(activities, maKHBD, mapMucTieu) {
+        // Sử dụng for...of thay vì forEach để await hoạt động chính xác
+        for (const act of activities) {
             const maHD = `HD_${Math.random().toString(36).substr(2, 9)}`;
             
-            pool.query(
+            // Lưu Hoạt động
+            await db.query(
                 `INSERT INTO KHBD_HOATDONG (MaHoatDong, MaKHBD, TenHoatDong, NoiDungHoatDong, SPDuKien) VALUES (?, ?, ?, ?, ?)`,
-                [maHD, maKHBD, act.tenHoatDong, act.noiDungHoatDong, act.spDuKien],
-                (errHD) => {
-                    if (errHD) return;
+                [maHD, maKHBD, act.tenHoatDong, act.noiDungHoatDong, act.spDuKien]
+            );
 
-                    // Lưu liên kết mục tiêu (giữ nguyên)
-                    if (act.mucTieuLienKet) {
-                        const numbers = act.mucTieuLienKet.match(/\d+/g);
-                        if (numbers) {
-                            const lienKetValues = numbers
-                                .filter(num => mapMucTieu[num])
-                                .map(num => [maHD, mapMucTieu[num]]);
-                            
-                            if (lienKetValues.length > 0) {
-                                pool.query(
-                                    `INSERT INTO HD_MUCTIEU_LIENKET (MaHoatDong, MaKHBD_MT) VALUES ?`,
-                                    [lienKetValues],
-                                    (errLK) => { if (errLK) console.error("Lỗi lưu liên kết mục tiêu:", errLK); }
-                                );
-                            }
-                        }
-                    }
-
-                    // 4. Lưu HD_TIENTRINH (giữ nguyên)
-                    if (act.steps && act.steps.length > 0) {
-                        const stepValues = act.steps.map(step => [
-                            `TT_${Math.random().toString(36).substr(2, 9)}`,
-                            maHD, step.name, step.gv, step.hs
-                        ]);
-                        pool.query(
-                            `INSERT INTO HD_TIENTRINH (MaTienTrinh, MaHoatDong, TenBuoc, HD_GV, HD_HS) VALUES ?`,
-                            [stepValues],
-                            (errTT) => { if (errTT) console.error("Lỗi lưu tiến trình:", errTT); }
+            // Lưu liên kết mục tiêu
+            if (act.mucTieuLienKet) {
+                const numbers = act.mucTieuLienKet.match(/\d+/g);
+                if (numbers) {
+                    const lienKetValues = numbers
+                        .filter(num => mapMucTieu[num])
+                        .map(num => [maHD, mapMucTieu[num]]);
+                    
+                    if (lienKetValues.length > 0) {
+                        await db.query(
+                            `INSERT INTO HD_MUCTIEU_LIENKET (MaHoatDong, MaKHBD_MT) VALUES ?`,
+                            [lienKetValues]
                         );
                     }
                 }
-            );
-        });
+            }
+
+            // Lưu Tiến trình hoạt động
+            if (act.steps && act.steps.length > 0) {
+                const stepValues = act.steps.map(step => [
+                    `TT_${Math.random().toString(36).substr(2, 9)}`,
+                    maHD, step.name, step.gv, step.hs
+                ]);
+                await db.query(
+                    `INSERT INTO HD_TIENTRINH (MaTienTrinh, MaHoatDong, TenBuoc, HD_GV, HD_HS) VALUES ?`,
+                    [stepValues]
+                );
+            }
+        }
     }
 });
 //lấy khbd từ db
