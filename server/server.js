@@ -1198,23 +1198,30 @@ app.post('/api/save-khbd', async (req, res) => {
         // 1. Lưu vào bảng chính KHBD
         await db.query(
             `INSERT INTO KHBD (MaKHBD, MaNDCB, UserID, MaPhanPhoi, GhiChu, ThietBiGV, ThietBiHS) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-            [maKHBD, header.maNDCB, header.userId, header.maPhanPhoi, header.ghiChu, header.thietBiGV, header.thietBiHS]
+            [
+                maKHBD, 
+                header.maNDCB || null, 
+                header.userId || null, 
+                header.maPhanPhoi || null, 
+                header.ghiChu || '', 
+                header.thietBiGV || '', 
+                header.thietBiHS || ''
+            ]
         );
 
-        // --- SỬA TẠI ĐÂY: Lưu vào bảng Tiến trình tổng quan (processData) ---
+        // --- SỬA TẠI ĐÂY: Lưu vào bảng Tiến trình tổng quan ---
         if (processData && processData.length > 0) {
             const processValues = processData.map((p, index) => [
-                // TỰ TẠO ID: TTTQ + thời gian + chỉ số mảng để đảm bảo không trùng lặp
                 `TTTQ_${Date.now()}_${index}`, 
                 maKHBD, 
-                p.ten || p.HoatDong, 
-                p.mucTieu || p.MucTieu, 
-                p.noiDung || p.NoiDung, 
-                p.phuongPhap || p.PhuongPhap,
+                p.ten || p.HoatDong || '',  // Thêm || '' để tránh undefined
+                p.mucTieu || p.MucTieu || '', 
+                p.noiDung || p.NoiDung || '', 
+                p.phuongPhap || p.PhuongPhap || '',
                 index + 1
             ]);
 
-            // Chú ý: Phải liệt kê cột MaTTTQ ở đầu câu lệnh INSERT
+            // Cú pháp đúng cho Bulk Insert: [processValues]
             await db.query(
                 `INSERT INTO KHBD_TIENTRINH_TONGQUAN (MaTTTQ, MaKHBD, TenHoatDong, MucTieu, NoiDungTrongTam, PhuongPhapKyThuat, STT) VALUES ?`,
                 [processValues]
@@ -1222,29 +1229,33 @@ app.post('/api/save-khbd', async (req, res) => {
         }
 
         // 2. Lưu vào bảng KHBD_MUCTIEU
-        let mapMucTieu = {}; 
         if (objectives && objectives.length > 0) {
+            let mapMucTieu = {}; 
             const objValues = objectives.map((obj, index) => {
                 const maMT = `MT_${Math.random().toString(36).substr(2, 9)}_${index}`;
                 mapMucTieu[index + 1] = maMT; 
-                return [maMT, maKHBD, obj.type, obj.ref, obj.content];
+                return [maMT, maKHBD, obj.type || '', obj.ref || '', obj.content || ''];
             });
 
             await db.query(
                 `INSERT INTO KHBD_MUCTIEU (MaKHBD_MT, MaKHBD, LoaiMucTieu, MaThamChieu, NoiDungHienThi) VALUES ?`,
                 [objValues]
             );
-        }
 
-        // 3. Lưu Activities (Hàm phụ trợ Async)
-        if (activities && activities.length > 0) {
-            await saveActivitiesAsync(activities, maKHBD, mapMucTieu);
+            // 3. Lưu Activities (Chỉ gọi khi có mapMucTieu)
+            if (activities && activities.length > 0) {
+                await saveActivitiesAsync(activities, maKHBD, mapMucTieu);
+            }
+        } else {
+            if (activities && activities.length > 0) {
+                await saveActivitiesAsync(activities, maKHBD, {});
+            }
         }
 
         res.json({ success: true, maKHBD });
 
     } catch (err) {
-        console.error("❌ Lỗi lưu KHBD:", err.message);
+        console.error("❌ Lỗi chi tiết tại Server:", err);
         res.status(500).json({ success: false, error: "Lỗi lưu KHBD: " + err.message });
     }
 
@@ -1255,7 +1266,7 @@ app.post('/api/save-khbd', async (req, res) => {
             
             await db.query(
                 `INSERT INTO KHBD_HOATDONG (MaHoatDong, MaKHBD, TenHoatDong, NoiDungHoatDong, SPDuKien) VALUES (?, ?, ?, ?, ?)`,
-                [maHD, maKHBD, act.tenHoatDong, act.noiDungHoatDong, act.spDuKien]
+                [maHD, maKHBD, act.tenHoatDong || '', act.noiDungHoatDong || '', act.spDuKien || '']
             );
 
             if (act.mucTieuLienKet) {
@@ -1277,7 +1288,7 @@ app.post('/api/save-khbd', async (req, res) => {
             if (act.steps && act.steps.length > 0) {
                 const stepValues = act.steps.map(step => [
                     `TT_${Math.random().toString(36).substr(2, 9)}`,
-                    maHD, step.name, step.gv, step.hs
+                    maHD, step.name || '', step.gv || '', step.hs || ''
                 ]);
                 await db.query(
                     `INSERT INTO HD_TIENTRINH (MaTienTrinh, MaHoatDong, TenBuoc, HD_GV, HD_HS) VALUES ?`,
