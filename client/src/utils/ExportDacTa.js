@@ -145,15 +145,24 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig, options 
         ...colTotals.slice(0, 12).map(t => createCell(String(t), { bold: true })),
       ]
     }));
+    
 
-    // --- 5. HÀNG TỈ LỆ % (Tính theo LOẠI CÂU HỎI - Đúng ý bạn) ---
+    // HÀNG 2: TỔNG ĐIỂM (Gộp theo loại câu hỏi - 4 cụm)
     const scoreByGroup = [
-      colScores[0] + colScores[1] + colScores[2], // % Nhiều lựa chọn
-      colScores[3] + colScores[4] + colScores[5], // % Đúng - Sai
-      colScores[6] + colScores[7] + colScores[8], // % Trả lời ngắn
-      colScores[9] + colScores[10] + colScores[11] // % Tự luận
+      colScores[0] + colScores[1] + colScores[2], // Nhiều LC
+      colScores[3] + colScores[4] + colScores[5], // Đúng - Sai
+      colScores[6] + colScores[7] + colScores[8], // Trả lời ngắn
+      colScores[9] + colScores[10] + colScores[11] // Tự luận
     ];
 
+    tableRows.push(new TableRow({
+      children: [
+        createCell("Tổng điểm", { colSpan: 4, bold: true }),
+        ...scoreByGroup.map(s => createCell(formatPoint(s), { colSpan: 3, bold: true })),
+      ]
+    }));
+
+    // HÀNG 3: TỈ LỆ % (Gộp theo loại câu hỏi - 4 cụm)
     tableRows.push(new TableRow({
       children: [
         createCell("Tỉ lệ %", { colSpan: 4, bold: true }),
@@ -161,17 +170,7 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig, options 
       ]
     }));
 
-    // --- 6. HÀNG TỈ LỆ CHUNG (NB+TH và VD) ---
-    const pctNB_TH = ((totalPointsByLevel.nb + totalPointsByLevel.th) / 10) * 100;
-    const pctVD = (totalPointsByLevel.vd / 10) * 100;
-
-    tableRows.push(new TableRow({
-      children: [
-        createCell("Tỉ lệ chung", { colSpan: 4, bold: true }),
-        createCell(`${formatPoint(pctNB_TH)}% (Biết + Hiểu)`, { colSpan: 6, bold: true }),
-        createCell(`${formatPoint(pctVD)}% (Vận dụng)`, { colSpan: 6, bold: true }),
-      ]
-    }));
+    
 
     // --- 7. XUẤT FILE ---
     const doc = new Document({
