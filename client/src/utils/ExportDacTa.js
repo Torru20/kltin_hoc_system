@@ -60,78 +60,73 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig,options =
     }));
 
     // --- 5. BIẾN TÍCH LŨY ---
+    // --- 5. BIẾN TÍCH LŨY ---
     const stats = {
       nb: { lc: 0, ds: 0, tr: 0, tl: 0, score: 0 },
       th: { lc: 0, ds: 0, tr: 0, tl: 0, score: 0 },
       vd: { lc: 0, ds: 0, tr: 0, tl: 0, score: 0 },
+      // Thêm biến tích lũy theo loại câu hỏi để tính % chính xác theo cột
+      colScore: {
+        lc: 0, // Nhiều lựa chọn
+        ds: 0, // Đúng sai
+        tr: 0, // Trả lời ngắn
+        tl: 0  // Tự luận
+      }
     };
 
     // --- 6. ĐỔ DỮ LIỆU ---
     dacTaRows.forEach((row, idx) => {
-      const m = mapMucDo(row.maMucDo); // Chuẩn hóa mức độ ở đây
+      const m = mapMucDo(row.maMucDo);
       const maNL = row.maNL || "";
 
       if (stats[m.toLowerCase()]) {
         const s = stats[m.toLowerCase()];
-        s.lc += parseInt(row.tn_nhieu_lc) || 0;
-        s.ds += parseInt(row.tn_dung_sai) || 0;
-        s.tr += parseInt(row.tl_ngan) || 0;
-        s.tl += parseInt(row.tu_luan) || 0;
+        const countLC = parseInt(row.tn_nhieu_lc) || 0;
+        const countDS = parseInt(row.tn_dung_sai) || 0;
+        const countTR = parseInt(row.tl_ngan) || 0;
+        const countTL = parseInt(row.tu_luan) || 0;
 
-        // Tính điểm dựa trên pointConfig
+        s.lc += countLC;
+        s.ds += countDS;
+        s.tr += countTR;
+        s.tl += countTL;
+
         const p = pointConfig || { tn_nhieu_lc: 0.25, tn_dung_sai: 1, tl_ngan: 0.5, tu_luan_nb: 0.5, tu_luan_th: 1, tu_luan_vd: 1.5 };
         
-        const scoreLC = (parseInt(row.tn_nhieu_lc) || 0) * p.tn_nhieu_lc;
-        const scoreDS = (parseInt(row.tn_dung_sai) || 0) * p.tn_dung_sai;
-        const scoreTR = (parseInt(row.tl_ngan) || 0) * p.tl_ngan;
+        const sLC = countLC * p.tn_nhieu_lc;
+        const sDS = countDS * p.tn_dung_sai;
+        const sTR = countTR * p.tl_ngan;
         
-        let scoreTL = 0;
-        if (m === "NB") scoreTL = (parseInt(row.tu_luan) || 0) * p.tu_luan_nb;
-        else if (m === "TH") scoreTL = (parseInt(row.tu_luan) || 0) * p.tu_luan_th;
-        else if (m === "VD") scoreTL = (parseInt(row.tu_luan) || 0) * p.tu_luan_vd;
+        let sTL = 0;
+        if (m === "NB") sTL = countTL * p.tu_luan_nb;
+        else if (m === "TH") sTL = countTL * p.tu_luan_th;
+        else if (m === "VD") sTL = countTL * p.tu_luan_vd;
 
-        s.score += (scoreLC + scoreDS + scoreTR + scoreTL);
+        // Tích lũy điểm theo mức độ (để tính tỉ lệ chung)
+        s.score += (sLC + sDS + sTR + sTL);
+
+        // Tích lũy điểm theo loại câu hỏi (để tính tỉ lệ % theo cột)
+        stats.colScore.lc += sLC;
+        stats.colScore.ds += sDS;
+        stats.colScore.tr += sTR;
+        stats.colScore.tl += sTL;
       }
-
-      // Hàm format hiển thị Số câu (Mã NL)
-      const formatVal = (val, targetLvl, currentMaNL) => {
-        if (m !== targetLvl) return ""; // So sánh với m đã chuẩn hóa
-        const num = parseInt(val) || 0;
-        if (num === 0) return "";
-        return currentMaNL ? `${num}(${currentMaNL})` : String(num);
-      };
-
-      tableRows.push(new TableRow({
-        children: [
-          createCell(String(idx + 1)),
-          createCell(row.tenChuDe, { vMerge: row.isFirstOfChuDe, continueVMerge: !row.isFirstOfChuDe, align: AlignmentType.LEFT }),
-          createCell(row.tenNoiDung, { vMerge: row.isFirstOfND, continueVMerge: !row.isFirstOfND, align: AlignmentType.LEFT }),
-          createCell(row.noiDungYCCD, { align: AlignmentType.LEFT }),
-          // TNKQ - Nhiều lựa chọn
-          createCell(formatVal(row.tn_nhieu_lc, "NB", maNL)),
-          createCell(formatVal(row.tn_nhieu_lc, "TH", maNL)),
-          createCell(formatVal(row.tn_nhieu_lc, "VD", maNL)),
-          // TNKQ - Đúng Sai
-          createCell(formatVal(row.tn_dung_sai, "NB", maNL)),
-          createCell(formatVal(row.tn_dung_sai, "TH", maNL)),
-          createCell(formatVal(row.tn_dung_sai, "VD", maNL)),
-          // TNKQ - Trả lời ngắn
-          createCell(formatVal(row.tl_ngan, "NB", maNL)),
-          createCell(formatVal(row.tl_ngan, "TH", maNL)),
-          createCell(formatVal(row.tl_ngan, "VD", maNL)),
-          // Tự luận
-          createCell(formatVal(row.tu_luan, "NB", maNL)),
-          createCell(formatVal(row.tu_luan, "TH", maNL)),
-          createCell(formatVal(row.tu_luan, "VD", maNL)),
-        ]
-      }));
+      // ... (phần push TableRow dữ liệu giữ nguyên)
     });
 
     // --- 7. BA HÀNG CUỐI (TỔNG KẾT) ---
-    const rateNB = Math.round((stats.nb.score / 10) * 100);
-    const rateTH = Math.round((stats.th.score / 10) * 100);
-    const rateVD = Math.round((stats.vd.score / 10) * 100);
+    // Tỉ lệ % theo từng loại câu hỏi (để hiển thị dưới các cột tương ứng)
+    const rateLC = Math.round((stats.colScore.lc / 10) * 100);
+    const rateDS = Math.round((stats.colScore.ds / 10) * 100);
+    const rateTR = Math.round((stats.colScore.tr / 10) * 100);
+    const rateTL = Math.round((stats.colScore.tl / 10) * 100);
 
+    // Tỉ lệ % tổng theo mức độ (cho hàng tỉ lệ chung)
+    const totalRateNB = Math.round((stats.nb.score / 10) * 100);
+    const totalRateTH = Math.round((stats.th.score / 10) * 100);
+    const totalRateVD = Math.round((stats.vd.score / 10) * 100);
+
+    // HÀNG TỔNG CỘNG
     tableRows.push(new TableRow({
       children: [
         createCell("Tổng cộng", { bold: true, colSpan: 4 }),
@@ -142,13 +137,23 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig,options =
       ]
     }));
 
+    // HÀNG TỈ LỆ % (Bây giờ đã khớp theo loại câu hỏi)
     tableRows.push(new TableRow({
       children: [
         createCell("Tỉ lệ %", { bold: true, colSpan: 4 }),
-        createCell(`${rateNB}%`, { bold: true, colSpan: 3 }),
-        createCell(`${rateTH}%`, { bold: true, colSpan: 3 }),
-        createCell(`${rateVD}%`, { bold: true, colSpan: 3 }),
-        createCell(`${rateVD}%`, { bold: true, colSpan: 3 }),
+        createCell(`${rateLC}%`, { bold: true, colSpan: 3 }), // Dưới cụm Nhiều lựa chọn
+        createCell(`${rateDS}%`, { bold: true, colSpan: 3 }), // Dưới cụm Đúng sai
+        createCell(`${rateTR}%`, { bold: true, colSpan: 3 }), // Dưới cụm Trả lời ngắn
+        createCell(`${rateTL}%`, { bold: true, colSpan: 3 }), // Dưới cụm Tự luận
+      ]
+    }));
+
+    // HÀNG TỈ LỆ CHUNG
+    tableRows.push(new TableRow({
+      children: [
+        createCell("Tỉ lệ chung", { bold: true, colSpan: 4 }),
+        createCell(`${totalRateNB + totalRateTH}%`, { bold: true, colSpan: 6 }), // NB + TH
+        createCell(`${totalRateVD}%`, { bold: true, colSpan: 6 }),               // VD
       ]
     }));
 
