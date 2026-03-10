@@ -1191,20 +1191,21 @@ app.get('/api/export-matrix-word/:maMaTran', async (req, res) => {
 
 // lưu khbd vào db
 app.post('/api/save-khbd', async (req, res) => {
-    // 1. Nhận dữ liệu từ body
     const { header, objectives, activities, processData } = req.body; 
     const maKHBD = `KHBD_${Date.now()}`;
 
     try {
-        // --- 1. Lưu vào bảng chính KHBD (Dùng await db.query) ---
+        // 1. Lưu vào bảng chính KHBD
         await db.query(
             `INSERT INTO KHBD (MaKHBD, MaNDCB, UserID, MaPhanPhoi, GhiChu, ThietBiGV, ThietBiHS) VALUES (?, ?, ?, ?, ?, ?, ?)`,
             [maKHBD, header.maNDCB, header.userId, header.maPhanPhoi, header.ghiChu, header.thietBiGV, header.thietBiHS]
         );
 
-        // --- 1b. Lưu vào bảng Tiến trình tổng quan (processData) ---
+        // --- SỬA TẠI ĐÂY: Lưu vào bảng Tiến trình tổng quan (processData) ---
         if (processData && processData.length > 0) {
             const processValues = processData.map((p, index) => [
+                // TỰ TẠO ID: TTTQ + thời gian + chỉ số mảng để đảm bảo không trùng lặp
+                `TTTQ_${Date.now()}_${index}`, 
                 maKHBD, 
                 p.ten || p.HoatDong, 
                 p.mucTieu || p.MucTieu, 
@@ -1213,13 +1214,14 @@ app.post('/api/save-khbd', async (req, res) => {
                 index + 1
             ]);
 
+            // Chú ý: Phải liệt kê cột MaTTTQ ở đầu câu lệnh INSERT
             await db.query(
-                `INSERT INTO KHBD_TIENTRINH_TONGQUAN (MaKHBD, TenHoatDong, MucTieu, NoiDungTrongTam, PhuongPhapKyThuat, STT) VALUES ?`,
+                `INSERT INTO KHBD_TIENTRINH_TONGQUAN (MaTTTQ, MaKHBD, TenHoatDong, MucTieu, NoiDungTrongTam, PhuongPhapKyThuat, STT) VALUES ?`,
                 [processValues]
             );
         }
 
-        // --- 2. Lưu vào bảng KHBD_MUCTIEU ---
+        // 2. Lưu vào bảng KHBD_MUCTIEU
         let mapMucTieu = {}; 
         if (objectives && objectives.length > 0) {
             const objValues = objectives.map((obj, index) => {
@@ -1234,12 +1236,11 @@ app.post('/api/save-khbd', async (req, res) => {
             );
         }
 
-        // --- 3. Lưu Activities (Gọi hàm phụ trợ đã được cập nhật async) ---
+        // 3. Lưu Activities (Hàm phụ trợ Async)
         if (activities && activities.length > 0) {
             await saveActivitiesAsync(activities, maKHBD, mapMucTieu);
         }
 
-        // Trả về kết quả thành công sau khi tất cả các bước hoàn tất
         res.json({ success: true, maKHBD });
 
     } catch (err) {
@@ -1247,19 +1248,16 @@ app.post('/api/save-khbd', async (req, res) => {
         res.status(500).json({ success: false, error: "Lỗi lưu KHBD: " + err.message });
     }
 
-    // --- Hàm phụ trợ cập nhật sang Async/Await để đồng bộ ---
+    // Hàm phụ trợ lưu Activity tuần tự
     async function saveActivitiesAsync(activities, maKHBD, mapMucTieu) {
-        // Sử dụng for...of thay vì forEach để await hoạt động chính xác
         for (const act of activities) {
             const maHD = `HD_${Math.random().toString(36).substr(2, 9)}`;
             
-            // Lưu Hoạt động
             await db.query(
                 `INSERT INTO KHBD_HOATDONG (MaHoatDong, MaKHBD, TenHoatDong, NoiDungHoatDong, SPDuKien) VALUES (?, ?, ?, ?, ?)`,
                 [maHD, maKHBD, act.tenHoatDong, act.noiDungHoatDong, act.spDuKien]
             );
 
-            // Lưu liên kết mục tiêu
             if (act.mucTieuLienKet) {
                 const numbers = act.mucTieuLienKet.match(/\d+/g);
                 if (numbers) {
@@ -1276,7 +1274,6 @@ app.post('/api/save-khbd', async (req, res) => {
                 }
             }
 
-            // Lưu Tiến trình hoạt động
             if (act.steps && act.steps.length > 0) {
                 const stepValues = act.steps.map(step => [
                     `TT_${Math.random().toString(36).substr(2, 9)}`,
