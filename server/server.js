@@ -1211,10 +1211,12 @@ app.post('/api/save-khbd', async (req, res) => {
 
         // --- SỬA TẠI ĐÂY: Lưu vào bảng Tiến trình tổng quan ---
         if (processData && processData.length > 0) {
+            const now = Date.now(); // Lấy timestamp hiện tại (dạng số)
             const processValues = processData.map((p, index) => [
-                `TTTQ_${Date.now()}_${index}`, 
+                // TẠO ID KIỂU SỐ: Lấy 9 số cuối của timestamp + index để vừa khít kiểu INT
+                parseInt((now % 1000000000) + index), 
                 maKHBD, 
-                p.ten || p.HoatDong || '',  // Thêm || '' để tránh undefined
+                p.ten || p.HoatDong || '', 
                 p.mucTieu || p.MucTieu || '', 
                 p.noiDung || p.NoiDung || '', 
                 p.phuongPhap || p.PhuongPhap || '',
