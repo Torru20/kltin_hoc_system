@@ -157,11 +157,14 @@ export const exportDacTaDirect = async (header, dacTaRows, pointConfig,options =
       ]
     }));
 
+    // HÀNG TỈ LỆ CHUNG
     tableRows.push(new TableRow({
       children: [
         createCell("Tỉ lệ chung", { bold: true, colSpan: 4 }),
-        createCell(`${rateNB + rateTH}%`, { bold: true, colSpan: 6 }),
-        createCell(`${rateVD}%`, { bold: true, colSpan: 6 }),
+        // Sửa rateNB -> totalRateNB, rateTH -> totalRateTH
+        createCell(`${totalRateNB + totalRateTH}%`, { bold: true, colSpan: 6 }), 
+        // Sửa rateVD -> totalRateVD
+        createCell(`${totalRateVD}%`, { bold: true, colSpan: 6 }),
       ]
     }));
 
