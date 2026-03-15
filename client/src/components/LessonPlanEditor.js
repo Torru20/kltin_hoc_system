@@ -447,51 +447,69 @@ const LessonPlanEditor = () => {
   const [processData, setProcessData] = useState([]); // Lưu dữ liệu bảng tiến trình
   //const aiData = JSON.parse(data.content);
   const handleExportWord = () => {
-    // 1. Thu thập thông tin định danh (Tên file, Lớp, Sách)
-    const tenSGK = boSgks.find(s => s.id === basicInfo.maSGK)?.ten || "Chương trình GDPT 2018";
-    const tenLopRaw = lops.find(l => l.id === basicInfo.maLop)?.ten || ""; 
-    const maLop = tenLopRaw.replace(/\D/g, "") ? `L${tenLopRaw.replace(/\D/g, "")}` : "LX";
+    // 1. Lấy Tên bộ sách (Ví dụ: "Kết nối tri thức")
+    // Bổ sung: Nếu không có maSGK (C1,2) thì lấy tên NDCB làm định danh
+    const selectedSGK = boSgks.find(s => s.id === basicInfo.maSGK);
+    const tenSGK = selectedSGK?.ten || "CT2018";
+   
+    // 2. Lấy Tên lớp và xử lý thành định dạng L10, L11...
+    const tenLopRaw = lops.find(l => l.id === basicInfo.maLop)?.ten || "";
+    const soLop = tenLopRaw.replace(/\D/g, ""); 
+    const maLop = soLop ? `L${soLop}` : "LX";
 
+    // 3. Lấy Tên bài học và STT bài
     const selectedBai = listBaiHoc.find(b => b.id === basicInfo.maTenBai);
     const selectedNDCB = listNDCB.find(n => n.id === basicInfo.maNDCB);
-    const tenBaiRaw = selectedBai?.ten || selectedNDCB?.ten || "Bài dạy mới"; 
     
-    const sttBai = tenBaiRaw.includes(':') ? tenBaiRaw.split(':')[0].replace(/\s+/g, '') : "Bai";
-    const tenSachVietTat = tenSGK.split(' ').map(word => word[0]).join('').toUpperCase();
+    // Ưu tiên tên bài (C3), nếu không có thì lấy tên Nội dung cơ bản (C1, 2)
+    const tenBaiRaw = selectedBai?.ten || selectedNDCB?.ten || "BaiHoc";
+   
+    const sttBai = tenBaiRaw.includes(':') 
+        ? tenBaiRaw.split(':')[0].replace(/\s+/g, '') 
+        : "Bai";
+
+    // 4. Tạo tên file
+    const tenSachVietTat = tenSGK
+        .split(' ')
+        .map(word => word[0])
+        .join('')
+        .toUpperCase();
+
     const fileName = `${maLop}_KHBD_${sttBai}_${tenSachVietTat}`;
+   
+    // --- PHẦN QUAN TRỌNG: TRÍCH XUẤT NỘI DUNG ---
+    // Sửa lại để tìm ở cả listMTTP và listYCCD
+    const nlucDacThuText = selectedMTTP
+      .map(id => {
+          // Ép kiểu về String để so sánh chính xác
+          const searchId = String(id);
+          // Tìm trong MTTP (C3)
+          const mttp = listMTTP.find(m => String(m.id) === searchId);
+          if (mttp) return mttp.noiDung;
+          // Tìm trong YCCD (C1, 2)
+          const yccd = listYCCD.find(y => String(y.id) === searchId);
+          if (yccd) return yccd.noiDung;
+          
+          return null;
+      })
+      .filter(Boolean)
+      .join("; ");
 
-    // --- PHẦN QUAN TRỌNG: GOM ĐỦ NỘI DUNG NĂNG LỰC ĐẶC THÙ ---
-    // Chúng ta quét qua mảng ID (selectedMTTP) và lấy nội dung tương ứng từ 2 nguồn dữ liệu
-    const nlucDacThuContentArray = selectedMTTP.map(id => {
-        // Tìm trong danh sách Yêu cầu cần đạt (C1, C2 hoặc chọn từ CT 2018)
-        const yccd = listYCCD.find(y => String(y.id) === String(id));
-        if (yccd) return yccd.noiDung;
-
-        // Tìm trong danh sách Mục tiêu từ SGK (MTTP - Cấp 3)
-        const mttp = listMTTP.find(m => String(m.id) === String(id));
-        if (mttp) return mttp.noiDung;
-
-        return null;
-    }).filter(Boolean); // Loại bỏ các kết quả không tìm thấy nội dung
-
-    // Chuyển mảng nội dung thành chuỗi, cách nhau bởi dấu xuống dòng để Service dễ xử lý
-    const nlucDacThuText = nlucDacThuContentArray.join("\n");
-
-    // 3. Đóng gói dữ liệu gửi đi
+    // 5. Chuẩn bị object objectives đầy đủ
     const objectivesForWord = {
-        ...objectives,
-        nlucDacThuText: nlucDacThuText || "Chưa chọn mục tiêu năng lực",
-        kienThucText: nlucDacThuText || "" // Thường phần kiến thức sẽ lấy nội dung từ năng lực đặc thù
+      ...objectives,
+      nlucDacThuText: nlucDacThuText,
+      kienThucText: nlucDacThuText
     };
 
     const infoForWord = {
-        ...basicInfo,
-        baiName: tenBaiRaw,
-        fileName: fileName,
-        lop: tenLopRaw
+      ...basicInfo,
+      baiName: tenBaiRaw,
+      fileName: fileName,
+      lop: tenLopRaw
     };
 
-    // 4. Gọi Service để thực hiện việc đánh số và xuất file
+    // Gọi hàm Export từ Service
     exportKHBDToWord(infoForWord, objectivesForWord, processData, activities);
 };
   const [isSaving, setIsSaving] = useState(false);
