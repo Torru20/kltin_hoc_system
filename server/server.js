@@ -1306,24 +1306,36 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
     const { maKHBD } = req.params;
     try {
         // 1. Lấy thông tin bài dạy chính (Bổ sung ThietBiGV, ThietBiHS, ThoiLuong)
-        // 1. Lấy thông tin bài dạy (Sửa để hỗ trợ C1, C2 mà không hỏng C3)
+        // 1. Chỉ lấy dữ liệu từ bảng KHBD - Không JOIN để tránh lỗi C1, C2
         const [infoRows] = await db.query(
-            `SELECT k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, 
-                    IFNULL(p.TenBai, n.TenND) as TenBai, 
-                    IFNULL(l1.TenLop, l2.TenLop) as TenLop
-             FROM KHBD k 
-             LEFT JOIN PHANPHOISGK p ON k.MaPhanPhoi = p.MaPhanPhoi 
-             LEFT JOIN LOP l1 ON p.MaLop = l1.MaLop
-             LEFT JOIN NOIDUNG_COBAN n ON k.MaNDCB = n.MaNDCB
-             LEFT JOIN LOP l2 ON n.MaLop = l2.MaLop
-             WHERE k.MaKHBD = ?`, [maKHBD]
+            `SELECT MaKHBD, GhiChu, ThietBiGV, ThietBiHS, ThoiLuong, MaPhanPhoi 
+             FROM KHBD 
+             WHERE MaKHBD = ?`, [maKHBD]
         );
 
         if (infoRows.length === 0) {
             return res.status(404).json({ success: false, message: "Không tìm thấy KHBD" });
         }
 
-        const rawInfo = infoRows[0];
+        let rawInfo = infoRows[0];
+        rawInfo.TenBai = "Bài dạy mới (Cấp 1/2)"; // Giá trị mặc định
+        rawInfo.TenLop = "Chưa xác định";        // Giá trị mặc định
+
+        // 2. Chỉ khi nào có MaPhanPhoi (Cấp 3) thì mới đi lấy tên bài thật
+        if (rawInfo.MaPhanPhoi) {
+            const [extraData] = await db.query(
+                `SELECT p.TenBai, l.TenLop 
+                 FROM PHANPHOISGK p 
+                 JOIN LOP l ON p.MaLop = l.MaLop 
+                 WHERE p.MaPhanPhoi = ?`, [rawInfo.MaPhanPhoi]
+            );
+            if (extraData.length > 0) {
+                rawInfo.TenBai = extraData[0].TenBai;
+                rawInfo.TenLop = extraData[0].TenLop;
+            }
+        }
+
+        //const rawInfo = infoRows[0];
 
         // 2. Lấy TOÀN BỘ mục tiêu từ bảng KHBD_MUCTIEU (Cần thiết để đánh số liên kết)
         const [objectives] = await db.query(
