@@ -73,8 +73,7 @@ function MainAppContent() {
               <NavDropdown title="Tra cứu" id="basic-nav-dropdown-tra">
                 <NavDropdown.Item as={Link} to="/exams">Danh sách bài kiểm tra</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/knowledge">Tra cứu tri thức</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="/sohoa_khbd">Số hóa KHBD</NavDropdown.Item>
+                
               </NavDropdown>
             </Nav>
 
