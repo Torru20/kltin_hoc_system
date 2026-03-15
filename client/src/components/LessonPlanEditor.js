@@ -447,55 +447,54 @@ const LessonPlanEditor = () => {
   const [processData, setProcessData] = useState([]); // Lưu dữ liệu bảng tiến trình
   //const aiData = JSON.parse(data.content);
   const handleExportWord = () => {
-    // 1. Lấy Tên bộ sách (Ví dụ: "Kết nối tri thức")
+    // 1. Lấy Tên bộ sách và Lớp
     const tenSGK = boSgks.find(s => s.id === basicInfo.maSGK)?.ten || "SGK";
-    
-    // 2. Lấy Tên lớp và xử lý thành định dạng L10, L11...
     const tenLopRaw = lops.find(l => l.id === basicInfo.maLop)?.ten || ""; 
-    const soLop = tenLopRaw.replace(/\D/g, ""); // Chỉ lấy số (ví dụ "Lớp 10" -> "10")
-    const maLop = soLop ? `L${soLop}` : "LX";
+    const maLop = tenLopRaw.replace(/\D/g, "") ? `L${tenLopRaw.replace(/\D/g, "")}` : "LX";
 
-    // 3. Lấy Tên bài học và STT bài
+    // 2. Lấy Tên bài học/Nội dung cơ bản (Linh hoạt cho mọi cấp)
     const selectedBai = listBaiHoc.find(b => b.id === basicInfo.maTenBai);
-    const tenBaiRaw = selectedBai?.ten || "BaiHoc"; 
+    const selectedNDCB = listNDCB.find(n => n.id === basicInfo.maNDCB);
+    const tenBaiRaw = selectedBai?.ten || selectedNDCB?.ten || "BaiHoc"; 
     
-    // Tách lấy phần "Bài 34" từ "Bài 34: Nghề phát triển phần mềm"
-    const sttBai = tenBaiRaw.split(':')[0].replace(/\s+/g, '');
+    // Tách số bài (ví dụ: "Bài 1")
+    const sttBai = tenBaiRaw.includes(':') ? tenBaiRaw.split(':')[0].replace(/\s+/g, '') : "Bai";
 
-    // 4. Tạo tên file theo định dạng: L10_KHBD_Bai34_KNTT
-    // Viết tắt tên sách (ví dụ: "Kết nối tri thức" -> "KNTT")
-    const tenSachVietTat = tenSGK
-        .split(' ')
-        .map(word => word[0])
-        .join('')
-        .toUpperCase();
-
+    // 3. Tạo tên file
+    const tenSachVietTat = tenSGK.split(' ').map(word => word[0]).join('').toUpperCase();
     const fileName = `${maLop}_KHBD_${sttBai}_${tenSachVietTat}`;
-   
-    
-    // 2. Tìm nội dung chữ của Năng lực đặc thù (Nhóm 2.1)
-    // Trong code của bạn dùng selectedMTTP và listMTTP
-    const nlucDacThuText = selectedMTTP
-      .map(id => listMTTP.find(m => m.id === id)?.noiDung)
-      .filter(Boolean)
-      .join("; ");
 
-    // 3. Chuẩn bị object objectives đầy đủ
+    // --- PHẦN XỬ LÝ NĂNG LỰC ĐẶC THÙ (GỘP CẢ YCCD VÀ MTTP) ---
+    const nlucDacThuArray = selectedMTTP.map(id => {
+        // Tìm trong Yêu cầu cần đạt
+        const yccd = listYCCD.find(y => y.id === id);
+        if (yccd) return yccd.noiDung;
+
+        // Tìm trong Mục tiêu SGK (MTTP)
+        const mttp = listMTTP.find(m => m.id === id);
+        if (mttp) return mttp.noiDung;
+
+        return null;
+    }).filter(Boolean); // Loại bỏ các giá trị null
+
+    // Chuyển mảng thành chuỗi văn bản, ngăn cách bằng dấu chấm phẩy
+    const nlucDacThuText = nlucDacThuArray.join("; ");
+
+    // 4. Chuẩn bị dữ liệu gửi sang Service
     const objectivesForWord = {
-      ...objectives,
-      nlucDacThuText: nlucDacThuText,
-      // Kiến thức: bạn có thể lấy từ nlucDacThu hoặc một state kiến thức riêng nếu có
-      kienThucText: nlucDacThuText 
+        ...objectives,
+        nlucDacThuText: nlucDacThuText,
+        kienThucText: nlucDacThuText // Có thể gộp chung vào phần Kiến thức
     };
 
     const infoForWord = {
-      ...basicInfo,
-      baiName: tenBaiRaw,
-        fileName: fileName, // Truyền tên file đã dựng vào đây
-        lop: lops.find(l => l.id === basicInfo.maLop)?.ten || ""
+        ...basicInfo,
+        baiName: tenBaiRaw,
+        fileName: fileName,
+        lop: tenLopRaw
     };
 
-    // Gọi hàm Export từ Service
+    // 5. Xuất file
     exportKHBDToWord(infoForWord, objectivesForWord, processData, activities);
   };
   const [isSaving, setIsSaving] = useState(false);
