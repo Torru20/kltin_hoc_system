@@ -1305,12 +1305,11 @@ app.post('/api/save-khbd', async (req, res) => {
 app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
     const { maKHBD } = req.params;
     try {
-        // 1. Sửa JOIN thành LEFT JOIN và dùng COALESCE để lấy TenBai linh hoạt
+        // 1. Lấy thông tin bài dạy chính (Bổ sung ThietBiGV, ThietBiHS, ThoiLuong)
         const [infoRows] = await db.query(
-            `SELECT 
-                k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, 
-                COALESCE(p.TenBai, n.TenND) as TenBai, 
-                l.TenLop 
+            `SELECT k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, 
+                    COALESCE(p.TenBai, n.TenND) AS TenBai, 
+                    l.TenLop 
              FROM KHBD k 
              LEFT JOIN PHANPHOISGK p ON k.MaPhanPhoi = p.MaPhanPhoi 
              LEFT JOIN NOIDUNG_COBAN n ON k.MaNDCB = n.MaNDCB
@@ -1324,7 +1323,7 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
 
         const rawInfo = infoRows[0];
 
-        // 2. Lấy TOÀN BỘ mục tiêu từ bảng KHBD_MUCTIEU
+        // 2. Lấy TOÀN BỘ mục tiêu từ bảng KHBD_MUCTIEU (Cần thiết để đánh số liên kết)
         const [objectives] = await db.query(
             `SELECT LoaiMucTieu, NoiDungHienThi, MaKHBD_MT 
              FROM KHBD_MUCTIEU 
@@ -1351,14 +1350,17 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
 
         const activities = [];
         for (let act of dbActivities) {
+            // Lấy các bước của từng hoạt động
             const [steps] = await db.query(
                 `SELECT TenBuoc as step, HD_GV as gv, HD_HS as hs 
                  FROM HD_TIENTRINH 
                  WHERE MaHoatDong = ?`, [act.MaHoatDong]
             );
             
+            // Sắp xếp bước theo quy trình 5512
             const sortedSteps = steps.sort((a, b) => (stepPriority[a.step] || 99) - (stepPriority[b.step] || 99));
 
+            // Map mục tiêu liên kết (để hiển thị dạng (1), (2) trong Word)
             const [links] = await db.query(
                 `SELECT MaKHBD_MT FROM HD_MUCTIEU_LIENKET WHERE MaHoatDong = ?`, [act.MaHoatDong]
             );
@@ -1377,12 +1379,13 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
             });
         }
 
-        // 5. Xử lý tách Phụ lục
+        // 5. Xử lý tách Phụ lục từ cột Ghi chú (nếu có)
         let phuLucText = "";
         if (rawInfo.GhiChu && rawInfo.GhiChu.includes("Phụ lục:")) {
             phuLucText = rawInfo.GhiChu.split("Phụ lục:")[1].trim();
         }
 
+        // Gộp lại thông tin header hoàn chỉnh
         const formattedInfo = {
             maKHBD: rawInfo.MaKHBD,
             baiName: rawInfo.TenBai,
@@ -1394,6 +1397,7 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
             ghiChu: rawInfo.GhiChu
         };
 
+        // Trả dữ liệu về cho Frontend
         res.json({ 
             success: true, 
             info: formattedInfo, 
