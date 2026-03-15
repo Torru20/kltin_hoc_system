@@ -1308,10 +1308,19 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
         // 1. Lấy thông tin bài dạy chính (Bổ sung ThietBiGV, ThietBiHS, ThoiLuong)
         const [infoRows] = await db.query(
             `SELECT k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, p.TenBai, l.TenLop 
-             FROM KHBD k 
-             JOIN PHANPHOISGK p ON k.MaPhanPhoi = p.MaPhanPhoi 
-             JOIN LOP l ON p.MaLop = l.MaLop 
-             WHERE k.MaKHBD = ?`, [maKHBD]
+            FROM KHBD k 
+            JOIN PHANPHOISGK p ON k.MaPhanPhoi = p.MaPhanPhoi 
+            JOIN LOP l ON p.MaLop = l.MaLop 
+            WHERE k.MaKHBD = ?
+            
+            UNION ALL
+            
+            SELECT k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, n.TenND as TenBai, l.TenLop 
+            FROM KHBD k 
+            JOIN NOIDUNG_COBAN n ON k.MaNDCB = n.MaNDCB
+            JOIN LOP l ON n.MaLop = l.MaLop 
+            WHERE k.MaKHBD = ?`, 
+            [maKHBD, maKHBD]
         );
 
         if (infoRows.length === 0) {
