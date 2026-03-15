@@ -1307,12 +1307,19 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
     try {
         // 1. Lấy thông tin bài dạy chính (Bổ sung ThietBiGV, ThietBiHS, ThoiLuong)
         const [infoRows] = await db.query(
-            `SELECT k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, p.TenBai, l.TenLop 
-             FROM KHBD k 
-             JOIN PHANPHOISGK p ON k.MaPhanPhoi = p.MaPhanPhoi 
-             JOIN LOP l ON p.MaLop = l.MaLop 
-             WHERE k.MaKHBD = ?`, [maKHBD]
+            `SELECT 
+                k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, 
+                p.TenBai as TenBaiSGK, 
+                n.TenND as TenNoiDungCB,
+                l.TenLop 
+            FROM KHBD k 
+            LEFT JOIN PHANPHOISGK p ON k.MaPhanPhoi = p.MaPhanPhoi 
+            LEFT JOIN NOIDUNG_COBAN n ON k.MaNDCB = n.MaNDCB
+            LEFT JOIN LOP l ON (p.MaLop = l.MaLop OR n.MaLop = l.MaLop)
+            WHERE k.MaKHBD = ?`, [maKHBD]
         );
+
+
 
         if (infoRows.length === 0) {
             return res.status(404).json({ success: false, message: "Không tìm thấy KHBD" });
