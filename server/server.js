@@ -1306,51 +1306,24 @@ app.get('/api/get-full-khbd/:maKHBD', async (req, res) => {
     const { maKHBD } = req.params;
     try {
         // 1. Lấy thông tin bài dạy chính (Bổ sung ThietBiGV, ThietBiHS, ThoiLuong)
-        // 1. Lấy thông tin gốc từ bảng KHBD trước (Lệnh này cực đơn giản, không JOIN)
-        const [khbdRows] = await db.query(
-            `SELECT MaKHBD, GhiChu, ThietBiGV, ThietBiHS, ThoiLuong, MaPhanPhoi, MaNDCB 
-             FROM KHBD WHERE MaKHBD = ?`, [maKHBD]
+        // 1. Lấy thông tin bài dạy (Sửa để hỗ trợ C1, C2 mà không hỏng C3)
+        const [infoRows] = await db.query(
+            `SELECT k.MaKHBD, k.GhiChu, k.ThietBiGV, k.ThietBiHS, k.ThoiLuong, 
+                    IFNULL(p.TenBai, n.TenND) as TenBai, 
+                    IFNULL(l1.TenLop, l2.TenLop) as TenLop
+             FROM KHBD k 
+             LEFT JOIN PHANPHOISGK p ON k.MaPhanPhoi = p.MaPhanPhoi 
+             LEFT JOIN LOP l1 ON p.MaLop = l1.MaLop
+             LEFT JOIN NOIDUNG_COBAN n ON k.MaNDCB = n.MaNDCB
+             LEFT JOIN LOP l2 ON n.MaLop = l2.MaLop
+             WHERE k.MaKHBD = ?`, [maKHBD]
         );
-
-        if (khbdRows.length === 0) {
-            return res.status(404).json({ success: false, message: "Không tìm thấy KHBD" });
-        }
-
-        const base = khbdRows[0];
-        let TenBai = "Bài dạy mới";
-        let TenLop = "Chưa rõ lớp";
-
-        // 2. Đi tìm TenBai và TenLop dựa trên mã hiện có (Xử lý bằng logic code thay vì SQL JOIN)
-        if (base.MaPhanPhoi) {
-            // Cấp 3: Tìm trong PHANPHOISGK
-            const [pRows] = await db.query(
-                `SELECT p.TenBai, l.TenLop FROM PHANPHOISGK p 
-                 JOIN LOP l ON p.MaLop = l.MaLop WHERE p.MaPhanPhoi = ?`, [base.MaPhanPhoi]
-            );
-            if (pRows.length > 0) {
-                TenBai = pRows[0].TenBai;
-                TenLop = pRows[0].TenLop;
-            }
-        } else if (base.MaNDCB) {
-            // Cấp 1, 2: Tìm trong NOIDUNG_COBAN
-            const [nRows] = await db.query(
-                `SELECT n.TenND as TenBai, l.TenLop FROM NOIDUNG_COBAN n 
-                 JOIN LOP l ON n.MaLop = l.MaLop WHERE n.MaNDCB = ?`, [base.MaNDCB]
-            );
-            if (nRows.length > 0) {
-                TenBai = nRows[0].TenBai;
-                TenLop = nRows[0].TenLop;
-            }
-        }
-
-        // Gộp lại thành rawInfo để các dòng code bên dưới chạy bình thường
-        const rawInfo = { ...base, TenBai, TenLop };
 
         if (infoRows.length === 0) {
             return res.status(404).json({ success: false, message: "Không tìm thấy KHBD" });
         }
 
-        //const rawInfo = infoRows[0];
+        const rawInfo = infoRows[0];
 
         // 2. Lấy TOÀN BỘ mục tiêu từ bảng KHBD_MUCTIEU (Cần thiết để đánh số liên kết)
         const [objectives] = await db.query(
