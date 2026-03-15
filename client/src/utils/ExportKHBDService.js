@@ -56,9 +56,34 @@ const formatNumberedSuffix = (data, startCount) => {
     return { runs, nextCount: currentCount };
 };
 
-export const exportKHBDToWord = async (basicInfo, objectives, processData, activities,options = {}) => {
+export const exportKHBDToWord = async (basicInfo, rawObjectives, processData, activities,options = {}) => {
     const sections = [];
     let objectiveCounter = 1;
+
+    // --- BƯỚC CHUẨN HÓA: Tự động nhận diện dữ liệu ---
+    let objectives = {};
+
+    if (Array.isArray(rawObjectives)) {
+        // TRƯỜNG HỢP 1: Dữ liệu từ API tra cứu (Mảng thô từ DB)
+        objectives = {
+            kienThucText: rawObjectives
+                .filter(o => o.LoaiMucTieu === 'Kiến thức')
+                .map(o => o.NoiDungHienThi)
+                .join(". "),
+            nlucDacThuText: rawObjectives
+                .filter(o => ['YCCĐ', 'MTTP', 'Năng lực đặc thù'].includes(o.LoaiMucTieu))
+                .map(o => o.NoiDungHienThi),
+            nangLucChung: rawObjectives
+                .filter(o => o.LoaiMucTieu === 'Năng lực chung')
+                .map(o => o.NoiDungHienThi),
+            phamChat: rawObjectives
+                .filter(o => o.LoaiMucTieu === 'Phẩm chất')
+                .map(o => o.NoiDungHienThi)
+        };
+    } else {
+        // TRƯỜNG HỢP 2: Dữ liệu từ lúc đang soạn (Đã là Object chuẩn)
+        objectives = rawObjectives;
+    }
 
     // --- TIÊU ĐỀ ĐẦU TRANG ---
     sections.push(new Paragraph({
