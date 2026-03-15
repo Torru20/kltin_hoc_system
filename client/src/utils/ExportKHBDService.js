@@ -64,20 +64,28 @@ export const exportKHBDToWord = async (basicInfo, rawObjectives, processData, ac
     let objectives = {};
 
     if (Array.isArray(rawObjectives)) {
-        // TRƯỜNG HỢP 1: Dữ liệu từ API tra cứu (Mảng thô từ DB)
+        // TRƯỜNG HỢP: Dữ liệu từ API tra cứu (Mảng thô từ DB)
         objectives = {
+            // Trong code Save bạn không thấy có 'KienThuc', 
+            // nên ta để mặc định hoặc lọc nếu sau này bạn bổ sung
             kienThucText: rawObjectives
-                .filter(o => o.LoaiMucTieu === 'Kiến thức')
+                .filter(o => o.LoaiMucTieu === 'KienThuc' || o.LoaiMucTieu === 'Kiến thức')
                 .map(o => o.NoiDungHienThi)
                 .join(". "),
+
+            // Gộp YCCD và NangLucDacThu vào mục Năng lực đặc thù
             nlucDacThuText: rawObjectives
-                .filter(o => ['YCCĐ', 'MTTP', 'Năng lực đặc thù'].includes(o.LoaiMucTieu))
+                .filter(o => o.LoaiMucTieu === 'YCCD' || o.LoaiMucTieu === 'NangLucDacThu')
                 .map(o => o.NoiDungHienThi),
+
+            // Khớp với type: 'NangLucChung'
             nangLucChung: rawObjectives
-                .filter(o => o.LoaiMucTieu === 'Năng lực chung')
+                .filter(o => o.LoaiMucTieu === 'NangLucChung')
                 .map(o => o.NoiDungHienThi),
+
+            // Khớp với type: 'PhamChat'
             phamChat: rawObjectives
-                .filter(o => o.LoaiMucTieu === 'Phẩm chất')
+                .filter(o => o.LoaiMucTieu === 'PhamChat')
                 .map(o => o.NoiDungHienThi)
         };
     } else {
