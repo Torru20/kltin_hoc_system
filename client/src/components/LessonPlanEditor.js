@@ -314,9 +314,14 @@ const LessonPlanEditor = () => {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const handleGenerateAI = async () => {
-    // 1. Kiểm tra điều kiện: Cấp 3 cần maTenBai, Cấp 1-2 cần maNDCB
-    if (!basicInfo.maTenBai && !basicInfo.maNDCB) {
-      alert("Vui lòng chọn thông tin bài học ở Nhóm 1 trước!");
+    
+    
+    // 1. Kiểm tra điều kiện linh hoạt hơn
+    const isCap3 = basicInfo.maCap === 'C3';
+    const hasRequiredInfo = isCap3 ? basicInfo.maTenBai : basicInfo.maNDCB;
+
+    if (!hasRequiredInfo) {
+      alert("Vui lòng chọn đầy đủ thông tin bài học!");
       return;
     }
 
@@ -1073,7 +1078,8 @@ const LessonPlanEditor = () => {
         <Button 
           variant="contained" size="large" color="secondary" 
           onClick={handleGenerateAI}
-          disabled={isGenerating || !basicInfo.maTenBai}
+          //disabled={isGenerating || !basicInfo.maTenBai}
+          disabled={isGenerating || (basicInfo.maCap === 'C3' ? !basicInfo.maTenBai : !basicInfo.maNDCB)}
           startIcon={isGenerating ? null : <PlayCircle size={24} />}
           sx={{ px: 6, py: 2, borderRadius: '50px', fontWeight: 'bold', boxShadow: '0 4px 15px rgba(156, 39, 176, 0.3)' }}
         >

@@ -37,54 +37,83 @@ const theme = createTheme({
   },
 });
 
-function MainAppContent() {
-  const { isLoggedIn, logout, user, loading } = useAuth();
+// ... các phần import giữ nguyên
 
-  if (loading) return <Container className="text-center mt-5"><p>Đang tải...</p></Container>;
-  if (!isLoggedIn) return <AuthPage />;
+function MainAppContent() {
+  const { isLoggedIn, logout, user } = useAuth();
 
   return (
-    // Sử dụng style inline hoặc class để ép Bootstrap Navbar theo màu Navy của MUI
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="d-flex flex-column min-vh-100">
+      {/* fixed="top" giúp thanh nav luôn cố định ở đầu trang khi cuộn */}
       <Navbar 
-        expand="lg" 
+        bg="primary" 
         variant="dark" 
-        style={{ backgroundColor: '#001e3c', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
+        expand="lg" 
+        fixed="top" 
+        className="shadow-sm py-2"
+        style={{ zIndex: 1050 }}
       >
-        <Container maxWidth="xl">
-          <Navbar.Brand as={Link} to="/" style={{ fontWeight: 800 }}>
-            🧠 Số hóa KHBD & Ma trận
+        <Container>
+          <Navbar.Brand as={Link} to="/" className="fw-bold">
+            KLTN 2026
           </Navbar.Brand>
+          
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="me-auto ms-lg-3">
               <Nav.Link as={Link} to="/">Trang chủ</Nav.Link>
-              <Nav.Link as={Link} to="/profile-page">Profile</Nav.Link>
-              <Nav.Link as={Link} to="/editor-lesson">Soạn KHBD</Nav.Link>
               
-              <Nav.Link as={Link} to="/exams">Xem List</Nav.Link>
-              <Nav.Link as={Link} to="/matrankiemtrafull">Tạo bài kiểm tra</Nav.Link>
-              <Nav.Link as={Link} to="/knowledge">Tra cứu tri thức</Nav.Link>
+              {/* Nhóm chức năng SOẠN THẢO */}
+              <Nav.Dropdown title="Soạn thảo" id="nav-soan-thao">
+                <Nav.Dropdown.Item as={Link} to="/editor-lesson">
+                  Kế hoạch bài dạy (AI)
+                </Nav.Dropdown.Item>
+                <Nav.Dropdown.Item as={Link} to="/matrankiemtrafull">
+                  Ma trận kiểm tra
+                </Nav.Dropdown.Item>
+              </Nav.Dropdown>
+
+              {/* Nhóm chức năng TRA CỨU */}
+              <Nav.Dropdown title="Tra cứu" id="nav-tra-cuu">
+                <Nav.Dropdown.Item as={Link} to="/exams">
+                  Danh sách bài kiểm tra
+                </Nav.Dropdown.Item>
+                <Nav.Dropdown.Item as={Link} to="/knowledge">
+                  Đường liên thông tri thức
+                </Nav.Dropdown.Item>
+                
+              </Nav.Dropdown>
+
+              
             </Nav>
-            <Nav className="align-items-center">
-                <Navbar.Text className="me-3 text-white">
-                    Xin chào, <span style={{ color: '#ffd700' }}>{user?.Hoten || user?.email}</span>
-                </Navbar.Text>
-                <Button 
-                    variant="outline-light" 
-                    size="sm" 
-                    onClick={logout}
-                    style={{ borderRadius: '8px', fontWeight: 'bold' }}
+
+            <Nav className="ms-auto align-items-center">
+              {isLoggedIn ? (
+                /* Nhóm TÀI KHOẢN nằm bên phải */
+                <Nav.Dropdown 
+                  title={<span><i className="bi bi-person-circle me-1"></i> {user?.displayName || 'Tài khoản'}</span>} 
+                  id="nav-account" 
+                  align="end"
                 >
+                  <Nav.Dropdown.Item as={Link} to="/profile-page">
+                    Thông tin cá nhân
+                  </Nav.Dropdown.Item>
+                  <Nav.Dropdown.Divider />
+                  <Nav.Dropdown.Item onClick={logout} className="text-danger">
                     Đăng xuất
-                </Button>
+                  </Nav.Dropdown.Item>
+                </Nav.Dropdown>
+              ) : (
+                <Nav.Link as={Link} to="/auth">Đăng nhập</Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      {/* Container chính */}
-      <Container className="mt-4 flex-grow-1">
+      {/* CỰC KỲ QUAN TRỌNG: 
+          Thêm padding-top 80px để nội dung không bị Navbar che mất (vì Navbar đang fixed) */}
+      <Container className="flex-grow-1" style={{ marginTop: '80px', marginBottom: '40px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile-page" element={<ProfilePage />} />
@@ -92,14 +121,13 @@ function MainAppContent() {
           <Route path="/exams" element={<ExamList />} />
           <Route path="/matrankiemtrafull" element={<FullMatrixSpec />} />
           <Route path="/knowledge" element={<KnowledgeAlignment />} />
-          <Route path="/lesson" element={<LessonPlanForm />} />
-          <Route path="/sohoa" element={<SoHoaPDF />} />
           <Route path="/sohoa_khbd" element={<SoHoaKHBD />} />
+          {/* Các route khác nếu có... */}
         </Routes>
       </Container>
 
-      <footer className="text-center text-muted" style={{ mt: 'auto', py: 4, borderTop: '1px solid #e0e0e0' }}>
-        © 2025 - Trần Linh Yến Như | HCMUE
+      <footer className="text-center text-muted py-4 border-top bg-white">
+        © 2026 - Dự án Hệ thống Quản lý Giáo dục
       </footer>
     </div>
   );
