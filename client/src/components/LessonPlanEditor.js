@@ -501,10 +501,19 @@ const LessonPlanEditor = () => {
   const [isSaving, setIsSaving] = useState(false);
 
   const handleSaveToDB = async () => {
-    // 1. Kiểm tra điều kiện bắt buộc (Dựa trên state hiện tại của bạn)
-    // Lưu ý: maTenBai của bạn chính là MaPhanPhoi trong CSDL
-    if (!basicInfo.maTenBai || !basicInfo.maNDCB) {
-      alert("Vui lòng chọn bài học từ danh sách trước khi lưu!");
+    // 1. Kiểm tra điều kiện bắt buộc linh hoạt theo cấp học
+    const isCap3 = basicInfo.maCap === 'C3';
+    
+    // Nếu là C3 thì bắt buộc có cả mã bài và mã nội dung cơ bản
+    // Nếu là C1, C2 thì chỉ cần mã nội dung cơ bản (maNDCB)
+    const canSave = isCap3 
+        ? (basicInfo.maTenBai && basicInfo.maNDCB) 
+        : !!basicInfo.maNDCB;
+
+    if (!canSave) {
+      alert(isCap3 
+        ? "Vui lòng chọn bài học từ danh sách trước khi lưu!" 
+        : "Vui lòng chọn Nội dung cơ bản trước khi lưu!");
       return;
     }
 
@@ -539,7 +548,7 @@ const LessonPlanEditor = () => {
         header: {
           maNDCB: basicInfo.maNDCB,
           userId: user?.uid || user?.id || 'GUEST',
-          maPhanPhoi: basicInfo.maTenBai, // Trong code của bạn maTenBai lưu ID của phân phối
+          maPhanPhoi: basicInfo.maTenBai || null, // Trong code của bạn maTenBai lưu ID của phân phối
           ghiChu: `Định hướng: ${tenDinhHuong || ''}. \nPhụ lục: ${basicInfo.phuLuc || ''}`, 
           // THÊM: Gửi thiết bị dạy học
           thietBiGV: basicInfo.thietBiGV, 
