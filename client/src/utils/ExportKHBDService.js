@@ -27,11 +27,22 @@ const formatNumberedSuffix = (data, startCount) => {
     let items = [];
     if (Array.isArray(data)) {
         items = data
-            .filter(i => i.checked !== false)
+            .filter(i => {
+                // Nếu là Object (lúc soạn), kiểm tra checked
+                if (typeof i === 'object' && i !== null) {
+                    return i.checked !== false;
+                }
+                // Nếu là chuỗi (lấy từ DB), cho qua luôn
+                return true; 
+            })
             .map(i => {
-                if (i.label && i.content) return `${i.label}: ${i.content}`;
-                return i.content || i.NoiDungHienThi || (typeof i === 'string' ? i : "");
-            });
+                if (typeof i === 'object' && i !== null) {
+                    if (i.label && i.content) return `${i.label}: ${i.content}`;
+                    return i.content || i.NoiDungHienThi || "";
+                }
+                return i; // Nếu i đã là chuỗi thì trả về chính nó
+            })
+            .filter(text => text && text.toString().trim().length > 0);
     } else {
         items = data.split(';').map(i => i.trim()).filter(i => i.length > 0);
     }
