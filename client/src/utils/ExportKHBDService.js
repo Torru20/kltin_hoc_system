@@ -22,6 +22,12 @@ const cleanHtml = (html) => {
  * 2. Hàm hỗ trợ đánh số suffix thông minh
  */
 const formatNumberedSuffix = (data, startCount) => {
+    if (!data || data.length === 0) {
+        return { 
+            runs: [new TextRun({ text: "(Chưa có dữ liệu mục tiêu trong DB)", italics: true, color: "888888" })], 
+            nextCount: startCount 
+        };
+    }
     if (!data) return { runs: [], nextCount: startCount };
     
     let items = [];
@@ -75,31 +81,22 @@ export const exportKHBDToWord = async (basicInfo, rawObjectives, processData, ac
     let objectives = {};
 
     if (Array.isArray(rawObjectives)) {
-        // TRƯỜNG HỢP: Dữ liệu từ API tra cứu (Mảng thô từ DB)
-        objectives = {
-            // Trong code Save bạn không thấy có 'KienThuc', 
-            // nên ta để mặc định hoặc lọc nếu sau này bạn bổ sung
-            kienThucText: rawObjectives
-                .filter(o => o.LoaiMucTieu === 'KienThuc' || o.LoaiMucTieu === 'Kiến thức')
-                .map(o => o.NoiDungHienThi)
-                .join(". "),
+    // Log ngay để bạn nhìn thấy trên Console F12 xem dữ liệu thực sự tên là gì
+    console.log("Dữ liệu mục tiêu nhận được:", rawObjectives);
 
-            // Gộp YCCD và NangLucDacThu vào mục Năng lực đặc thù
-            nlucDacThuText: rawObjectives
-                .filter(o => o.LoaiMucTieu === 'YCCD' || o.LoaiMucTieu === 'NangLucDacThu')
-                .map(o => o.NoiDungHienThi),
+    const getItems = (types) => {
+        return rawObjectives
+            .filter(o => types.includes(o.LoaiMucTieu))
+            .map(o => o.NoiDungHienThi || o.content || o.NoiDungYCCD || "");
+    };
 
-            // Khớp với type: 'NangLucChung'
-            nangLucChung: rawObjectives
-                .filter(o => o.LoaiMucTieu === 'NangLucChung')
-                .map(o => o.NoiDungHienThi),
-
-            // Khớp với type: 'PhamChat'
-            phamChat: rawObjectives
-                .filter(o => o.LoaiMucTieu === 'PhamChat')
-                .map(o => o.NoiDungHienThi)
-        };
-    } else {
+    objectives = {
+        kienThucText: getItems(['KienThuc', 'Kiến thức']).join(". "),
+        nlucDacThuText: getItems(['YCCD', 'NangLucDacThu', 'YCCĐ']),
+        nangLucChung: getItems(['NangLucChung', 'Năng lực chung']),
+        phamChat: getItems(['PhamChat', 'Phẩm chất'])
+    };
+} else {
         // TRƯỜNG HỢP 2: Dữ liệu từ lúc đang soạn (Đã là Object chuẩn)
         objectives = rawObjectives;
     }
