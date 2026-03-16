@@ -302,32 +302,30 @@ const ProfilePage = () => {
             const result = await response.json();
 
             if (result.success) {
-                const { info, objectives, activities, processData } = result;
-                const combinedText = objectives
-                    .filter(o => o.LoaiMucTieu === 'Kiến thức' || o.LoaiMucTieu === '')
-                    .map(o => o.NoiDungHienThi)
-                    .join("; ");
-                // QUAN TRỌNG: Lọc mục tiêu dựa trên cột LoaiMucTieu trong DB
-                // ĐỒNG NHẤT DỮ LIỆU: Map từ DB về cấu trúc giống hệt State khi soạn thảo
+                const { info, objectives = [], activities = [], processData = [] } = result;
+                //const { info, objectives, activities, processData } = result;
+
+                // Hàm trợ giúp lọc nhanh theo danh sách nhãn (Labels)
+                const getNoiDungByTypes = (types) => {
+                    return objectives
+                        .filter(o => types.includes(o.LoaiMucTieu))
+                        .map(o => o.NoiDungHienThi);
+                };
+
                 const objectivesForWord = {
-                    // 1. Kiến thức & NL đặc thù 
-                    kienThucText: combinedText,
-                    nlucDacThuText: combinedText,
-                    // 2. Năng lực chung & Phẩm chất (Service mong đợi mảng Object)
-                    // Quan trọng: Phải có thuộc tính 'content' để giống với cấu trúc soạn thảo trực tiếp
-                    nangLucChung: objectives
-                        .filter(o => o.LoaiMucTieu === 'NangLucChung')
-                        .map(o => ({ 
-                            content: o.NoiDungHienThi, 
-                            checked: true // Đánh dấu true để Service chấp nhận in ra
-                        })),
-                    
-                    phamChat: objectives
-                        .filter(o => o.LoaiMucTieu === 'PhamChat')
-                        .map(o => ({ 
-                            content: o.NoiDungHienThi, 
-                            checked: true 
-                        }))
+                    // 1. Kiến thức: Lọc cả có dấu và không dấu
+                    kienThucText: getNoiDungByTypes(['KienThuc', 'Kiến thức']).join(". "),
+
+                    // 2. Năng lực đặc thù: Lấy từ YCCD hoặc NangLucDacThu
+                    nlucDacThuText: getNoiDungByTypes(['YCCD', 'YCCĐ', 'NangLucDacThu', 'Năng lực đặc thù']).join(". "),
+
+                    // 3. Năng lực chung: Phải trả về mảng Object {content, checked}
+                    nangLucChung: getNoiDungByTypes(['NangLucChung', 'Năng lực chung'])
+                        .map(content => ({ content, checked: true })),
+
+                    // 4. Phẩm chất: Phải trả về mảng Object {content, checked}
+                    phamChat: getNoiDungByTypes(['PhamChat', 'Phẩm chất'])
+                        .map(content => ({ content, checked: true }))
                 };
 
                 const infoForWord = {
