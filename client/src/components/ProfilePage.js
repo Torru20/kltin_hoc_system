@@ -313,17 +313,17 @@ const ProfilePage = () => {
                 };
 
                 const objectivesForWord = {
-                    // 1. Kiến thức: Lọc cả có dấu và không dấu
+                    // 1. Kiến thức: Giữ nguyên join vì mục này thường viết thành đoạn văn
                     kienThucText: getNoiDungByTypes(['KienThuc', 'Kiến thức']).join(". "),
 
-                    // 2. Năng lực đặc thù: Lấy từ YCCD hoặc NangLucDacThu
-                    nlucDacThuText: getNoiDungByTypes(['YCCD', 'YCCĐ', 'NangLucDacThu', 'Năng lực đặc thù']).join(". "),
+                    // 2. Năng lực đặc thù: BỎ .join(". ") - Truyền mảng để utils tự đánh số và xuống dòng
+                    nlucDacThuText: getNoiDungByTypes(['YCCD', 'YCCĐ', 'NangLucDacThu', 'Năng lực đặc thù']), 
 
-                    // 3. Năng lực chung: Phải trả về mảng Object {content, checked}
+                    // 3. Năng lực chung: Đã là mảng Object, utils sẽ xử lý tốt
                     nangLucChung: getNoiDungByTypes(['NangLucChung', 'Năng lực chung'])
                         .map(content => ({ content, checked: true })),
 
-                    // 4. Phẩm chất: Phải trả về mảng Object {content, checked}
+                    // 4. Phẩm chất: Đã là mảng Object, utils sẽ xử lý tốt
                     phamChat: getNoiDungByTypes(['PhamChat', 'Phẩm chất'])
                         .map(content => ({ content, checked: true }))
                 };

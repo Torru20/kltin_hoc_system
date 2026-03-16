@@ -30,51 +30,43 @@ const formatNumberedSuffix = (data, startCount) => {
         };
     }
     
-    // 2. Chuẩn hóa dữ liệu thành mảng các chuỗi (Strings)
+    // 2. Chuẩn hóa dữ liệu thành mảng các chuỗi
     let items = [];
     if (Array.isArray(data)) {
         items = data
-            .filter(i => {
-                if (typeof i === 'object' && i !== null) return i.checked !== false;
-                return true; 
-            })
+            .filter(i => (typeof i === 'object' && i !== null ? i.checked !== false : true))
             .map(i => {
                 if (typeof i === 'object' && i !== null) {
-                    if (i.label && i.content) return `${i.label}: ${i.content}`;
                     return i.content || i.NoiDungHienThi || "";
                 }
                 return i;
             })
-            .filter(text => text && text.toString().trim().length > 0);
+            .filter(text => text && text.toString().trim().length > 2); // Loại bỏ các câu quá ngắn/rác
     } else {
-        // Nếu là chuỗi dài cách nhau bởi dấu chấm phẩy
-        items = data.toString().split(';').map(i => i.trim()).filter(i => i.length > 0);
+        // Tách linh hoạt bằng nhiều loại dấu ngắt
+        items = data.toString().split(/[;.\n]/).map(i => i.trim()).filter(i => i.length > 2);
     }
 
-    // 3. Tạo các TextRun với đánh số và xuống dòng
+    // 3. Tạo các TextRun
     let currentCount = startCount;
-    const runs = [];
-
-    items.forEach((item, index) => {
-        let cleanItem = cleanHtml(item).replace(/\.$/, "").trim(); 
+    const runs = items.map((item, index) => {
+        // Làm sạch văn bản: xóa HTML, xóa dấu chấm cuối cùng để tự thêm lại sau số (x)
+        let cleanItem = cleanHtml(item).replace(/\.+$/, "").trim(); 
         let textWithNumber = "";
 
-        // Kiểm tra xem đã có đánh số (x) chưa
         if (!/\(\d+\)/.test(cleanItem)) {
             textWithNumber = `${cleanItem} (${currentCount}).`;
         } else {
             textWithNumber = `${cleanItem}.`;
         }
         
-        // Tăng biến đếm cho mục tiếp theo
-        currentCount++;
-
-        // THÊM VÀO MẢNG RUNS
-        runs.push(new TextRun({
+        currentCount++; 
+        
+        return new TextRun({
             text: textWithNumber,
-            // Quan trọng: Thêm break nếu không phải dòng đầu tiên để ép xuống dòng
-            break: index > 0 ? 1 : 0 
-        }));
+            // Ép xuống dòng ngay trong cùng một Paragraph
+            break: index > 0 ? 1 : 0, 
+        });
     });
 
     return { runs, nextCount: currentCount };
