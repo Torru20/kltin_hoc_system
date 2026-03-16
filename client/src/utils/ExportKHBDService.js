@@ -22,23 +22,20 @@ const cleanHtml = (html) => {
  * 2. Hàm hỗ trợ đánh số suffix thông minh
  */
 const formatNumberedSuffix = (data, startCount) => {
-    if (!data || data.length === 0) {
+    // 1. Kiểm tra dữ liệu rỗng
+    if (!data || (Array.isArray(data) && data.length === 0)) {
         return { 
             runs: [new TextRun({ text: "(Chưa có dữ liệu mục tiêu trong DB)", italics: true, color: "888888" })], 
             nextCount: startCount 
         };
     }
-    if (!data) return { runs: [], nextCount: startCount };
     
+    // 2. Chuẩn hóa dữ liệu thành mảng các chuỗi (Strings)
     let items = [];
     if (Array.isArray(data)) {
         items = data
             .filter(i => {
-                // Nếu là Object (lúc soạn), kiểm tra checked
-                if (typeof i === 'object' && i !== null) {
-                    return i.checked !== false;
-                }
-                // Nếu là chuỗi (lấy từ DB), cho qua luôn
+                if (typeof i === 'object' && i !== null) return i.checked !== false;
                 return true; 
             })
             .map(i => {
@@ -46,28 +43,38 @@ const formatNumberedSuffix = (data, startCount) => {
                     if (i.label && i.content) return `${i.label}: ${i.content}`;
                     return i.content || i.NoiDungHienThi || "";
                 }
-                return i; // Nếu i đã là chuỗi thì trả về chính nó
+                return i;
             })
             .filter(text => text && text.toString().trim().length > 0);
     } else {
-        items = data.split(';').map(i => i.trim()).filter(i => i.length > 0);
+        // Nếu là chuỗi dài cách nhau bởi dấu chấm phẩy
+        items = data.toString().split(';').map(i => i.trim()).filter(i => i.length > 0);
     }
 
+    // 3. Tạo các TextRun với đánh số và xuống dòng
     let currentCount = startCount;
-    const runs = items.map((item, index) => {
-        let cleanItem = cleanHtml(item).replace(/\.$/, ""); 
-        let textWithNumber = cleanItem;
+    const runs = [];
+
+    items.forEach((item, index) => {
+        let cleanItem = cleanHtml(item).replace(/\.$/, "").trim(); 
+        let textWithNumber = "";
+
+        // Kiểm tra xem đã có đánh số (x) chưa
         if (!/\(\d+\)/.test(cleanItem)) {
-            textWithNumber = `${cleanItem} (${currentCount++}).`;
+            textWithNumber = `${cleanItem} (${currentCount}).`;
         } else {
-            currentCount++;
             textWithNumber = `${cleanItem}.`;
         }
         
-        return new TextRun({
+        // Tăng biến đếm cho mục tiếp theo
+        currentCount++;
+
+        // THÊM VÀO MẢNG RUNS
+        runs.push(new TextRun({
             text: textWithNumber,
-            break: index > 0 ? 1 : 0,
-        });
+            // Quan trọng: Thêm break nếu không phải dòng đầu tiên để ép xuống dòng
+            break: index > 0 ? 1 : 0 
+        }));
     });
 
     return { runs, nextCount: currentCount };
@@ -81,24 +88,29 @@ export const exportKHBDToWord = async (basicInfo, rawObjectives, processData, ac
     let objectives = {};
 
     if (Array.isArray(rawObjectives)) {
-    // Log ngay để bạn nhìn thấy trên Console F12 xem dữ liệu thực sự tên là gì
-    console.log("Dữ liệu mục tiêu nhận được:", rawObjectives);
+        console.log("Dữ liệu mục tiêu nhận được từ DB:", rawObjectives);
 
-    const getItems = (types) => {
-        return rawObjectives
-            .filter(o => types.includes(o.LoaiMucTieu))
-            .map(o => o.NoiDungHienThi || o.content || o.NoiDungYCCD || "");
-    };
+        const getItems = (types) => {
+            return rawObjectives
+                .filter(o => types.includes(o.LoaiMucTieu?.trim()))
+                .map(o => o.NoiDungHienThi || o.content || o.NoiDungYCCD || "");
+        };
 
-    objectives = {
-        kienThucText: getItems(['KienThuc', 'Kiến thức']).join(". "),
-        nlucDacThuText: getItems(['YCCD', 'NangLucDacThu', 'YCCĐ']),
-        nangLucChung: getItems(['NangLucChung', 'Năng lực chung']),
-        phamChat: getItems(['PhamChat', 'Phẩm chất'])
-    };
-} else {
-        // TRƯỜNG HỢP 2: Dữ liệu từ lúc đang soạn (Đã là Object chuẩn)
-        objectives = rawObjectives;
+        // Quan trọng: Để là Mảng (Array) để hàm formatNumberedSuffix bên dưới xử lý đánh số
+        objectives = {
+            kienThucText: getItems(['KienThuc', 'Kiến thức']).join(". "), // Kiến thức thường viết liền
+            nlucDacThuText: getItems(['YCCD', 'NangLucDacThu', 'YCCĐ', 'Năng lực đặc thù']), // Trả về mảng
+            nangLucChung: getItems(['NangLucChung', 'Năng lực chung']), // Trả về mảng
+            phamChat: getItems(['PhamChat', 'Phẩm chất']) // Trả về mảng
+        };
+    } else {
+        // Nếu là Object (từ State soạn thảo), đảm bảo các trường là mảng để formatNumberedSuffix chạy đúng
+        objectives = {
+            ...rawObjectives,
+            nlucDacThuText: Array.isArray(rawObjectives.nlucDacThuText) ? rawObjectives.nlucDacThuText : [rawObjectives.nlucDacThuText],
+            nangLucChung: Array.isArray(rawObjectives.nangLucChung) ? rawObjectives.nangLucChung : [rawObjectives.nangLucChung],
+            phamChat: Array.isArray(rawObjectives.phamChat) ? rawObjectives.phamChat : [rawObjectives.phamChat]
+        };
     }
 
     // --- TIÊU ĐỀ ĐẦU TRANG ---
@@ -132,18 +144,26 @@ export const exportKHBDToWord = async (basicInfo, rawObjectives, processData, ac
     const nlucDacThuResult = formatNumberedSuffix(objectives.nlucDacThuText, objectiveCounter);
     objectiveCounter = nlucDacThuResult.nextCount;
     sections.push(new Paragraph({ 
-        children: [new TextRun({ text: "- Năng lực đặc thù: ", italics: true }), ...nlucDacThuResult.runs] 
+        children: [new TextRun({ text: "- Năng lực đặc thù: ", italics: true }), ...nlucDacThuResult.runs],
+        spacing: { after: 100 }
     }));
 
     const nlucChungResult = formatNumberedSuffix(objectives.nangLucChung, objectiveCounter);
     objectiveCounter = nlucChungResult.nextCount;
     sections.push(new Paragraph({ 
-        children: [new TextRun({ text: "- Năng lực chung: ", italics: true }), ...(nlucChungResult.runs.length > 0 ? nlucChungResult.runs : [new TextRun("Theo chương trình môn học.")])] 
+        children: [
+            new TextRun({ text: "- Năng lực chung: ", italics: true }), 
+            ...(nlucChungResult.runs.length > 0 ? nlucChungResult.runs : [new TextRun("Theo chương trình môn học.")])
+        ],
+        spacing: { after: 100 }
     }));
 
     const phamChatResult = formatNumberedSuffix(objectives.phamChat, objectiveCounter);
     sections.push(new Paragraph({ 
-        children: [new TextRun({ text: "3. Về phẩm chất: ", bold: true }), ...(phamChatResult.runs.length > 0 ? phamChatResult.runs : [new TextRun("Theo chương trình môn học.")])],
+        children: [
+            new TextRun({ text: "3. Về phẩm chất: ", bold: true }), 
+            ...(phamChatResult.runs.length > 0 ? phamChatResult.runs : [new TextRun("Theo chương trình môn học.")])
+        ],
         spacing: { after: 200 }
     }));
 
