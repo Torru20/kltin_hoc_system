@@ -446,12 +446,11 @@ const LessonPlanEditor = () => {
   const [isPreview, setIsPreview] = useState(false);
   const [processData, setProcessData] = useState([]); // Lưu dữ liệu bảng tiến trình
   //const aiData = JSON.parse(data.content);
-  const handleExportWord = () => {
-    // 1. Lấy Tên bộ sách (Ví dụ: "Kết nối tri thức")
-    // Bổ sung: Nếu không có maSGK (C1,2) thì lấy tên NDCB làm định danh
+  const handleExportWord = async () => {
+    // 1. Lấy Tên bộ sách
     const selectedSGK = boSgks.find(s => s.id === basicInfo.maSGK);
     const tenSGK = selectedSGK?.ten || "CT2018";
-   
+    
     // 2. Lấy Tên lớp và xử lý thành định dạng L10, L11...
     const tenLopRaw = lops.find(l => l.id === basicInfo.maLop)?.ten || "";
     const soLop = tenLopRaw.replace(/\D/g, ""); 
@@ -461,14 +460,12 @@ const LessonPlanEditor = () => {
     const selectedBai = listBaiHoc.find(b => b.id === basicInfo.maTenBai);
     const selectedNDCB = listNDCB.find(n => n.id === basicInfo.maNDCB);
     
-    // Ưu tiên tên bài (C3), nếu không có thì lấy tên Nội dung cơ bản (C1, 2)
     const tenBaiRaw = selectedBai?.ten || selectedNDCB?.ten || "BaiHoc";
-   
     const sttBai = tenBaiRaw.includes(':') 
         ? tenBaiRaw.split(':')[0].replace(/\s+/g, '') 
         : "Bai";
 
-    // 4. Tạo tên file
+    // 4. Tạo tên file viết tắt
     const tenSachVietTat = tenSGK
         .split(' ')
         .map(word => word[0])
@@ -476,12 +473,11 @@ const LessonPlanEditor = () => {
         .toUpperCase();
 
     const fileName = `${maLop}_KHBD_${sttBai}_${tenSachVietTat}`;
-   
+    
     // --- PHẦN QUAN TRỌNG: TRÍCH XUẤT NỘI DUNG ---
-    // Sửa lại để tìm ở cả listMTTP và listYCCD
-    const nlucDacThuText = selectedMTTP
+    // Giữ nguyên ở dạng Mảng (Array) để hàm formatNumberedSuffix xử lý đánh số/xuống dòng
+    const nlucDacThuArray = selectedMTTP
       .map(id => {
-          // Ép kiểu về String để so sánh chính xác
           const searchId = String(id);
           // Tìm trong MTTP (C3)
           const mttp = listMTTP.find(m => String(m.id) === searchId);
@@ -492,14 +488,13 @@ const LessonPlanEditor = () => {
           
           return null;
       })
-      .filter(Boolean)
-      .join("; ");
+      .filter(Boolean);
 
     // 5. Chuẩn bị object objectives đầy đủ
     const objectivesForWord = {
-      ...objectives,
-      nlucDacThuText: nlucDacThuText,
-      kienThucText: nlucDacThuText
+      ...objectives, // Giữ lại các trường khác như nangLucChung, phamChat
+      nlucDacThuText: nlucDacThuArray, // Truyền mảng để ép xuống dòng
+      kienThucText: nlucDacThuArray.join(". ") // Kiến thức vẫn có thể để dạng chuỗi nối liền
     };
 
     const infoForWord = {
@@ -509,9 +504,13 @@ const LessonPlanEditor = () => {
       lop: tenLopRaw
     };
 
-    // Gọi hàm Export từ Service
-    exportKHBDToWord(infoForWord, objectivesForWord, processData, activities);
-};
+    // 6. Gọi hàm Export từ Service (Thêm await để đảm bảo tiến trình)
+    try {
+        await exportKHBDToWord(infoForWord, objectivesForWord, processData, activities);
+    } catch (error) {
+        console.error("Lỗi khi xuất file Word:", error);
+    }
+  };
   const [isSaving, setIsSaving] = useState(false);
 
   const handleSaveToDB = async () => {
