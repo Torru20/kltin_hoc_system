@@ -1233,7 +1233,18 @@ const FullMatrixSpec = () => {
     <Button 
       size="small"
       startIcon={<FileDown size={16} />}
-      onClick={() => exportToWordStandard(questions, { subject: "Tin học", grade: "11" })}
+      onClick={() => exportToWordStandard(questions, { 
+        subject: "Tin học", 
+        grade: "11",
+        scores: {
+          tnkq: parseFloat(pointConfig.tn_nhieu_lc) || 0,
+          dungSai: parseFloat(pointConfig.tn_dung_sai) || 0,
+          tlNgan: parseFloat(pointConfig.tl_ngan) || 0,
+          tuLuanNB: parseFloat(pointConfig.tu_luan_nb) || 0,
+          tuLuanTH: parseFloat(pointConfig.tu_luan_th) || 0,
+          tuLuanVD: parseFloat(pointConfig.tu_luan_vd) || 0
+        }
+      })}
       sx={{ color: '#334155', textTransform: 'none', fontSize: '0.8rem', px: 1 }}
     >
       Tải đề thi
