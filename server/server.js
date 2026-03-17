@@ -870,15 +870,14 @@ app.get('/api/get-full-exam-detail/:maDeThi', (req, res) => {
         // TRƯỜNG HỢP 1: ĐỀ ĐÃ SOẠN CÂU HỎI
         if (examInfo.hasQuestions > 0) {
             const queryOld = `
-            SELECT 
+            SELECT DISTINCT
                 dc.MaCauHoiDeThi, dc.MaPhanBo, dc.NoiDungCauHoi, dc.SoThuTu, dc.Diem,
                 p.MaLoaiCauHoi, p.MaMucDo,
-                MAX(y.NoiDungYCCD) as NoiDungYCCD -- Sử dụng MAX để chỉ lấy 1 nội dung YCCD nếu bị trùng
+                y.NoiDungYCCD
             FROM DETHI_CAUHOI dc
             LEFT JOIN MT_YCCD_CAUHOI p ON dc.MaPhanBo = p.MaPhanBo
             LEFT JOIN YCCD y ON REPLACE(REPLACE(REPLACE(p.MaYCCD, '[', ''), ']', ''), '"', '') = y.MaYCCD
             WHERE dc.MaDeThi = ?
-            GROUP BY dc.MaCauHoiDeThi -- QUAN TRỌNG: Nhóm theo ID câu hỏi để không bị trùng
             ORDER BY dc.SoThuTu ASC`;
 
             pool.query(queryOld, [maDeThi], (err1, results) => {
