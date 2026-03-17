@@ -20,7 +20,8 @@ export const exportToWordStandard = async (questions, examInfo, isAnswerMode = f
     // --- HELPER: Tính điểm cho từng câu hỏi dựa trên mã mức độ riêng biệt ---
     const getQPoint = (q) => {
         const type = q.maLoaiCauHoi;
-        const level = String(q.maMucDo || ""); // Ví dụ: 'MucDo_01'
+        //const level = String(q.maMucDo || ""); // Ví dụ: 'MucDo_01'
+        const level = String(q.maMucDo || "").toLowerCase();
 
         if (type === 'tn_nhieu_lc') return parseFloat(s.tnkq) || 0;
         if (type === 'tn_dung_sai') return parseFloat(s.dungSai) || 0;
@@ -28,9 +29,13 @@ export const exportToWordStandard = async (questions, examInfo, isAnswerMode = f
         
         if (type === 'tu_luan') {
             // Khớp chính xác với mã của bạn
-            if (level === 'MucDo_01') return parseFloat(s.tuLuanNB) || 0; // Biết
-            if (level === 'MucDo_02') return parseFloat(s.tuLuanTH) || 0; // Hiểu
-            if (level === 'MucDo_03') return parseFloat(s.tuLuanVD) || 0; // Vận dụng
+            //if (level === 'MucDo_01') return parseFloat(s.tuLuanNB) || 0; // Biết
+            //if (level === 'MucDo_02') return parseFloat(s.tuLuanTH) || 0; // Hiểu
+            //if (level === 'MucDo_03') return parseFloat(s.tuLuanVD) || 0; // Vận dụng
+            // Kiểm tra cả 2 trường hợp: Mã CSDL (MucDo_01) hoặc Mã soạn thảo trực tiếp (nb, th, vd)
+            if (level === 'mucdo_01' || level === 'nb') return parseFloat(s.tuLuanNB) || 0;
+            if (level === 'mucdo_02' || level === 'th') return parseFloat(s.tuLuanTH) || 0;
+            if (level === 'mucdo_03' || level === 'vd' || level === 'vận dụng') return parseFloat(s.tuLuanVD) || 0;
         }
         return 0;
     };
