@@ -870,15 +870,19 @@ app.get('/api/get-full-exam-detail/:maDeThi', (req, res) => {
         // TRƯỜNG HỢP 1: ĐỀ ĐÃ SOẠN CÂU HỎI
         if (examInfo.hasQuestions > 0) {
             const queryOld = `
-                SELECT 
-                    dc.MaCauHoiDeThi, dc.MaPhanBo, dc.NoiDungCauHoi, dc.SoThuTu, dc.Diem,
-                    p.MaLoaiCauHoi, p.MaMucDo, -- Lấy MaMucDo trực tiếp từ MT_YCCD_CAUHOI
-                    y.NoiDungYCCD
-                FROM DETHI_CAUHOI dc
-                LEFT JOIN MT_YCCD_CAUHOI p ON dc.MaPhanBo = p.MaPhanBo
-                LEFT JOIN YCCD y ON REPLACE(REPLACE(REPLACE(p.MaYCCD, '[', ''), ']', ''), '"', '') = y.MaYCCD
-                WHERE dc.MaDeThi = ?
-                ORDER BY dc.SoThuTu ASC`;
+                SELECT * FROM (
+                    SELECT 
+                        dc.MaCauHoiDeThi, dc.MaPhanBo, dc.NoiDungCauHoi, dc.SoThuTu, dc.Diem,
+                        p.MaLoaiCauHoi, p.MaMucDo, 
+                        y.NoiDungYCCD,
+                        ROW_NUMBER() OVER (PARTITION BY dc.MaDeThi, dc.SoThuTu ORDER BY dc.MaCauHoiDeThi DESC) as rn
+                    FROM DETHI_CAUHOI dc
+                    LEFT JOIN MT_YCCD_CAUHOI p ON dc.MaPhanBo = p.MaPhanBo
+                    LEFT JOIN YCCD y ON REPLACE(REPLACE(REPLACE(p.MaYCCD, '[', ''), ']', ''), '"', '') = y.MaYCCD
+                    WHERE dc.MaDeThi = ?
+                ) t
+                WHERE rn = 1
+                ORDER BY SoThuTu ASC`;
 
             pool.query(queryOld, [maDeThi], (err1, results) => {
                 if (err1) return res.status(500).json({ error: err1.message });
