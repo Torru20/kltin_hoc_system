@@ -629,17 +629,15 @@ app.post('/api/save-full-exam', (req, res) => {
     const maDacTaCustom = `DT${uId}_${shortTime}`;
     const maDeThiCustom = `D${uId}_${shortTime}`;
 
-    // --- QUAN TRỌNG: Đặt biến theo dõi ở ĐẦY để dùng cho toàn bộ quá trình ---
-    const savedQuestionIds = new Set(); 
+    // Cấu hình điểm
+    const pc = header.pointConfig || {
+        tn_nhieu_lc: 0.25, tn_dung_sai: 1.0, tl_ngan: 0.5,
+        tu_luan_nb: 0.5, tu_luan_th: 1.0, tu_luan_vd: 1.5
+    };
 
     const MAPPING_MUCDO = { 
         'NB': 'MucDo_01', 'TH': 'MucDo_02', 
         'VD': 'MucDo_03', 'VDC': 'MucDo_03' 
-    };
-
-    const pc = header.pointConfig || {
-        tn_nhieu_lc: 0.25, tn_dung_sai: 1.0, tl_ngan: 0.5,
-        tu_luan_nb: 0.5, tu_luan_th: 1.0, tu_luan_vd: 1.5
     };
 
     let pending = 0;
@@ -671,28 +669,36 @@ app.post('/api/save-full-exam', (req, res) => {
         [maDeThiCustom, maMaTranCustom, header.tenMaTran, header.userId], (err) => {
             if (err) return res.status(500).json({ error: "Lỗi DETHI: " + err.message });
             
+            // Duyệt từng Chủ đề/Nội dung
             matrixData.forEach((cd, indexCD) => {
                 const maMTChiTiet = `${maMaTranCustom}_C${indexCD}`;
                 pending++;
                 pool.query(`INSERT INTO MT_CHITIET (MaMTChiTiet, MaMaTran, MaNDCB) VALUES (?, ?, ?)`,
                 [maMTChiTiet, maMaTranCustom, cd.maNDCB], (err) => {
                     
+                    // Duyệt từng Mức độ (NB, TH, VD)
                     cd.levels.forEach((lvl, indexLVL) => {
                         const maMucDoChuan = MAPPING_MUCDO[lvl.mucDo.toUpperCase()] || lvl.mucDo;
+                        
+                        // QUAN TRỌNG: Làm sạch MaYCCD (Lấy mã chuỗi thay vì mảng JSON)
                         const cleanMaYCCD = Array.isArray(lvl.maYCCD) ? lvl.maYCCD[0] : lvl.maYCCD;
 
-                        // 4. LƯU BẢN ĐẶC TẢ
+                        // 4. LƯU BẢN ĐẶC TẢ (Lưu tại cấp độ YCCD + Mức độ)
                         if (cleanMaYCCD) {
                             const maDacTa = `${maDacTaCustom}_${indexCD}${indexLVL}`.slice(0, 20);
                             pending++;
                             pool.query(`INSERT IGNORE INTO BANDACTA (MaDacTa, MaMaTran, MaYCCD, MaNL, MaMucDo) VALUES (?, ?, ?, ?, ?)`,
                             [maDacTa, maMaTranCustom, cleanMaYCCD, lvl.maNL, maMucDoChuan], (errBD) => {
+                                if (errBD) console.error("❌ Lỗi BANDACTA:", errBD.message);
                                 checkFinished();
                             });
                         }
 
+                        // Duyệt từng loại câu hỏi (TN, TL...)
                         lvl.details.forEach((detail, indexDT) => {
                             const maPhanBoCustom = `${maMTChiTiet}P${indexLVL}${indexDT}`;
+                            
+                            // 5. LƯU PHÂN BỔ CÂU HỎI
                             pending++;
                             pool.query(`INSERT INTO MT_YCCD_CAUHOI (MaPhanBo, MaMTChiTiet, MaYCCD, MaLoaiCauHoi, SoLuongCau, MaMucDo) VALUES (?, ?, ?, ?, ?, ?)`,
                             [maPhanBoCustom, maMTChiTiet, cleanMaYCCD, detail.type, detail.qty, maMucDoChuan], (err) => {
@@ -700,20 +706,17 @@ app.post('/api/save-full-exam', (req, res) => {
                                 // 6. LỌC VÀ LƯU CÂU HỎI CHI TIẾT
                                 const filteredQues = questionsData.filter(q => 
                                     q.maMucDo?.toUpperCase() === lvl.mucDo.toUpperCase() && 
-                                    q.maLoaiCauHoi === detail.type &&
-                                    !savedQuestionIds.has(q.idTmp) // Ngăn chặn lấy lại câu đã lưu
+                                    q.maLoaiCauHoi === detail.type
                                 );
 
                                 filteredQues.forEach((q, indexQ) => {
-                                    savedQuestionIds.add(q.idTmp); // Đánh dấu đã xử lý
-
                                     const maCauHoiCustom = `${maDeThiCustom}Q${indexCD}${indexLVL}${indexDT}${indexQ}`.slice(0, 20);
                                     
                                     pending++;
                                     pool.query(`INSERT INTO DETHI_CAUHOI (MaCauHoiDeThi, MaDeThi, MaPhanBo, NoiDungCauHoi, SoThuTu, Diem) VALUES (?, ?, ?, ?, ?, ?)`,
                                     [maCauHoiCustom, maDeThiCustom, maPhanBoCustom, q.noiDungCauHoi, q.soThuTu, q.diem], (errQ) => {
                                         
-                                        // 7. LƯU ĐÁP ÁN
+                                        // 7. LƯU ĐÁP ÁN CỦA CÂU HỎI
                                         if (!errQ && q.dapAn && q.dapAn.length > 0) {
                                             q.dapAn.forEach((da) => {
                                                 const maDapAn = `${maCauHoiCustom}${da.kyHieu}`.slice(0, 20);
