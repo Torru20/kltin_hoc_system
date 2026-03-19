@@ -53,6 +53,21 @@ function Home() {
           Công cụ hỗ trợ giáo viên Tin học tối ưu hóa công việc hành chính, 
           tập trung vào chuyên môn giảng dạy với sự hỗ trợ của công nghệ số.
         </p>
+        
+        {/* Nút HDSD chi tiết thêm vào đây */}
+        <div className="mt-3">
+          <Button 
+            variant="outline-primary" 
+            size="sm"
+            as="a" 
+            href="https://www.canva.com/design/DAHEQ8l3nXc/kLYtzhoqXwQzeM4Z2q-B0Q/edit?utm_content=DAHEQ8l3nXc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" // Thay bằng link thực tế của bạn
+            target="_blank" 
+            style={{ borderRadius: '20px', padding: '8px 20px', fontWeight: 600 }}
+          >
+            <CloudDownload sx={{ fontSize: 18, marginRight: '8px' }} />
+            Xem HDSD chi tiết (PDF/Wiki)
+          </Button>
+        </div>
       </div>
 
       {/* Grid Chức năng */}
