@@ -447,7 +447,7 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
             QUY TẮC VỀ CẤU TRÚC (BẮT BUỘC):
             1. SỐ LƯỢNG HÀNH ĐỘNG: Mảng "activities" PHẢI có số lượng phần tử BẰNG 100% với mảng "tienTrinh". Nếu tienTrinh có 4 hoạt động, activities phải có đủ 4.
             2. MAPPING MỤC TIÊU: Tại trường "mucTieu", CHỈ ghi số hiệu trong ngoặc đơn. Ví dụ: "(1), (2)". Tuyệt đối không viết chữ.
-            3. ƯU TIÊN NỘI DUNG: Tập trung viết chi tiết 4 bước (steps) cho TỪNG hoạt động trong mảng "activities". Đây là phần quan trọng nhất.
+            3. ƯU TIÊN NỘI DUNG: Tập trung viết chi tiết 4 bước (steps) cho TỪNG hoạt động trong mảng "activities". Mỗi hoạt động (activity) trong mảng activities PHẢI dài ít nhất 300 chữ.
             4. Cần có tối thiểu 4 hoạt động: Khởi động, Hình thành kiến thức mới/Khám phá, Luyện tập, Vận dụng (có thể đặt tên phụ)
             5. Phải ghi chú thời gian của từng hoạt động, tổng thời lượng không vượt quá ${thoiLuong} tiết. (1 tiết = 45 phút)
 
@@ -506,7 +506,8 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                             contents: [{ parts: [{ text: prompt }] }],
                             generationConfig: { 
                                 responseMimeType: "application/json", 
-                                temperature: 0.7 
+                                temperature: 0.8,
+                                maxOutputTokens: 8192
                             }
                         })
                     });
@@ -544,7 +545,8 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                         model: "llama-3.3-70b-versatile",
                         messages: [{ role: "user", content: prompt }],
                         response_format: { type: "json_object" },
-                        temperature: 0.7
+                        temperature: 0.8,
+                        max_tokens: 4096
                     })
                 });
 
