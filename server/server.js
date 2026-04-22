@@ -437,8 +437,13 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
         const apiKeys = [process.env.GEMINI_API_KEY, process.env.GEMINI_API_KEY_2].filter(k => k);
         
         // 2. Danh sách các model để fallback (ưu tiên 2.5, dự phòng 1.5)
-        const models = ["gemini-2.5-flash", "gemini-1.5-flash"];
-
+        const models = [
+            "gemini-2.5-flash",        // Ưu tiên 1 (Thông minh nhất)
+            "gemini-1.5-flash-latest", // Ưu tiên 2 (Ổn định nhất - dự phòng tốt nhất)
+            "gemini-1.5-flash",        // Ưu tiên 3
+            "gemini-2.0-flash-exp",    // Ưu tiên 4
+            "gemini-1.5-flash-8b"      // Ưu tiên 5 (Dùng khi các bản trên đều sập)
+        ];
         // 3. GIỮ NGUYÊN PROMPT CỦA BẠN
         const prompt = `
             Bạn là giáo viên Tin học chuyên về soạn thảo KHBD theo Công văn 5512. 
@@ -492,8 +497,8 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                 try {
                     console.log(`Đang gọi ${modelName} với Key: ${key.substring(0, 6)}...`);
                     
-                    const apiURL = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${key}`;
-                    
+                    const modelPath = modelName.includes('models/') ? modelName : `models/${modelName}`;
+                    const apiURL = `https://generativelanguage.googleapis.com/v1beta/${modelPath}:generateContent?key=${key}`;
                     const response = await fetch(apiURL, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
