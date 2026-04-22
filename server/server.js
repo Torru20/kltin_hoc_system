@@ -431,10 +431,15 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
 */
 app.post('/api/generate-lesson-plan', async (req, res) => {
     try {
-        // Lấy thêm constraints từ body
         const { lessonName, objectives, lop, thoiLuong, thietBi, teacherNote } = req.body;
-        const apiKey = process.env.GEMINI_API_KEY;
+        
+        // 1. Cấu hình danh sách Key dự phòng
+        const apiKeys = [process.env.GEMINI_API_KEY, process.env.GEMINI_API_KEY_2].filter(k => k);
+        
+        // 2. Danh sách các model để fallback (ưu tiên 2.5, dự phòng 1.5)
+        const models = ["gemini-2.5-flash", "gemini-1.5-flash"];
 
+        // 3. GIỮ NGUYÊN PROMPT CỦA BẠN
         const prompt = `
             Bạn là giáo viên Tin học chuyên về soạn thảo KHBD theo Công văn 5512. 
             DANH SÁCH MỤC TIÊU CỐ ĐỊNH:
@@ -477,34 +482,60 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
             "appendices": "Khung sườn Phiếu học tập & Rubric (Ngắn gọn)"
             }
         `;
-        console.log("FULL PROMPT GỬI GEMINI:");
-        console.log(prompt);
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, 
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: { 
-                        responseMimeType: "application/json",
-                        temperature: 0.7 // Độ sáng tạo vừa phải để bám sát mục tiêu
-                    }
-                })
-            }
-        );
 
-        const data = await response.json();
-        
-        if (data.candidates && data.candidates[0].content) {
-            // Trả về nội dung text là chuỗi JSON đã parse được từ AI
-            return res.json({ content: data.candidates[0].content.parts[0].text });
-        } 
-        
-        res.status(500).json({ error: "AI không phản hồi hoặc hết quota" });
+        let lastError = null;
+
+        // Vòng lặp thử từng Key (Xoay vòng Key nếu bị 429 hoặc 503)
+        for (let key of apiKeys) {
+            // Vòng lặp thử từng Model (Fallback từ 2.5 xuống 1.5)
+            for (let modelName of models) {
+                try {
+                    console.log(`Đang gọi ${modelName} với Key: ${key.substring(0, 6)}...`);
+                    
+                    const apiURL = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${key}`;
+                    
+                    const response = await fetch(apiURL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: prompt }] }],
+                            generationConfig: { 
+                                responseMimeType: "application/json",
+                                temperature: 0.7 
+                            }
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    // Trường hợp thành công
+                    if (data.candidates && data.candidates[0].content) {
+                        console.log(`==> THÀNH CÔNG với model ${modelName}`);
+                        return res.json({ content: data.candidates[0].content.parts[0].text });
+                    }
+
+                    // Trường hợp Google báo lỗi trong JSON trả về
+                    if (data.error) {
+                        console.error(`Lỗi từ Google (${modelName}):`, data.error.message);
+                        lastError = data.error.message;
+                        // Nếu lỗi 503 hoặc 429, tiếp tục thử model/key khác
+                        continue; 
+                    }
+
+                } catch (err) {
+                    console.error(`Lỗi kết nối khi gọi ${modelName}:`, err.message);
+                    lastError = err.message;
+                    continue; 
+                }
+            }
+        }
+
+        // Nếu đi hết vòng lặp mà vẫn lỗi
+        res.status(500).json({ error: "Hệ thống AI hiện đang bận. Chi tiết: " + lastError });
+
     } catch (error) {
-        console.error("Lỗi BE:", error);
-        res.status(500).json({ error: "Lỗi Server nội bộ" });
+        console.error("Lỗi Server Tổng:", error);
+        res.status(500).json({ error: "Lỗi hệ thống nội bộ" });
     }
 });
 
