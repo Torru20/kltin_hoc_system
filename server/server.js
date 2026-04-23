@@ -433,7 +433,6 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
     try {
         const { lessonName, objectives, lop, thoiLuong, thietBi, teacherNote } = req.body;
         
-        // 1. Cấu hình Prompt (Đã thêm các câu lệnh "ép" độ dài mạnh hơn)
         const prompt = `
             Bạn là giáo viên Tin học chuyên về soạn thảo KHBD theo Công văn 5512. 
             DANH SÁCH MỤC TIÊU CỐ ĐỊNH:
@@ -445,15 +444,13 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
             Yêu cầu thêm: ${teacherNote}
 
             QUY TẮC VỀ CẤU TRÚC (BẮT BUỘC):
-            1. SỐ LƯỢNG HÀNH ĐỘNG: Mảng "activities" PHẢI có số lượng phần tử BẰNG 100% với mảng "tienTrinh".
-            2. MAPPING MỤC TIÊU: Tại trường "mucTieu", CHỈ ghi số hiệu trong ngoặc đơn. Ví dụ: "(1), (2)".
-            3. QUY TẮC VIẾT CHI TIẾT (QUAN TRỌNG): 
-               - Mỗi bước (step) của GIÁO VIÊN phải bao gồm: Lời giảng chi tiết, câu hỏi gợi mở cụ thể và hướng dẫn kỹ thuật.
-               - Mỗi bước (step) của HỌC SINH phải bao gồm: Thao tác cụ thể trên máy tính, nội dung thảo luận hoặc sản phẩm cụ thể thu được.
-               - TUYỆT ĐỐI KHÔNG viết tóm tắt kiểu "GV hướng dẫn bài". Phải viết rõ "GV đặt cây hỏi..., yêu cầu làm bài như sau:..., yêu cầu HS thực hiện lệnh Y...".
-               - Mỗi Hoạt động phải đạt độ dài tối thiểu 500 chữ.
+            1. SỐ LƯỢNG HÀNH ĐỘNG: Mảng "activities" PHẢI có số lượng phần tử BẰNG 100% với mảng "tienTrinh". Nếu tienTrinh có 4 hoạt động, activities phải có đủ 4.
+            2. MAPPING MỤC TIÊU: Tại trường "mucTieu", CHỈ ghi số hiệu trong ngoặc đơn. Ví dụ: "(1), (2)". Tuyệt đối không viết chữ.
+            3. ƯU TIÊN NỘI DUNG: Tập trung viết chi tiết 4 bước (steps) cho TỪNG hoạt động trong mảng "activities". Đây là phần quan trọng nhất.
             4. Cần có tối thiểu 4 hoạt động: Khởi động, Hình thành kiến thức mới/Khám phá, Luyện tập, Vận dụng (có thể đặt tên phụ)
             5. Phải ghi chú thời gian của từng hoạt động, tổng thời lượng không vượt quá ${thoiLuong} tiết. (1 tiết = 45 phút)
+            Để tránh quá tải dữ liệu, phần "appendices" CHỈ CẦN viết khung sườn ngắn gọn (mô tả nội dung phiếu học tập và tiêu chí rubric tóm tắt), không cần viết toàn bộ nội dung chi tiết quá dài dòng.
+
             YÊU CẦU TRẢ VỀ JSON THUẦN:
             {
             "tienTrinh": [
@@ -463,8 +460,8 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                 {
                 "title": "Tên hoạt động chi tiết",
                 "mucTieu": "(số hiệu)", 
-                "noiDung": "Học sinh làm gì...",
-                "sanPham": "Kết quả đạt được...",
+                "noiDung": "...",
+                "sanPham": "...",
                 "steps": [
                     { "step": "Chuyển giao nhiệm vụ", "gv": "...", "hs": "..." },
                     { "step": "Thực hiện nhiệm vụ", "gv": "...", "hs": "..." },
@@ -473,19 +470,17 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                 ]
                 }
             ],
-            "appendices": "Khung sườn Phiếu học tập & Rubric (Ngắn gọn)"
+            "appendices": "Khung sườn Phiếu học tập & Rubric"
             }
         `;
 
-        // --- CONSOLE KIỂM TRA PROMPT GỬI ĐI ---
         console.log("==================== DEBUG PROMPT GỬI ĐI ====================");
         console.log(`Bài dạy: ${lessonName} - Lớp: ${lop}`);
-        console.log(`Nội dung Prompt: ${prompt.substring(0, 500)}...`); // Log 500 ký tự đầu để kiểm tra
         console.log("============================================================");
 
-        // 1. Gom các Key Gemini vào một mảng để lặp
         const geminiKeys = [process.env.GEMINI_API_KEY, process.env.GEMINI_API_KEY_2].filter(k => k);
         const groqKey = process.env.GROQ_API_KEY;
+        const hfToken = process.env.HUGGINGFACE_TOKEN; // <<< TOKEN MỚI CỦA NHƯ
         const modelName = "gemini-2.5-flash"; 
         
         let lastError = null;
@@ -494,77 +489,65 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
         for (let i = 0; i < geminiKeys.length; i++) {
             try {
                 const currentKey = geminiKeys[i];
-                console.log(`[System] Đang thử Gemini với Key ${i + 1}: ${currentKey.substring(0, 6)}...`);
-                
+                console.log(`[System] Đang thử Gemini với Key ${i + 1}`);
                 const apiURL = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${currentKey}`;
-                
                 const response = await fetch(apiURL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: [{ parts: [{ text: prompt }] }],
-                        generationConfig: { 
-                            responseMimeType: "application/json", 
-                            temperature: 0.9,
-                            maxOutputTokens: 8192
-                        }
+                        generationConfig: { responseMimeType: "application/json", temperature: 0.9, maxOutputTokens: 8192 }
                     })
                 });
-
                 const data = await response.json();
-
                 if (data.candidates && data.candidates[0].content) {
                     console.log(`>>> KẾT QUẢ: Thành công bằng [Gemini - Key ${i + 1}]`);
-                    return res.json({ 
-                        provider: `Gemini 2.5 Flash (Key ${i + 1})`,
-                        content: data.candidates[0].content.parts[0].text 
-                    });
+                    return res.json({ provider: `Gemini (Key ${i + 1})`, content: data.candidates[0].content.parts[0].text });
                 }
-                
-                lastError = data.error?.message || "Không có phản hồi từ Gemini";
-                console.warn(`[Gemini Key ${i + 1} Thất bại]: ${lastError}`);
-
-            } catch (err) {
-                lastError = err.message;
-                console.error(`[Lỗi kết nối Key ${i + 1}]:`, err.message);
-            }
-            // Nếu chạy đến đây mà chưa return nghĩa là Key hiện tại lỗi, vòng lặp sẽ tự nhảy sang Key tiếp theo.
+                lastError = data.error?.message || "Lỗi Gemini";
+            } catch (err) { lastError = err.message; }
         }
 
-        // --- GIAI ĐOẠN 2: NẾU TẤT CẢ GEMINI ĐỀU TẠCH -> CHUYỂN SANG GROQ ---
+        // --- GIAI ĐOẠN 2: HUGGING FACE (VŨ KHÍ BÍ MẬT) ---
+        if (hfToken) {
+            console.log("--- Gemini lỗi. Đang thử Hugging Face (Qwen 2.5)... ---");
+            try {
+                const hfResponse = await fetch("https://api-inference.huggingface.co/models/Qwen/Qwen2.5-72B-Instruct", {
+                    headers: { Authorization: `Bearer ${hfToken}`, "Content-Type": "application/json" },
+                    method: "POST",
+                    body: JSON.stringify({
+                        inputs: prompt,
+                        parameters: { max_new_tokens: 4000, temperature: 0.7 }
+                    })
+                });
+                const hfData = await hfResponse.json();
+                if (hfData && hfData[0] && hfData[0].generated_text) {
+                    console.log(">>> KẾT QUẢ: Thành công bằng [Hugging Face]");
+                    return res.json({ provider: "Hugging Face (Qwen 2.5)", content: hfData[0].generated_text });
+                }
+            } catch (err) { console.error("Hugging Face lỗi:", err.message); }
+        }
+
+        // --- GIAI ĐOẠN 3: GROQ (CỨU CÁNH CUỐI CÙNG) ---
         if (groqKey) {
-            console.log("!!! Tất cả Gemini đều lỗi. Đang dùng Groq làm cứu cánh cuối cùng...");
+            console.log("!!! Đang dùng Groq làm cứu cánh cuối cùng...");
             try {
                 const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: "POST",
-                    headers: {
-                        "Authorization": `Bearer ${groqKey}`,
-                        "Content-Type": "application/json"
-                    },
+                    headers: { "Authorization": `Bearer ${groqKey}`, "Content-Type": "application/json" },
                     body: JSON.stringify({
                         model: "llama-3.3-70b-versatile",
-                        messages: [
-                            { role: "system", content: "Bạn là chuyên gia soạn giáo án 5512 chuyên nghiệp." },
-                            { role: "user", content: prompt }
-                        ],
+                        messages: [{ role: "system", content: "Chuyên gia giáo án 5512." }, { role: "user", content: prompt }],
                         response_format: { type: "json_object" },
-                        temperature: 0.9,
-                        max_tokens: 4096
+                        temperature: 0.9
                     })
                 });
-
                 const groqData = await groqResponse.json();
                 if (groqData.choices && groqData.choices[0].message) {
                     console.log(">>> KẾT QUẢ: Thành công bằng [Groq]");
-                    return res.json({ 
-                        provider: "Groq (Llama 3.3)",
-                        content: groqData.choices[0].message.content 
-                    });
+                    return res.json({ provider: "Groq (Llama 3.3)", content: groqData.choices[0].message.content });
                 }
-            } catch (groqErr) {
-                console.error("Lỗi Groq:", groqErr.message);
-                lastError = "Cả 2 Key Gemini và Groq đều không hoạt động.";
-            }
+            } catch (groqErr) { lastError = "Tất cả các bên đều lỗi."; }
         }
 
         return res.status(500).json({ error: "Hệ thống bận", details: lastError });
