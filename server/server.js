@@ -450,26 +450,42 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
             3. QUY TẮC VIẾT CHI TIẾT (QUAN TRỌNG): 
                - Mỗi bước (step) của GIÁO VIÊN phải bao gồm: Lời giảng chi tiết, câu hỏi gợi mở cụ thể và hướng dẫn kỹ thuật.
                - Mỗi bước (step) của HỌC SINH phải bao gồm: Thao tác cụ thể trên máy tính, nội dung thảo luận hoặc sản phẩm cụ thể thu được.
-               - TUYỆT ĐỐI KHÔNG viết tóm tắt kiểu "GV hướng dẫn bài". Phải viết rõ "GV trình chiếu slide 1, đặt câu hỏi X, yêu cầu HS thực hiện lệnh Y...".
+               - TUYỆT ĐỐI KHÔNG viết tóm tắt kiểu "GV hướng dẫn bài". Phải viết rõ "GV đặt cây hỏi..., yêu cầu làm bài như sau:..., yêu cầu HS thực hiện lệnh Y...".
                - Mỗi Hoạt động phải đạt độ dài tối thiểu 500 chữ.
             4. Cần có tối thiểu 4 hoạt động: Khởi động, Hình thành kiến thức mới/Khám phá, Luyện tập, Vận dụng (có thể đặt tên phụ)
             5. Phải ghi chú thời gian của từng hoạt động, tổng thời lượng không vượt quá ${thoiLuong} tiết. (1 tiết = 45 phút)
-            YÊU CẦU TRẢ VỀ JSON THUẦN:
+            YÊU CẦU TRẢ VỀ JSON THUẦN (Nội dung phải giàu tính sư phạm):
             {
             "tienTrinh": [
-                { "ten": "Tên HĐ", "mucTieu": "(số hiệu)", "noiDung": "...", "phuongPhap": "..." }
+                { "ten": "Hoạt động 1: Khởi động", "mucTieu": "(1)", "noiDung": "Học sinh xem video và trả lời câu hỏi gợi mở", "phuongPhap": "Trực quan, đàm thoại" }
             ],
             "activities": [
                 {
-                "title": "Tên hoạt động chi tiết",
-                "mucTieu": "(số hiệu)", 
-                "noiDung": "...",
-                "sanPham": "...",
+                "title": "Hoạt động 1: Khởi động",
+                "mucTieu": "(1)", 
+                "noiDung": "Nội dung hoạt động chi tiết (viết ít nhất 5 câu mô tả ngữ cảnh)...",
+                "sanPham": "Sản phẩm cụ thể mà HS phải nộp hoặc trả lời được...",
                 "steps": [
-                    { "step": "Chuyển giao nhiệm vụ", "gv": "Viết ít nhất 5 dòng chi tiết", "hs": "Viết ít nhất 5 dòng chi tiết" },
-                    { "step": "Thực hiện nhiệm vụ", "gv": "Viết ít nhất 5 dòng chi tiết", "hs": "Viết ít nhất 5 dòng chi tiết" },
-                    { "step": "Báo cáo, thảo luận", "gv": "Viết ít nhất 5 dòng chi tiết", "hs": "Viết ít nhất 5 dòng chi tiết" },
-                    { "step": "Kết luận, nhận định", "gv": "Viết ít nhất 5 dòng chi tiết", "hs": "Viết ít nhất 5 dòng chi tiết" }
+                    { 
+                        "step": "Chuyển giao nhiệm vụ", 
+                        "gv": "GV trình chiếu slide/video về... Sau đó đặt câu hỏi: 'Các em nghĩ sao về...?'. Yêu cầu HS thảo luận cặp đôi trong 2 phút.", 
+                        "hs": "HS quan sát, lắng nghe câu hỏi, ghi chép các từ khóa quan trọng và bắt đầu trao đổi với bạn bên cạnh." 
+                    },
+                    { 
+                        "step": "Thực hiện nhiệm vụ", 
+                        "gv": "GV đi xuống từng nhóm, quan sát thái độ thảo luận, gợi ý cho các nhóm đang gặp khó khăn bằng các câu hỏi phụ như...", 
+                        "hs": "HS thảo luận sôi nổi, liệt kê các ý kiến ra nháp hoặc phiếu học tập cá nhân." 
+                    },
+                    { 
+                        "step": "Báo cáo, thảo luận", 
+                        "gv": "GV mời đại diện 2 nhóm bất kỳ đứng dậy trình bày. Sau khi HS trả lời, GV yêu cầu các nhóm khác nhận xét, bổ sung.", 
+                        "hs": "Đại diện HS trình bày tự tin. Các HS khác chú ý lắng nghe để tìm ra điểm khác biệt trong câu trả lời của nhóm mình." 
+                    },
+                    { 
+                        "step": "Kết luận, nhận định", 
+                        "gv": "GV chốt kiến thức: 'Như vậy các em thấy rằng...'. Đánh giá tinh thần học tập và dẫn dắt sang nội dung tiếp theo.", 
+                        "hs": "HS ghi nhớ kết luận của giáo viên vào vở ghi và chuẩn bị tài liệu cho hoạt động khám phá." 
+                    }
                 ]
                 }
             ],
@@ -477,49 +493,54 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
             }
         `;
 
-        const apiKeys = [process.env.GEMINI_API_KEY, process.env.GEMINI_API_KEY_2].filter(k => k);
+        // --- CONSOLE KIỂM TRA PROMPT GỬI ĐI ---
+        console.log("==================== DEBUG PROMPT GỬI ĐI ====================");
+        console.log(`Bài dạy: ${lessonName} - Lớp: ${lop}`);
+        console.log(`Nội dung Prompt: ${prompt.substring(0, 500)}...`); // Log 500 ký tự đầu để kiểm tra
+        console.log("============================================================");
+
+        const geminiKey = process.env.GEMINI_API_KEY;
         const groqKey = process.env.GROQ_API_KEY;
-        const models = ["gemini-2.5-flash", "gemini-1.5-flash-latest", "gemini-1.5-flash", "gemini-1.5-flash-8b"];
-        
-        let lastError = null;
+        const primaryModel = "gemini-2.5-flash"; 
 
-        // --- GIAI ĐOẠN 1: GEMINI ---
-        for (let key of apiKeys) {
-            for (let modelName of models) {
-                try {
-                    const baseModelName = modelName.replace('models/', ''); 
-                    const apiURL = `https://generativelanguage.googleapis.com/v1beta/models/${baseModelName}:generateContent?key=${key}`;
-                    
-                    const response = await fetch(apiURL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: prompt }] }],
-                            generationConfig: { 
-                                responseMimeType: "application/json", 
-                                temperature: 0.9, // Tăng lên 0.9 để viết dài và đa dạng hơn
-                                maxOutputTokens: 8192
-                            }
-                        })
+        // --- GIAI ĐOẠN 1: GỌI GEMINI ---
+        if (geminiKey) {
+            try {
+                const apiURL = `https://generativelanguage.googleapis.com/v1beta/models/${primaryModel}:generateContent?key=${geminiKey}`;
+                
+                const response = await fetch(apiURL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        generationConfig: { 
+                            responseMimeType: "application/json", 
+                            temperature: 0.9,
+                            maxOutputTokens: 8192
+                        }
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.candidates && data.candidates[0].content) {
+                    // --- CONSOLE KẾT QUẢ THÀNH CÔNG ---
+                    console.log(`>>> KẾT QUẢ: Gửi đi thành công bằng API [GEMINI - ${primaryModel}]`);
+                    return res.json({ 
+                        provider: `Gemini 2.5 Flash`,
+                        content: data.candidates[0].content.parts[0].text 
                     });
-
-                    const data = await response.json();
-
-                    if (data.candidates && data.candidates[0].content) {
-                        console.log(`==> THÀNH CÔNG với Gemini ${modelName}`);
-                        // Gửi thêm thông tin provider về Frontend
-                        return res.json({ 
-                            provider: `Gemini (${modelName})`,
-                            content: data.candidates[0].content.parts[0].text 
-                        });
-                    }
-                    if (data.error) lastError = data.error.message;
-                } catch (err) { lastError = err.message; }
+                }
+                
+                console.warn(`[Gemini Fail] Lỗi: ${data.error?.message || 'Không xác định'}`);
+            } catch (err) {
+                console.error(`[Gemini Error]`, err.message);
             }
         }
 
-        // --- GIAI ĐOẠN 2: GROQ DỰ PHÒNG ---
+        // --- GIAI ĐOẠN 2: DỰ PHÒNG QUA GROQ ---
         if (groqKey) {
+            console.log(">>> Đang thử cổng dự phòng GROQ...");
             try {
                 const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: "POST",
@@ -530,7 +551,7 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                     body: JSON.stringify({
                         model: "llama-3.3-70b-versatile",
                         messages: [
-                            { role: "system", content: "Bạn là chuyên gia soạn giáo án 5512. Bạn luôn viết lời giảng cực kỳ chi tiết, không bao giờ tóm tắt. Mỗi hoạt động phải dài và đầy đủ nội dung sư phạm." },
+                            { role: "system", content: "Bạn là chuyên gia soạn giáo án 5512." },
                             { role: "user", content: prompt }
                         ],
                         response_format: { type: "json_object" },
@@ -541,16 +562,19 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
 
                 const groqData = await groqResponse.json();
                 if (groqData.choices && groqData.choices[0].message) {
-                    console.log("==> THÀNH CÔNG với Groq dự phòng");
+                    // --- CONSOLE KẾT QUẢ THÀNH CÔNG ---
+                    console.log(">>> KẾT QUẢ: Gửi đi thành công bằng API [GROQ - Llama 3.3]");
                     return res.json({ 
                         provider: "Groq (Llama 3.3)",
                         content: groqData.choices[0].message.content 
                     });
                 }
-            } catch (groqErr) { lastError = groqErr.message; }
+            } catch (groqErr) {
+                console.error(">>> KẾT QUẢ: Cả Gemini và Groq đều thất bại!");
+            }
         }
 
-        return res.status(500).json({ error: "Lỗi hệ thống: " + lastError });
+        return res.status(500).json({ error: "Hệ thống bận" });
 
     } catch (error) {
         if (!res.headersSent) res.status(500).json({ error: "Lỗi tổng quát" });
