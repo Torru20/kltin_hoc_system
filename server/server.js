@@ -447,7 +447,8 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
             QUY TẮC VỀ CẤU TRÚC (BẮT BUỘC):
             1. SỐ LƯỢNG HÀNH ĐỘNG: Mảng "activities" PHẢI có số lượng phần tử BẰNG 100% với mảng "tienTrinh". Nếu tienTrinh có 4 hoạt động, activities phải có đủ 4.
             2. MAPPING MỤC TIÊU: Tại trường "mucTieu", CHỈ ghi số hiệu trong ngoặc đơn. Ví dụ: "(1), (2)". Tuyệt đối không viết chữ.
-            3. ƯU TIÊN NỘI DUNG: Tập trung viết chi tiết 4 bước (steps) cho TỪNG hoạt động trong mảng "activities". Mỗi hoạt động (activity) trong mảng activities PHẢI dài ít nhất 300 chữ.
+            3. ƯU TIÊN NỘI DUNG: Tập trung viết chi tiết 4 bước (steps) cho TỪNG hoạt động trong mảng "activities". Phải được viết cực kỳ chi tiết, tối thiểu 400-500 từ cho mỗi hoạt động.
+            Lưu ý: Về nội dung bước (steps): "Trong phần 'steps', không được viết chung chung. GV phải có câu hỏi gợi mở cụ thể, HS phải có hành động thao tác chi tiết (ví dụ: gõ phím gì, quan sát gì). Mỗi bước phải mô tả ít nhất 4-5 dòng văn.
             4. Cần có tối thiểu 4 hoạt động: Khởi động, Hình thành kiến thức mới/Khám phá, Luyện tập, Vận dụng (có thể đặt tên phụ)
             5. Phải ghi chú thời gian của từng hoạt động, tổng thời lượng không vượt quá ${thoiLuong} tiết. (1 tiết = 45 phút)
 
