@@ -433,7 +433,7 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
     try {
         const { lessonName, objectives, lop, thoiLuong, thietBi, teacherNote } = req.body;
         
-        // 1. Cấu hình Prompt (Giữ nguyên theo yêu cầu)
+        // 1. Cấu hình Prompt (Đã thêm các câu lệnh "ép" độ dài mạnh hơn)
         const prompt = `
             Bạn là giáo viên Tin học chuyên về soạn thảo KHBD theo Công văn 5512. 
             DANH SÁCH MỤC TIÊU CỐ ĐỊNH:
@@ -445,17 +445,16 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
             Yêu cầu thêm: ${teacherNote}
 
             QUY TẮC VỀ CẤU TRÚC (BẮT BUỘC):
-            1. SỐ LƯỢNG HÀNH ĐỘNG: Mảng "activities" PHẢI có số lượng phần tử BẰNG 100% với mảng "tienTrinh". Nếu tienTrinh có 4 hoạt động, activities phải có đủ 4.
-            2. MAPPING MỤC TIÊU: Tại trường "mucTieu", CHỈ ghi số hiệu trong ngoặc đơn. Ví dụ: "(1), (2)". Tuyệt đối không viết chữ.
-            3. ƯU TIÊN NỘI DUNG: Tập trung viết chi tiết 4 bước (steps) cho TỪNG hoạt động trong mảng "activities". Phải được viết cực kỳ chi tiết, tối thiểu 400-500 từ cho mỗi hoạt động.
-            Lưu ý: Về nội dung bước (steps): "Trong phần 'steps', không được viết chung chung. GV phải có câu hỏi gợi mở cụ thể, HS phải có hành động thao tác chi tiết (ví dụ: gõ phím gì, quan sát gì). Mỗi bước phải mô tả ít nhất 4-5 dòng văn.
+            1. SỐ LƯỢNG HÀNH ĐỘNG: Mảng "activities" PHẢI có số lượng phần tử BẰNG 100% với mảng "tienTrinh".
+            2. MAPPING MỤC TIÊU: Tại trường "mucTieu", CHỈ ghi số hiệu trong ngoặc đơn. Ví dụ: "(1), (2)".
+            3. QUY TẮC VIẾT CHI TIẾT (QUAN TRỌNG): 
+               - Mỗi bước (step) của GIÁO VIÊN phải bao gồm: Lời giảng chi tiết, câu hỏi gợi mở cụ thể và hướng dẫn kỹ thuật.
+               - Mỗi bước (step) của HỌC SINH phải bao gồm: Thao tác cụ thể trên máy tính, nội dung thảo luận hoặc sản phẩm cụ thể thu được.
+               - TUYỆT ĐỐI KHÔNG viết tóm tắt kiểu "GV hướng dẫn bài". Phải viết rõ "GV trình chiếu slide 1, đặt câu hỏi X, yêu cầu HS thực hiện lệnh Y...".
+               - Mỗi Hoạt động phải đạt độ dài tối thiểu 500 chữ.
             4. Cần có tối thiểu 4 hoạt động: Khởi động, Hình thành kiến thức mới/Khám phá, Luyện tập, Vận dụng (có thể đặt tên phụ)
             5. Phải ghi chú thời gian của từng hoạt động, tổng thời lượng không vượt quá ${thoiLuong} tiết. (1 tiết = 45 phút)
-
-            QUY TẮC PHỤ LỤC (appendices): 
-            Để tránh quá tải dữ liệu, phần "appendices" CHỈ CẦN viết khung sườn ngắn gọn (mô tả nội dung phiếu học tập và tiêu chí rubric tóm tắt), không cần viết toàn bộ nội dung chi tiết quá dài dòng.
-
-            YÊU CẦU TRẢ VỀ JSON THUẦN (KHÔNG ĐƯỢC CẮT BỚT PHẦN CHI TIẾT):
+            YÊU CẦU TRẢ VỀ JSON THUẦN:
             {
             "tienTrinh": [
                 { "ten": "Tên HĐ", "mucTieu": "(số hiệu)", "noiDung": "...", "phuongPhap": "..." }
@@ -464,13 +463,13 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                 {
                 "title": "Tên hoạt động chi tiết",
                 "mucTieu": "(số hiệu)", 
-                "noiDung": "Học sinh làm gì...",
-                "sanPham": "Kết quả đạt được...",
+                "noiDung": "...",
+                "sanPham": "...",
                 "steps": [
-                    { "step": "Chuyển giao nhiệm vụ", "gv": "...", "hs": "..." },
-                    { "step": "Thực hiện nhiệm vụ", "gv": "...", "hs": "..." },
-                    { "step": "Báo cáo, thảo luận", "gv": "...", "hs": "..." },
-                    { "step": "Kết luận, nhận định", "gv": "...", "hs": "..." }
+                    { "step": "Chuyển giao nhiệm vụ", "gv": "Viết ít nhất 5 dòng chi tiết", "hs": "Viết ít nhất 5 dòng chi tiết" },
+                    { "step": "Thực hiện nhiệm vụ", "gv": "Viết ít nhất 5 dòng chi tiết", "hs": "Viết ít nhất 5 dòng chi tiết" },
+                    { "step": "Báo cáo, thảo luận", "gv": "Viết ít nhất 5 dòng chi tiết", "hs": "Viết ít nhất 5 dòng chi tiết" },
+                    { "step": "Kết luận, nhận định", "gv": "Viết ít nhất 5 dòng chi tiết", "hs": "Viết ít nhất 5 dòng chi tiết" }
                 ]
                 }
             ],
@@ -478,25 +477,16 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
             }
         `;
 
-        // 2. Cấu hình Tài nguyên dự phòng
         const apiKeys = [process.env.GEMINI_API_KEY, process.env.GEMINI_API_KEY_2].filter(k => k);
         const groqKey = process.env.GROQ_API_KEY;
-        const models = [
-            "gemini-2.5-flash", 
-            "gemini-1.5-flash-latest", 
-            "gemini-1.5-flash", 
-            "gemini-2.0-flash-exp", 
-            "gemini-1.5-flash-8b"
-        ];
+        const models = ["gemini-2.5-flash", "gemini-1.5-flash-latest", "gemini-1.5-flash", "gemini-1.5-flash-8b"];
         
         let lastError = null;
 
-        // --- GIAI ĐOẠN 1: VÒNG LẶP GEMINI (KEY x MODEL) ---
+        // --- GIAI ĐOẠN 1: GEMINI ---
         for (let key of apiKeys) {
             for (let modelName of models) {
                 try {
-                    console.log(`[Gemini] Đang thử ${modelName} với Key: ${key.substring(0, 6)}...`);
-                    
                     const baseModelName = modelName.replace('models/', ''); 
                     const apiURL = `https://generativelanguage.googleapis.com/v1beta/models/${baseModelName}:generateContent?key=${key}`;
                     
@@ -507,7 +497,7 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                             contents: [{ parts: [{ text: prompt }] }],
                             generationConfig: { 
                                 responseMimeType: "application/json", 
-                                temperature: 0.8,
+                                temperature: 0.9, // Tăng lên 0.9 để viết dài và đa dạng hơn
                                 maxOutputTokens: 8192
                             }
                         })
@@ -517,24 +507,19 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
 
                     if (data.candidates && data.candidates[0].content) {
                         console.log(`==> THÀNH CÔNG với Gemini ${modelName}`);
-                        return res.json({ content: data.candidates[0].content.parts[0].text });
+                        // Gửi thêm thông tin provider về Frontend
+                        return res.json({ 
+                            provider: `Gemini (${modelName})`,
+                            content: data.candidates[0].content.parts[0].text 
+                        });
                     }
-
-                    if (data.error) {
-                        console.warn(`[Gemini Lỗi] ${modelName}: ${data.error.message}`);
-                        lastError = data.error.message;
-                    }
-                } catch (err) {
-                    console.error(`[Kết nối Lỗi] ${modelName}:`, err.message);
-                    lastError = err.message;
-                }
-                // Nếu lỗi, vòng lặp tự nhảy sang model/key tiếp theo
+                    if (data.error) lastError = data.error.message;
+                } catch (err) { lastError = err.message; }
             }
         }
 
-        // --- GIAI ĐOẠN 2: DỰ PHÒNG CUỐI CÙNG VỚI GROQ ---
+        // --- GIAI ĐOẠN 2: GROQ DỰ PHÒNG ---
         if (groqKey) {
-            console.log("!!! Tất cả Gemini đã thất bại hoặc nghẽn. Đang chuyển sang Groq (Llama 3.3)...");
             try {
                 const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: "POST",
@@ -544,36 +529,31 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                     },
                     body: JSON.stringify({
                         model: "llama-3.3-70b-versatile",
-                        messages: [{ role: "user", content: prompt }],
+                        messages: [
+                            { role: "system", content: "Bạn là chuyên gia soạn giáo án 5512. Bạn luôn viết lời giảng cực kỳ chi tiết, không bao giờ tóm tắt. Mỗi hoạt động phải dài và đầy đủ nội dung sư phạm." },
+                            { role: "user", content: prompt }
+                        ],
                         response_format: { type: "json_object" },
-                        temperature: 0.8,
+                        temperature: 0.9,
                         max_tokens: 4096
                     })
                 });
 
                 const groqData = await groqResponse.json();
                 if (groqData.choices && groqData.choices[0].message) {
-                    console.log("==> THÀNH CÔNG RỰC RỠ với Groq dự phòng!");
-                    return res.json({ content: groqData.choices[0].message.content });
+                    console.log("==> THÀNH CÔNG với Groq dự phòng");
+                    return res.json({ 
+                        provider: "Groq (Llama 3.3)",
+                        content: groqData.choices[0].message.content 
+                    });
                 }
-                if (groqData.error) lastError = "Groq cũng lỗi: " + groqData.error.message;
-            } catch (groqErr) {
-                console.error("Lỗi gọi Groq:", groqErr.message);
-                lastError = "Cả Gemini và Groq đều sập: " + groqErr.message;
-            }
+            } catch (groqErr) { lastError = groqErr.message; }
         }
 
-        // 3. Kết thúc: Trả về lỗi nếu tất cả các phương án đều thất bại
-        return res.status(500).json({ 
-            error: "Hệ thống AI hiện đang bận diện rộng. Vui lòng thử lại sau ít phút.",
-            details: lastError 
-        });
+        return res.status(500).json({ error: "Lỗi hệ thống: " + lastError });
 
     } catch (error) {
-        console.error("Lỗi Server Tổng:", error);
-        if (!res.headersSent) {
-            res.status(500).json({ error: "Lỗi hệ thống nghiêm trọng" });
-        }
+        if (!res.headersSent) res.status(500).json({ error: "Lỗi tổng quát" });
     }
 });
 
