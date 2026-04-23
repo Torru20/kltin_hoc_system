@@ -499,14 +499,20 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
         console.log(`Nội dung Prompt: ${prompt.substring(0, 500)}...`); // Log 500 ký tự đầu để kiểm tra
         console.log("============================================================");
 
-        const geminiKey = process.env.GEMINI_API_KEY;
+        // 1. Gom các Key Gemini vào một mảng để lặp
+        const geminiKeys = [process.env.GEMINI_API_KEY, process.env.GEMINI_API_KEY_2].filter(k => k);
         const groqKey = process.env.GROQ_API_KEY;
-        const primaryModel = "gemini-2.5-flash"; 
+        const modelName = "gemini-2.5-flash"; 
+        
+        let lastError = null;
 
-        // --- GIAI ĐOẠN 1: GỌI GEMINI ---
-        if (geminiKey) {
+        // --- GIAI ĐOẠN 1: THỬ TỪNG KEY GEMINI ---
+        for (let i = 0; i < geminiKeys.length; i++) {
             try {
-                const apiURL = `https://generativelanguage.googleapis.com/v1beta/models/${primaryModel}:generateContent?key=${geminiKey}`;
+                const currentKey = geminiKeys[i];
+                console.log(`[System] Đang thử Gemini với Key ${i + 1}: ${currentKey.substring(0, 6)}...`);
+                
+                const apiURL = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${currentKey}`;
                 
                 const response = await fetch(apiURL, {
                     method: 'POST',
@@ -524,23 +530,26 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                 const data = await response.json();
 
                 if (data.candidates && data.candidates[0].content) {
-                    // --- CONSOLE KẾT QUẢ THÀNH CÔNG ---
-                    console.log(`>>> KẾT QUẢ: Gửi đi thành công bằng API [GEMINI - ${primaryModel}]`);
+                    console.log(`>>> KẾT QUẢ: Thành công bằng [Gemini - Key ${i + 1}]`);
                     return res.json({ 
-                        provider: `Gemini 2.5 Flash`,
+                        provider: `Gemini 2.5 Flash (Key ${i + 1})`,
                         content: data.candidates[0].content.parts[0].text 
                     });
                 }
                 
-                console.warn(`[Gemini Fail] Lỗi: ${data.error?.message || 'Không xác định'}`);
+                lastError = data.error?.message || "Không có phản hồi từ Gemini";
+                console.warn(`[Gemini Key ${i + 1} Thất bại]: ${lastError}`);
+
             } catch (err) {
-                console.error(`[Gemini Error]`, err.message);
+                lastError = err.message;
+                console.error(`[Lỗi kết nối Key ${i + 1}]:`, err.message);
             }
+            // Nếu chạy đến đây mà chưa return nghĩa là Key hiện tại lỗi, vòng lặp sẽ tự nhảy sang Key tiếp theo.
         }
 
-        // --- GIAI ĐOẠN 2: DỰ PHÒNG QUA GROQ ---
+        // --- GIAI ĐOẠN 2: NẾU TẤT CẢ GEMINI ĐỀU TẠCH -> CHUYỂN SANG GROQ ---
         if (groqKey) {
-            console.log(">>> Đang thử cổng dự phòng GROQ...");
+            console.log("!!! Tất cả Gemini đều lỗi. Đang dùng Groq làm cứu cánh cuối cùng...");
             try {
                 const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: "POST",
@@ -551,7 +560,7 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                     body: JSON.stringify({
                         model: "llama-3.3-70b-versatile",
                         messages: [
-                            { role: "system", content: "Bạn là chuyên gia soạn giáo án 5512." },
+                            { role: "system", content: "Bạn là chuyên gia soạn giáo án 5512 chuyên nghiệp." },
                             { role: "user", content: prompt }
                         ],
                         response_format: { type: "json_object" },
@@ -562,22 +571,22 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
 
                 const groqData = await groqResponse.json();
                 if (groqData.choices && groqData.choices[0].message) {
-                    // --- CONSOLE KẾT QUẢ THÀNH CÔNG ---
-                    console.log(">>> KẾT QUẢ: Gửi đi thành công bằng API [GROQ - Llama 3.3]");
+                    console.log(">>> KẾT QUẢ: Thành công bằng [Groq]");
                     return res.json({ 
                         provider: "Groq (Llama 3.3)",
                         content: groqData.choices[0].message.content 
                     });
                 }
             } catch (groqErr) {
-                console.error(">>> KẾT QUẢ: Cả Gemini và Groq đều thất bại!");
+                console.error("Lỗi Groq:", groqErr.message);
+                lastError = "Cả 2 Key Gemini và Groq đều không hoạt động.";
             }
         }
 
-        return res.status(500).json({ error: "Hệ thống bận" });
+        return res.status(500).json({ error: "Hệ thống bận", details: lastError });
 
     } catch (error) {
-        if (!res.headersSent) res.status(500).json({ error: "Lỗi tổng quát" });
+        if (!res.headersSent) res.status(500).json({ error: "Lỗi Server" });
     }
 });
 
