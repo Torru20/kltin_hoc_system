@@ -454,38 +454,22 @@ app.post('/api/generate-lesson-plan', async (req, res) => {
                - Mỗi Hoạt động phải đạt độ dài tối thiểu 500 chữ.
             4. Cần có tối thiểu 4 hoạt động: Khởi động, Hình thành kiến thức mới/Khám phá, Luyện tập, Vận dụng (có thể đặt tên phụ)
             5. Phải ghi chú thời gian của từng hoạt động, tổng thời lượng không vượt quá ${thoiLuong} tiết. (1 tiết = 45 phút)
-            YÊU CẦU TRẢ VỀ JSON THUẦN (Nội dung phải giàu tính sư phạm):
+            YÊU CẦU TRẢ VỀ JSON THUẦN:
             {
             "tienTrinh": [
-                { "ten": "Hoạt động 1: Khởi động", "mucTieu": "(1)", "noiDung": "Học sinh xem video và trả lời câu hỏi gợi mở", "phuongPhap": "Trực quan, đàm thoại" }
+                { "ten": "Tên HĐ", "mucTieu": "(số hiệu)", "noiDung": "...", "phuongPhap": "..." }
             ],
             "activities": [
                 {
-                "title": "Hoạt động 1: Khởi động",
-                "mucTieu": "(1)", 
-                "noiDung": "Nội dung hoạt động chi tiết (viết ít nhất 5 câu mô tả ngữ cảnh)...",
-                "sanPham": "Sản phẩm cụ thể mà HS phải nộp hoặc trả lời được...",
+                "title": "Tên hoạt động chi tiết",
+                "mucTieu": "(số hiệu)", 
+                "noiDung": "Học sinh làm gì...",
+                "sanPham": "Kết quả đạt được...",
                 "steps": [
-                    { 
-                        "step": "Chuyển giao nhiệm vụ", 
-                        "gv": "GV trình chiếu slide/video về... Sau đó đặt câu hỏi: 'Các em nghĩ sao về...?'. Yêu cầu HS thảo luận cặp đôi trong 2 phút.", 
-                        "hs": "HS quan sát, lắng nghe câu hỏi, ghi chép các từ khóa quan trọng và bắt đầu trao đổi với bạn bên cạnh." 
-                    },
-                    { 
-                        "step": "Thực hiện nhiệm vụ", 
-                        "gv": "GV đi xuống từng nhóm, quan sát thái độ thảo luận, gợi ý cho các nhóm đang gặp khó khăn bằng các câu hỏi phụ như...", 
-                        "hs": "HS thảo luận sôi nổi, liệt kê các ý kiến ra nháp hoặc phiếu học tập cá nhân." 
-                    },
-                    { 
-                        "step": "Báo cáo, thảo luận", 
-                        "gv": "GV mời đại diện 2 nhóm bất kỳ đứng dậy trình bày. Sau khi HS trả lời, GV yêu cầu các nhóm khác nhận xét, bổ sung.", 
-                        "hs": "Đại diện HS trình bày tự tin. Các HS khác chú ý lắng nghe để tìm ra điểm khác biệt trong câu trả lời của nhóm mình." 
-                    },
-                    { 
-                        "step": "Kết luận, nhận định", 
-                        "gv": "GV chốt kiến thức: 'Như vậy các em thấy rằng...'. Đánh giá tinh thần học tập và dẫn dắt sang nội dung tiếp theo.", 
-                        "hs": "HS ghi nhớ kết luận của giáo viên vào vở ghi và chuẩn bị tài liệu cho hoạt động khám phá." 
-                    }
+                    { "step": "Chuyển giao nhiệm vụ", "gv": "...", "hs": "..." },
+                    { "step": "Thực hiện nhiệm vụ", "gv": "...", "hs": "..." },
+                    { "step": "Báo cáo, thảo luận", "gv": "...", "hs": "..." },
+                    { "step": "Kết luận, nhận định", "gv": "...", "hs": "..." }
                 ]
                 }
             ],
